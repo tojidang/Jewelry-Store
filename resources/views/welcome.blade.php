@@ -27,7 +27,6 @@
             <!-- Classy Menu -->
             <nav class="classy-navbar" id="essenceNav">
                 <!-- Logo -->
-                <a class="nav-brand" href="{{URL::to('/trang-chu')}}"><img src="{{asset('public/FE/img/core-img/logo.png')}}" alt=""></a>
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -44,32 +43,40 @@
                             <li><a href="#">Shop</a>
                                 <div class="megamenu">
                                     <ul class="single-mega cn-col-4">
-                                        <li class="title">Women's Collection</li>
-                                        <li><a href="shop.html">Dresses</a></li>
-                                        <li><a href="shop.html">Blouses &amp; Shirts</a></li>
-                                        <li><a href="shop.html">T-shirts</a></li>
-                                        <li><a href="shop.html">Rompers</a></li>
-                                        <li><a href="shop.html">Bras &amp; Panties</a></li>
+                                        <li class="title">Iphone</li>
+                                        <li><a href="shop.html">14 Series</a></li>
+                                        <li><a href="shop.html">13 Series</a></li>
+                                        <li><a href="shop.html">12 Series</a></li>
+                                        <li><a href="shop.html">11 Series</a></li>
+                                        <li><a href="shop.html">Iphone SE</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
-                                        <li class="title">Men's Collection</li>
-                                        <li><a href="shop.html">T-Shirts</a></li>
-                                        <li><a href="shop.html">Polo</a></li>
-                                        <li><a href="shop.html">Shirts</a></li>
-                                        <li><a href="shop.html">Jackets</a></li>
-                                        <li><a href="shop.html">Trench</a></li>
+                                        <li class="title">Mac</li>
+                                        <li><a href="shop.html">Macbook Pro</a></li>
+                                        <li><a href="shop.html">Macbook Air</a></li>
+                                        <li><a href="shop.html">iMac</a></li>
+                                        <li><a href="shop.html">Mac Mini</a></li>
+
                                     </ul>
                                     <ul class="single-mega cn-col-4">
-                                        <li class="title">Kid's Collection</li>
-                                        <li><a href="shop.html">Dresses</a></li>
-                                        <li><a href="shop.html">Shirts</a></li>
-                                        <li><a href="shop.html">T-shirts</a></li>
-                                        <li><a href="shop.html">Jackets</a></li>
-                                        <li><a href="shop.html">Trench</a></li>
+                                        <li class="title">Ipad</li>
+                                        <li><a href="shop.html">Ipad Pro M1</a></li>
+                                        <li><a href="shop.html">Ipad Pro M2</a></li>
+                                        <li><a href="shop.html">Ipad Air</a></li>
+                                        <li><a href="shop.html">Ipad Mini</a></li>
                                     </ul>
-                                    <div class="single-mega cn-col-4">
-                                        <img src="{{('public/FE/img/bg-img/bg-6.jpg')}}" alt="">
-                                    </div>
+                                    <ul class="single-mega cn-col-4">
+                                        <li class="title">Watch</li>
+                                        <li><a href="shop.html">Apple Watch Ultra</a></li>
+                                        <li><a href="shop.html">Apple Watch Series 8</a></li>
+                                        <li><a href="shop.html">Apple Watch Series 7</a></li>
+                                        <li><a href="shop.html">Apple Watch Series 6</a></li>
+                                        <li><a href="shop.html">Apple Watch Series SE</a></li>
+                                    </ul>
+                                    
+                                    {{-- <div class="single-mega cn-col-4">
+                                        <img src="{{asset('public/FE/img/bg-img/bg-6.jpg')}}" alt="">
+                                    </div> --}}
                                 </div>
                             </li>
                             <li><a href="#">Pages</a>
