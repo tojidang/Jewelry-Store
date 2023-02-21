@@ -16,7 +16,7 @@
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{{asset('public/FE/css/core-style.css')}}">
-    <link rel="stylesheet" href="{{asset('/public/FE/style.css')}}">
+    <link rel="stylesheet" href="{{asset('public/FE/style.css')}}">
 
 </head>
 
@@ -27,6 +27,7 @@
             <!-- Classy Menu -->
             <nav class="classy-navbar" id="essenceNav">
                 <!-- Logo -->
+                  <a class="nav-brand" href="{{ URL::to('/')}}"><img src="{{asset('public/FE/img/core-img/logo.png')}}" alt=""></a>
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>

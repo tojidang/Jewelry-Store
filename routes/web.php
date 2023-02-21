@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//FE
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 
-Route::get('/trang-chu', 'App\Http\Controllers\HomeController@index');
+//BE
+Route::get('/laravel/php/admin', 'App\Http\Controllers\AdminController@index');
