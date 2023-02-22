@@ -223,6 +223,7 @@
         </div>
     </section>
     <!-- ##### Welcome Area End ##### -->
+    
  @yield('content')
   
 
