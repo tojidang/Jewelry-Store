@@ -107,7 +107,7 @@
 
                 </div>
                 <div class="card-body">
-                  <form action="/laravel/php/admin-dashboard" method="post">
+                  <form action="{{ URL::to('/laravel/php/admin-dashboard') }}" method="post">
                     {{ csrf_field() }}
                     <label>Email</label>
                     <div class="mb-3">
