@@ -38,7 +38,7 @@
         <?php
       	if($cate_pro-> category_status ==1){
           ?>
-        <a href="{{ URL::to('laravel/php/active-category-product/'.$cate_pro->category_id) }}"><span class="btn btn-success"></a>
+        <a href="{{ URL::to('laravel/php/active-category-product/'.$cate_pro->category_id) }}"><span class="btn btn-success">Visible</a>
           <?php
         }
         ?>
@@ -46,7 +46,7 @@
         <?php
         if($cate_pro-> category_status ==0){
           ?>
-        <a href="{{ URL::to('laravel/php/inactive-category-product/'.$cate_pro->category_id) }}"><span class="btn btn-secondary"></a>
+        <a href="{{ URL::to('laravel/php/inactive-category-product/'.$cate_pro->category_id) }}"><span class="btn btn-secondary">Invisible</a>
           <?php
         }
         ?>

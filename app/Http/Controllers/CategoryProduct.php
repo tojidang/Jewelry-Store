@@ -29,7 +29,6 @@ class CategoryProduct extends Controller
         $data['category_name'] = $request->category_name;
         $data['category_desc'] = $request->category_desc;
         $data['category_status'] = $request->category_status;
-
         DB::table('tbl_category_product')-> insert($data);
         Session::put('message','Success');
         return Redirect::to('/laravel/php/add-category-product');

@@ -15,6 +15,8 @@ Route::post('/laravel/php/admin-dashboard','App\Http\Controllers\AdminController
 Route::get('/laravel/php/logout','App\Http\Controllers\AdminController@logout');
 
 
+
+
 //Category Product
 Route::get('/laravel/php/add-category-product','App\Http\Controllers\CategoryProduct@add_category_product');
 Route::get('/laravel/php/all-category-product','App\Http\Controllers\CategoryProduct@all_category_product');

@@ -18,8 +18,8 @@
   <label style="font-size:16px" for="category-parent">Status</label>
   <select name="category_status" class="form-control" id="category-parent">
     <option value="">None</option>
-    <option value="1">On</option>
-    <option value="0">Off</option>
+    <option value="1">Visible</option>
+    <option value="0">Invisible</option>
   </select>
   
   <hr>

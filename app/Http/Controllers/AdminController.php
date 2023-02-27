@@ -7,6 +7,7 @@ use DB;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 session_start();
 
 class AdminController extends Controller
@@ -42,4 +43,5 @@ class AdminController extends Controller
         Session::put('admin_id',null);
         return Redirect::to('/laravel/php/admin');
     }
+
 }

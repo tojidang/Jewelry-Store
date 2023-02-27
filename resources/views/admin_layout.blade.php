@@ -341,7 +341,7 @@
               </ul>
               <li class="nav-item d-flex align-items-center">
               <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"
-                href="/laravel/php/logout">Log out</a>
+                href="{{ URL::to('/laravel/php/logout') }}">Log out</a>
             </li>
             </li>
           </ul>
