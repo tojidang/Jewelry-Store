@@ -8,6 +8,8 @@ Route::get('/laravel/php/trangchu', 'App\Http\Controllers\HomeController@index')
 
 
 
+
+
 //BE
 Route::get('/laravel/php/admin','App\Http\Controllers\AdminController@index');
 Route::get('/laravel/php/dashboard','App\Http\Controllers\AdminController@show_dashboard');

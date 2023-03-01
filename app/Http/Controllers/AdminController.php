@@ -39,10 +39,9 @@ class AdminController extends Controller
 
     public function logout()
     {
-        // Session::put('admin_name',null);
-        // Session::put('admin_id',null);
-        session_destroy();
-        return Redirect::to('/laravel/php/trangchu');
+        Session::put('admin_name',null);
+        Session::put('admin_id',null);
+        return Redirect::to('/laravel/php/admin');
     }
 
 }

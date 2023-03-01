@@ -115,7 +115,7 @@
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
-                    <a href="{{ URL::to('laravel/php/login') }}"><img src="public/FE/img/core-img/user.svg" alt=""></a>
+                    <a href="{{ URL::to('/admin') }}"><img src="{{asset('public/FE/img/core-img/user.svg')}}" alt=""></a>
                 </div>
                 <!-- Cart Area -->
                 <div class="cart-area">

@@ -125,7 +125,7 @@
                     <?php 
                     $message = Session::get('message');
                     if($message){
-                      echo '<span style="color: red;" class="--bs-danger">',$message.'</span>';
+                      echo '<span class="--bs-danger">',$message.'</span>';
                       Session::put('message',null);
                     }
                   ?>
