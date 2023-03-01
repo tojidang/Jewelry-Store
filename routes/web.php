@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 //FE
-Route::get('/', 'App\Http\Controllers\HomeController@index');
+Route::get('/laravel/php/trangchu', 'App\Http\Controllers\HomeController@index');
+
+
 
 
 
