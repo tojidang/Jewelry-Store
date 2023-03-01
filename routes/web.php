@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 //FE
+Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/laravel/php/trangchu', 'App\Http\Controllers\HomeController@index');
 
 
@@ -23,6 +24,9 @@ Route::get('/laravel/php/logout','App\Http\Controllers\AdminController@logout');
 Route::get('/laravel/php/add-category-product','App\Http\Controllers\CategoryProduct@add_category_product');
 Route::get('/laravel/php/all-category-product','App\Http\Controllers\CategoryProduct@all_category_product');
 Route::post('/laravel/php/save-category-product','App\Http\Controllers\CategoryProduct@save_category_product');
+
+Route::get('/laravel/php/edit-category-product/{category_id}','App\Http\Controllers\CategoryProduct@edit_category_product');
+Route::get('/laravel/php/delete-category-product/{category_id}','App\Http\Controllers\CategoryProduct@delete_category_product');
 
 Route::get('/laravel/php/active-category-product/{category_id}','App\Http\Controllers\CategoryProduct@active_category_product');
 Route::get('/laravel/php/inactive-category-product/{category_id}','App\Http\Controllers\CategoryProduct@inactive_category_product');

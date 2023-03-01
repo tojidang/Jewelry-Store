@@ -56,8 +56,8 @@
       	{{ $cate_pro->created_at }}
       </td>
       <td style="text-align: center;">
-      	<button type="button" class="btn btn-info">Edit</button>
-      	<button type="button" class="btn btn-danger">Delete</button>
+      	<a href="{{ URL::to('laravel/php/edit-category-product/'.$cate_pro->category_id) }}" type="button" class="btn btn-info">Edit</a>
+      	<a href="{{ URL::to('laravel/php/delete-category-product/'.$cate_pro->category_id)}}" type="button" class="btn btn-danger">Delete</a>
       </td>
     </tr>
     @endforeach

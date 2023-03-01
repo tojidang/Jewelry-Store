@@ -27,7 +27,7 @@
             <!-- Classy Menu -->
             <nav class="classy-navbar" id="essenceNav">
                 <!-- Logo -->
-                  <a class="nav-brand" href="{{ URL::to('laravel/php/trangchu')}}"><img style="height: 40x; width: 90px;" src="public/FE/img/core-img/logo4.png" alt=""></a>
+                  <a class="nav-brand" href="trangchu"><img style="height: 40x; width: 90px;" src="public/FE/img/core-img/logo4.png" alt=""></a>
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -76,7 +76,7 @@
                                     </ul>
                                     
                                     {{-- <div class="single-mega cn-col-4">
-                                        <img src="{{asset('public/FE/img/bg-img/bg-6.jpg')}}" alt="">
+                                        <img src="public/FE/img/bg-img/bg-6.jpg" alt="">
                                     </div> --}}
                                 </div>
                             </li>
@@ -115,7 +115,7 @@
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
-                    <a href="{{ URL::to('/admin') }}"><img src="{{asset('public/FE/img/core-img/user.svg')}}" alt=""></a>
+                    <a href="{{ URL::to('/admin') }}"><img src="public/FE/img/core-img/user.svg" alt=""></a>
                 </div>
                 <!-- Cart Area -->
                 <div class="cart-area">

@@ -1,9 +1,8 @@
 @extends('admin_layout')
 @section('admin_content')
 
-
+<h6 class="font-weight-bolder mb-0">Add Category Product</h6>
 <hr>
-
 
 <form style="width: 1500px;" action="{{ URL::to('/laravel/php/save-category-product') }}" method="post">
   {{ csrf_field() }}
