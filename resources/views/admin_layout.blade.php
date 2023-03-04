@@ -4,21 +4,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="public/BE/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="public/BE/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('laravel/php/public/BE/img/apple-icon.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('laravel/php/public/BE/img/favicon.png') }}">
   <title>
     Admin
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
-  <link href="public/BE/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="public/BE/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="{{ asset('laravel/php/public/BE/css/nucleo-icons.css') }}" rel="stylesheet" />
+  <link href="{{ asset('laravel/php/public/BE/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="public/BE/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="{{ asset('laravel/php/public/BE/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="public/BE/css/soft-ui-dashboard.css" rel="stylesheet" />
+  <link id="pagestyle" href="{{ asset('laravel/php/public/BE/css/soft-ui-dashboard.css') }}" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -28,7 +28,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
         aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="{{ URL::to('/laravel/php/dashboard') }}">
-        <img src="public/BE/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+        <img src="{{ asset('laravel/php/public/BE/img/logo-ct-dark.png') }}" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">TM Dashboard</span>
       </a>
     </div>
@@ -86,40 +86,15 @@
               </svg>
             </div>
             <span class="nav-link-text ms-1" >Category Product</span>
-          </a>
-        </li>
-        <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ URL::to('/laravel/php/add-category-product') }}">
+            <a class="nav-link collapsed" href="{{ URL::to('/laravel/php/add-category-product') }}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Add Category Product</span>
                 </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link  " href="../pages/billing.html">
-            <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>credit-card</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(453.000000, 454.000000)">
-                        <path class="color-background opacity-6"
-                          d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z">
-                        </path>
-                        <path class="color-background"
-                          d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
-                        </path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Billing</span>
           </a>
         </li>
+
+                
+
         {{-- <li class="nav-item">
           <a class="nav-link  " href="../pages/billing.html">
             <div
@@ -146,6 +121,38 @@
             <span class="nav-link-text ms-1">Billing</span>
           </a>
         </li> --}}
+        <li class="nav-item">
+          <a class="nav-link  " href="{{ URL::to('/laravel/php/all-brand-product')}}">
+            <div
+              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>credit-card</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g transform="translate(1716.000000, 291.000000)">
+                      <g transform="translate(453.000000, 454.000000)">
+                        <path class="color-background opacity-6"
+                          d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z">
+                        </path>
+                        <path class="color-background"
+                          d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                        </path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Brand Product</span>
+
+                <a class="nav-link collapsed" href="{{ URL::to('/laravel/php/add-brand-product') }}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Add Brand</span>
+                </a>
+
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link  " href="../pages/virtual-reality.html">
             <div
@@ -393,11 +400,11 @@
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="public/BE/js/core/popper.min.js"></script>
-  <script src="public/BE/js/core/bootstrap.min.js"></script>
-  <script src="public/BE/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="public/BE/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="public/BE/js/plugins/chartjs.min.js"></script>
+  <script src="{{ asset('laravel/php/public/BE/js/core/popper.min.js') }}"></script>
+  <script src="{{ asset('laravel/php/public/BE/js/core/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('laravel/php/public/BE/js/plugins/perfect-scrollbar.min.js') }}"></script>
+  <script src="{{ asset('laravel/php/public/BE/js/plugins/smooth-scrollbar.min.js') }}"></script>
+  <script src="{{ asset('laravel/php/public/BE/js/plugins/chartjs.min.js') }}"></script>
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
@@ -580,7 +587,7 @@
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="public/BE/js/soft-ui-dashboard.min.js"></script>
+  <script src="{{ asset('laravel/php/public/BE/js/soft-ui-dashboard.min.js') }}"></script>
 </body>
 
 </html>

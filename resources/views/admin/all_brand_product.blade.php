@@ -3,11 +3,11 @@
 
 
 <hr>
-<h6 class="font-weight-bolder mb-0">Category Product</h6>
+<h6 class="font-weight-bolder mb-0">Brand Product</h6>
 <table class="table align-middle mb-0 bg-white" >
   <thead class="bg-light">
     <tr style="text-align:  center;">
-      <th>Category Name</th>
+      <th>Brand Name</th>
       <th>Description</th>
       <th>Status</th>
       <th>Date</th>
@@ -16,7 +16,7 @@
   </thead>
   <tbody >
 
-  	@foreach($all_category_product as $key => $cate_pro)
+  	@foreach($all_brand_product as $key => $br_pro)
     <tr>
       <td>
         <div class="d-flex align-items-center">
@@ -27,37 +27,37 @@
               class="rounded-circle"
               /> --}}
           <div class="ms-3">
-            <p class="fw-bold mb-1">{{ $cate_pro->category_name }}</p>
+            <p class="fw-bold mb-1">{{ $br_pro->brand_name }}</p>
           </div>
         </div>
       </td>
       <td>
-      	{{ $cate_pro->category_desc }}
+      	{{ $br_pro->brand_desc }}
       </td>
       <td style="text-align: center;">
         <?php
-      	if($cate_pro-> category_status ==1){
+      	if($br_pro-> brand_status ==1){
           ?>
-        <a href="{{ URL::to('laravel/php/active-category-product/'.$cate_pro->category_id) }}"><span class="btn btn-success">Visible</a>
+        <a href="{{ URL::to('laravel/php/active-brand-product/'.$br_pro->brand_id) }}"><span class="btn btn-success">Visible</a>
           <?php
         }
         ?>
 
         <?php
-        if($cate_pro-> category_status ==0){
+        if($br_pro-> brand_status ==0){
           ?>
-        <a href="{{ URL::to('laravel/php/inactive-category-product/'.$cate_pro->category_id) }}"><span class="btn btn-secondary">Invisible</a>
+        <a href="{{ URL::to('laravel/php/inactive-brand-product/'.$br_pro->brand_id) }}"><span class="btn btn-secondary">Invisible</a>
           <?php
         }
         ?>
 
       </td>
       <td style="text-align: center;">
-      	{{ $cate_pro->created_at }}
+      	{{ $br_pro->created_at }}
       </td>
       <td style="text-align: center;">
-      	<a href="{{URL::to('laravel/php/edit-category-product/'.$cate_pro->category_id)}}" type="button" class="btn btn-info">Edit</a>
-      	<a onclick="return confirm('Are you sure you want delete?')" href="{{URL::to('laravel/php/delete-category-product/'.$cate_pro->category_id)}}" type="button" class="btn btn-danger">Delete</a>
+      	<a href="{{URL::to('laravel/php/edit-brand-product/'.$br_pro->brand_id)}}" type="button" class="btn btn-info">Edit</a>
+      	<a onclick="return confirm('Are you sure you want delete?')" href="{{URL::to('laravel/php/delete-brand-product/'.$br_pro->brand_id)}}" type="button" class="btn btn-danger">Delete</a>
 
       </td>
     </tr>
