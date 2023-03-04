@@ -74,9 +74,9 @@
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="{{('public/FE/img/product-img/product-1.jpg')}}" alt="">
+                                <img src="public/FE/img/product-img/product-1.jpg" alt="">
                                 <!-- Hover Thumb -->
-                                <img class="hover-img" src="{{('public/FE/img/product-img/product-2.jpg')}}" alt="">
+                                <img class="hover-img" src="public/FE/img/product-img/product-2.jpg" alt="">
                                 <!-- Favourite -->
                                 <div class="product-favourite">
                                     <a href="#" class="favme fa fa-heart"></a>
@@ -104,9 +104,9 @@
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="{{('public/FE/img/product-img/product-2.jpg')}}" alt="">
+                                <img src="public/FE/img/product-img/product-2.jpg" alt="">
                                 <!-- Hover Thumb -->
-                                <img class="hover-img" src="{{('public/FE/img/product-img/product-3.jpg')}}" alt="">
+                                <img class="hover-img" src="public/FE/img/product-img/product-3.jpg" alt="">
                                 <!-- Favourite -->
                                 <div class="product-favourite">
                                     <a href="#" class="favme fa fa-heart"></a>
@@ -134,9 +134,9 @@
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="{{('public/FE/img/product-img/product-3.jpg')}}" alt="">
+                                <img src="public/FE/img/product-img/product-3.jpg" alt="">
                                 <!-- Hover Thumb -->
-                                <img class="hover-img" src="{{('public/FE/img/product-img/product-4.jpg')}}" alt="">
+                                <img class="hover-img" src="public/FE/img/product-img/product-4.jpg" alt="">
 
                                 <!-- Product Badge -->
                                 <div class="product-badge offer-badge">
@@ -170,9 +170,9 @@
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="{{('public/FE/img/product-img/product-4.jpg')}}" alt="">
+                                <img src="public/FE/img/product-img/product-4.jpg" alt="">
                                 <!-- Hover Thumb -->
-                                <img class="hover-img" src="{{('public/FE/img/product-img/product-5.jpg')}}" alt="">
+                                <img class="hover-img" src="public/FE/img/product-img/product-5.jpg" alt="">
 
                                 <!-- Product Badge -->
                                 <div class="product-badge new-badge">
@@ -212,27 +212,27 @@
     <div class="brands-area d-flex align-items-center justify-content-between">
         <!-- Brand Logo -->
         <div class="single-brands-logo">
-            <img src="{{('public/FE/img/core-img/brand1.png')}}" alt="">
+            <img src="public/FE/img/core-img/brand1.png" alt="">
         </div>
         <!-- Brand Logo -->
         <div class="single-brands-logo">
-            <img src="{{('public/FE/img/core-img/brand2.png')}}" alt="">
+            <img src="public/FE/img/core-img/brand2.png" alt="">
         </div>
         <!-- Brand Logo -->
         <div class="single-brands-logo">
-            <img src="{{('public/FE/img/core-img/brand3.png')}}" alt="">
+            <img src="public/FE/img/core-img/brand3.png" alt="">
         </div>
         <!-- Brand Logo -->
         <div class="single-brands-logo">
-            <img src="{{('public/FE/img/core-img/brand4.png')}}" alt="">
+            <img src="public/FE/img/core-img/brand4.png" alt="">
         </div>
         <!-- Brand Logo -->
         <div class="single-brands-logo">
-            <img src="{{('public/FE/img/core-img/brand5.png')}}" alt="">
+            <img src="public/FE/img/core-img/brand5.png" alt="">
         </div>
         <!-- Brand Logo -->
         <div class="single-brands-logo">
-            <img src="{{('public/FE/img/core-img/brand6.png')}}" alt="">
+            <img src="public/FE/img/core-img/brand6.png" alt="">
         </div>
     </div>
     <!-- ##### Brands Area End ##### -->

@@ -3,26 +3,40 @@
 use Illuminate\Support\Facades\Route;
 
 //FE
+Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/laravel/php/trangchu', 'App\Http\Controllers\HomeController@index');
 
 
-
-
-
-
 //BE
-Route::get('/laravel/php/admin','App\Http\Controllers\AdminController@index');
-Route::get('/laravel/php/dashboard','App\Http\Controllers\AdminController@show_dashboard');
-Route::post('/laravel/php/admin-dashboard','App\Http\Controllers\AdminController@dashboard');
-Route::get('/laravel/php/logout','App\Http\Controllers\AdminController@logout');
-
+Route::get('laravel/php/admin','App\Http\Controllers\AdminController@index');
+Route::get('laravel/php/dashboard','App\Http\Controllers\AdminController@show_dashboard');
+Route::post('laravel/php/admin-dashboard','App\Http\Controllers\AdminController@dashboard');
+Route::get('laravel/php/logout','App\Http\Controllers\AdminController@logout');
 
 
 
 //Category Product
-Route::get('/laravel/php/add-category-product','App\Http\Controllers\CategoryProduct@add_category_product');
-Route::get('/laravel/php/all-category-product','App\Http\Controllers\CategoryProduct@all_category_product');
-Route::post('/laravel/php/save-category-product','App\Http\Controllers\CategoryProduct@save_category_product');
+Route::get('laravel/php/add-category-product','App\Http\Controllers\CategoryProduct@add_category_product');
+Route::get('laravel/php/all-category-product','App\Http\Controllers\CategoryProduct@all_category_product');
+Route::post('laravel/php/save-category-product','App\Http\Controllers\CategoryProduct@save_category_product');
+Route::post('laravel/php/update-category-product/{category_id}','App\Http\Controllers\CategoryProduct@update_category_product');
 
-Route::get('/laravel/php/active-category-product/{category_id}','App\Http\Controllers\CategoryProduct@active_category_product');
-Route::get('/laravel/php/inactive-category-product/{category_id}','App\Http\Controllers\CategoryProduct@inactive_category_product');
+Route::get('laravel/php/edit-category-product/{category_id}','App\Http\Controllers\CategoryProduct@edit_category_product');
+Route::get('laravel/php/delete-category-product/{category_id}','App\Http\Controllers\CategoryProduct@delete_category_product');
+
+Route::get('laravel/php/active-category-product/{category_id}','App\Http\Controllers\CategoryProduct@active_category_product');
+Route::get('laravel/php/inactive-category-product/{category_id}','App\Http\Controllers\CategoryProduct@inactive_category_product');
+
+
+
+//Brand Product
+Route::get('laravel/php/add-brand-product','App\Http\Controllers\BrandProduct@add_brand_product');
+Route::get('laravel/php/all-brand-product','App\Http\Controllers\BrandProduct@all_brand_product');
+Route::post('laravel/php/save-brand-product','App\Http\Controllers\BrandProduct@save_brand_product');
+Route::post('laravel/php/update-brand-product/{brand_id}','App\Http\Controllers\BrandProduct@update_brand_product');
+
+Route::get('laravel/php/edit-brand-product/{brand_id}','App\Http\Controllers\BrandProduct@edit_brand_product');
+Route::get('laravel/php/delete-brand-product/{brand_id}','App\Http\Controllers\BrandProduct@delete_brand_product');
+
+Route::get('laravel/php/active-brand-product/{brand_id}','App\Http\Controllers\BrandProduct@active_brand_product');
+Route::get('laravel/php/inactive-brand-product/{brand_id}','App\Http\Controllers\BrandProduct@inactive_brand_product');

@@ -12,11 +12,11 @@
     <title>Apple Store</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="public/FE/img/core-img/favicon.ico">
+    <link rel="icon" href="{{ asset('laravel/php/public/FE/img/core-img/favicon.ico') }}">
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="public/FE/css/core-style.css">
-    <link rel="stylesheet" href="public/FE/style.css">
+    <link rel="stylesheet" href="{{ asset('laravel/php/public/FE/css/core-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('laravel/php/public/FE/style.css') }}">
 
 </head>
 
@@ -27,7 +27,7 @@
             <!-- Classy Menu -->
             <nav class="classy-navbar" id="essenceNav">
                 <!-- Logo -->
-                  <a class="nav-brand" href="{{ URL::to('laravel/php/trangchu')}}"><img style="height: 40x; width: 90px;" src="public/FE/img/core-img/logo4.png" alt=""></a>
+                  <a class="nav-brand" href="trangchu"><img style="height: 40x; width: 90px;" src="{{ asset('laravel/php/public/FE/img/core-img/logo4.png') }}" alt=""></a>
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -76,7 +76,7 @@
                                     </ul>
                                     
                                     {{-- <div class="single-mega cn-col-4">
-                                        <img src="{{asset('public/FE/img/bg-img/bg-6.jpg')}}" alt="">
+                                        <img src="laravel/php/public/FE/img/bg-img/bg-6.jpg" alt="">
                                     </div> --}}
                                 </div>
                             </li>
@@ -111,15 +111,15 @@
                 </div>
                 <!-- Favourite Area -->
                 <div class="favourite-area">
-                    <a href="#"><img src="public/FE/img/core-img/heart.svg" alt=""></a>
+                    <a href="#"><img src="{{ asset('laravel/php/public/FE/img/core-img/heart.svg') }}" alt=""></a>
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
-                    <a href="{{ URL::to('/admin') }}"><img src="{{asset('public/FE/img/core-img/user.svg')}}" alt=""></a>
+                    <a href="{{ URL::to('/admin') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
                 </div>
                 <!-- Cart Area -->
                 <div class="cart-area">
-                    <a href="#" id="essenceCartBtn"><img src="public/FE/img/core-img/bag.svg" alt=""> <span>3</span></a>
+                    <a href="#" id="essenceCartBtn"><img src="{{ asset('laravel/php/public/FE/img/core-img/bag.svg') }}" alt=""> <span>3</span></a>
                 </div>
             </div>
 
@@ -134,7 +134,7 @@
 
         <!-- Cart Button -->
         <div class="cart-button">
-            <a href="#" id="rightSideCart"><img src="public/FE/img/core-img/bag.svg" alt=""> <span>3</span></a>
+            <a href="#" id="rightSideCart"><img src="{{ asset('laravel/php/public/FE/img/core-img/bag.svg') }}" alt=""> <span>3</span></a>
         </div>
 
         <div class="cart-content d-flex">
@@ -144,7 +144,7 @@
                 <!-- Single Cart Item -->
                 <div class="single-cart-item">
                     <a href="#" class="product-image">
-                        <img src="public/FE/img/product-img/product-1.jpg" class="cart-thumb" alt="">
+                        <img src="{{ asset('laravel/php/public/FE/img/product-img/product-1.jpg') }}" class="cart-thumb" alt="">
                         <!-- Cart Item Desc -->
                         <div class="cart-item-desc">
                           <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
@@ -160,7 +160,7 @@
                 <!-- Single Cart Item -->
                 <div class="single-cart-item">
                     <a href="#" class="product-image">
-                        <img src="public/FE/img/product-img/product-2.jpg" class="cart-thumb" alt="">
+                        <img src="{{ asset('laravel/php/public/FE/img/product-img/product-2.jpg') }}" class="cart-thumb" alt="">
                         <!-- Cart Item Desc -->
                         <div class="cart-item-desc">
                           <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
@@ -176,7 +176,7 @@
                 <!-- Single Cart Item -->
                 <div class="single-cart-item">
                     <a href="#" class="product-image">
-                        <img src="public/FE/img/product-img/product-3.jpg" class="cart-thumb" alt="">
+                        <img src="{{ asset('laravel/php/public/FE/img/product-img/product-3.jpg') }}" class="cart-thumb" alt="">
                         <!-- Cart Item Desc -->
                         <div class="cart-item-desc">
                           <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
@@ -237,7 +237,7 @@
                     <div class="single_widget_area d-flex mb-30">
                         <!-- Logo -->
                         <div class="footer-logo mr-50">
-                            <a href="#"><img src="public/FE/img/core-img/logo2.png" alt=""></a>
+                            <a href="#"><img src="{{ asset('laravel/php/public/FE/img/core-img/logo2.png') }}" alt=""></a>
                         </div>
                         <!-- Footer Menu -->
                         <div class="footer_menu">
@@ -308,17 +308,17 @@
     <!-- ##### Footer Area End ##### -->
 
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
-    <script src="public/FE/js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="{{ asset('laravel/php/public/FE/js/jquery/jquery-2.2.4.min.js') }}"></script>
     <!-- Popper js -->
-    <script src="public/FE/js/popper.min.js"></script>
+    <script src="{{ asset('laravel/php/public/FE/js/popper.min.js') }}"></script>
     <!-- Bootstrap js -->
-    <script src="public/FE/js/bootstrap.min.js"></script>
+    <script src="{{ asset('laravel/php/public/FE/js/bootstrap.min.js') }}"></script>
     <!-- Plugins js -->
-    <script src="public/FE/js/plugins.js"></script>
+    <script src="{{ asset('laravel/php/public/FE/js/plugins.js') }}"></script>
     <!-- Classy Nav js -->
-    <script src="public/FE/js/classy-nav.min.js"></script>
+    <script src="{{ asset('laravel/php/public/FE/js/classy-nav.min.js') }}"></script>
     <!-- Active js -->
-    <script src="public/FE/js/active.js"></script>
+    <script src="{{ asset('laravel/php/public/FE/js/active.js') }}"></script>
 
 </body>
 
