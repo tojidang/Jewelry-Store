@@ -18,6 +18,7 @@ Route::get('laravel/php/logout','App\Http\Controllers\AdminController@logout');
 //Category Product
 Route::get('laravel/php/add-category-product','App\Http\Controllers\CategoryProduct@add_category_product');
 Route::get('laravel/php/all-category-product','App\Http\Controllers\CategoryProduct@all_category_product');
+
 Route::post('laravel/php/save-category-product','App\Http\Controllers\CategoryProduct@save_category_product');
 Route::post('laravel/php/update-category-product/{category_id}','App\Http\Controllers\CategoryProduct@update_category_product');
 
@@ -32,6 +33,7 @@ Route::get('laravel/php/inactive-category-product/{category_id}','App\Http\Contr
 //Brand Product
 Route::get('laravel/php/add-brand-product','App\Http\Controllers\BrandProduct@add_brand_product');
 Route::get('laravel/php/all-brand-product','App\Http\Controllers\BrandProduct@all_brand_product');
+
 Route::post('laravel/php/save-brand-product','App\Http\Controllers\BrandProduct@save_brand_product');
 Route::post('laravel/php/update-brand-product/{brand_id}','App\Http\Controllers\BrandProduct@update_brand_product');
 
@@ -40,3 +42,17 @@ Route::get('laravel/php/delete-brand-product/{brand_id}','App\Http\Controllers\B
 
 Route::get('laravel/php/active-brand-product/{brand_id}','App\Http\Controllers\BrandProduct@active_brand_product');
 Route::get('laravel/php/inactive-brand-product/{brand_id}','App\Http\Controllers\BrandProduct@inactive_brand_product');
+
+
+//Product
+Route::get('laravel/php/add-product','App\Http\Controllers\ProductController@add_product');
+Route::get('laravel/php/all-product','App\Http\Controllers\ProductController@all_product');
+
+Route::post('laravel/php/save-product','App\Http\Controllers\ProductController@save_product');
+Route::post('laravel/php/update-product/{product_id}','App\Http\Controllers\ProductController@update_product');
+
+Route::get('laravel/php/edit-product/{product_id}','App\Http\Controllers\ProductController@edit_product');
+Route::get('laravel/php/delete-product/{product_id}','App\Http\Controllers\ProductController@delete_product');
+
+Route::get('laravel/php/active-product/{product_id}','App\Http\Controllers\ProductController@active_product');
+Route::get('laravel/php/inactive-product/{product_id}','App\Http\Controllers\ProductController@inactive_product');
