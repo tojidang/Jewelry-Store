@@ -8,6 +8,7 @@
   <thead class="bg-light">
     <tr style="text-align:  center;">
       <th>Brand Name</th>
+      <th>Category</th>
       <th>Description</th>
       <th>Status</th>
       <th>Date</th>
@@ -30,6 +31,9 @@
             <p class="fw-bold mb-1">{{ $br_pro->brand_name }}</p>
           </div>
         </div>
+      </td>
+      <td>
+        {{ $br_pro->category_name }}
       </td>
       <td>
       	{{ $br_pro->brand_desc }}

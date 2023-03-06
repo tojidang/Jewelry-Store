@@ -42,58 +42,19 @@
                     <div class="classynav">
                         <ul>
                             <li><a href="#">Shop</a>
-                                <div class="megamenu">
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Iphone</li>
-                                        <li><a href="shop.html">14 Series</a></li>
-                                        <li><a href="shop.html">13 Series</a></li>
-                                        <li><a href="shop.html">12 Series</a></li>
-                                        <li><a href="shop.html">11 Series</a></li>
-                                        <li><a href="shop.html">Iphone SE</a></li>
-                                    </ul>
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Mac</li>
-                                        <li><a href="shop.html">Macbook Pro</a></li>
-                                        <li><a href="shop.html">Macbook Air</a></li>
-                                        <li><a href="shop.html">iMac</a></li>
-                                        <li><a href="shop.html">Mac Mini</a></li>
-
-                                    </ul>
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Ipad</li>
-                                        <li><a href="shop.html">Ipad Pro M1</a></li>
-                                        <li><a href="shop.html">Ipad Pro M2</a></li>
-                                        <li><a href="shop.html">Ipad Air</a></li>
-                                        <li><a href="shop.html">Ipad Mini</a></li>
-                                    </ul>
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Watch</li>
-                                        <li><a href="shop.html">Apple Watch Ultra</a></li>
-                                        <li><a href="shop.html">Apple Watch Series 8</a></li>
-                                        <li><a href="shop.html">Apple Watch Series 7</a></li>
-                                        <li><a href="shop.html">Apple Watch Series 6</a></li>
-                                        <li><a href="shop.html">Apple Watch Series SE</a></li>
-                                    </ul>
-                                    
-                                    {{-- <div class="single-mega cn-col-4">
-                                        <img src="laravel/php/public/FE/img/bg-img/bg-6.jpg" alt="">
-                                    </div> --}}
+                                <div class="megamenu">   
+                                    @foreach($category as $key => $cate)
+                                    <ul class="single-mega cn-col-4">                                        
+                                        <a style="font-size:16px" href="{{ URL::to('/laravel/php/category',$cate->category_id) }}" class="title">{{ $cate -> category_name }}</a>    
+                                        @foreach($brand as $key => $br)
+                                            @if($br->category_id == $cate->category_id )
+                                                <a style="font-size:13px" href="{{ URL::to('/laravel/php/brand',$br->brand_id) }}">{{ $br -> brand_name }}</a>
+                                            @endif
+                                        @endforeach                                  
+                                    </ul> 
+                                     @endforeach                                                                      
                                 </div>
                             </li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="single-product-details.html">Product Details</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="single-blog.html">Single Blog</a></li>
-                                    <li><a href="regular-page.html">Regular Page</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </div>
                     <!-- Nav End -->
@@ -115,7 +76,7 @@
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
-                    <a href="{{ URL::to('/admin') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
+                    <a href="{{ URL::to('laravel/php/login') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
                 </div>
                 <!-- Cart Area -->
                 <div class="cart-area">

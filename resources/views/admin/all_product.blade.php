@@ -8,6 +8,11 @@
   <thead class="bg-light">
     <tr style="text-align:  center;">
       <th>Product Name</th>
+      <th>Category</th>
+      <th>Brand</th>
+      <th>Price</th>
+       <th>Product Image</th>
+      <th>Content</th>
       <th>Description</th>
       <th>Status</th>
       <th>Date</th>
@@ -17,7 +22,7 @@
   <tbody >
 
   	@foreach($all_product as $key => $pro)
-    <tr>
+    <tr >
       <td>
         <div class="d-flex align-items-center">
          {{--  <img
@@ -30,6 +35,21 @@
             <p class="fw-bold mb-1">{{ $pro->product_name }}</p>
           </div>
         </div>
+      </td>
+      <td style="text-align: center;">
+        {{ $pro->category_name }}
+      </td>
+      <td style="text-align: center;">
+        {{ $pro->brand_name }}
+      </td>
+      <td style="text-align: center;">
+        {{ $pro->product_price }}
+      </td >
+      <td style="text-align: center;">
+        <img src="public/uploads/product/{{ $pro->product_img }}" alt="" height="100px"  width="100px">      
+      </td>
+      <td>
+        {{ $pro->product_content }}
       </td>
       <td>
       	{{ $pro->product_desc }}
