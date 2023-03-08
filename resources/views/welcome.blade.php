@@ -48,7 +48,7 @@
                                         <a style="font-size:16px" href="{{ URL::to('laravel/php/show-category',$cate->category_id) }}" class="title">{{ $cate -> category_name }}</a>    
                                         @foreach($brand as $key => $br)
                                             @if($br->category_id == $cate->category_id )
-                                                <a style="font-size:13px" href="{{ URL::to('laravel/php/show-brand',$br->brand_id) }}">{{ $br -> brand_name }}</a>
+
                                             @endif
                                         @endforeach                  
                                     </ul> 
@@ -76,7 +76,7 @@
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
-                    <a href="{{ URL::to('admin') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
+
                 </div>
                 <!-- Cart Area -->
                 <div class="cart-area">

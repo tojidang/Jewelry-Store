@@ -8,9 +8,7 @@ Route::get('laravel/php/trangchu/', 'App\Http\Controllers\HomeController@index')
 
 
 //Category Home
-Route::get('laravel/php/show-category/{category_id}', 'App\Http\Controllers\CategoryProduct@show_category');
 
-Route::get('laravel/php/show-brand/{brand_id}', 'App\Http\Controllers\BrandProduct@show_brand');
 
 
 //BE
