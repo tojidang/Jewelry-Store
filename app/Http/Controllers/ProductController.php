@@ -12,8 +12,18 @@ session_start();
 
 class ProductController extends Controller
 {
+    public function CheckAuth(){
+        $admin_id = Session::get('admin_id');
+        if($admin_id){
+            return Redirect::to('/laravel/php/dashboard');
+        }else{
+            return Redirect::to('/laravel/php/admin')->send();
+        }
+    }
+    
      public function add_product()
     {
+        $this->CheckAuth();
         $category = DB::table('tbl_category_product')->orderby('category_id','desc')->get();
         $brand = DB::table('tbl_brand')->orderby('brand_id','desc')->get();
 
@@ -22,13 +32,18 @@ class ProductController extends Controller
 
     public function all_product()
     {
-        $all_product = DB::table('tbl_product')-> get();
+        $this->CheckAuth();
+        $all_product = DB::table('tbl_product')
+        ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
+        ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
+        ->orderby('tbl_product.product_id','desc')->get();
         $manager_product = view('admin.all_product')->with('all_product',$all_product);
         return view ('admin_layout')->with('admin.all_product',$manager_product);
     }
 
     public function save_product(Request $request)
     {
+        $this->CheckAuth();
         $data = array();
         $data['product_name'] = $request->product_name;
         $data['category_id'] = $request->cate;
@@ -43,20 +58,19 @@ class ProductController extends Controller
             $get_name_img = $get_img->getClientOriginalName();
             $name_img = current(explode('.',$get_name_img));
             $new_img = $name_img.rand(0,99).'.'.$get_img->getClientOriginalExtension();
-            $get_img-> move('laravel/public/uploads/product',$new_img);
+            $get_img-> move('public/uploads/product',$new_img);
             $data['product_img'] = $new_img;
             DB::table('tbl_product')-> insert($data);
-            Session::put('message','Success');
             return Redirect::to('/laravel/php/add-product');
         }
         $data['product_img'] = '';
         DB::table('tbl_product')-> insert($data);
-        Session::put('message','Success');
         return Redirect::to('/laravel/php/add-product');
     }
 
     public function active_product($product_id)
     {
+        $this->CheckAuth();
         DB::table('tbl_product')->where('product_id',$product_id)-> update(['product_status'=>0]);
 
         return Redirect::to('/laravel/php/all-product');
@@ -64,6 +78,7 @@ class ProductController extends Controller
 
     public function inactive_product($product_id)
     {
+        $this->CheckAuth();
         DB::table('tbl_product')->where('product_id',$product_id)-> update(['product_status'=>1]);
 
         return Redirect::to('/laravel/php/all-product');
@@ -71,22 +86,44 @@ class ProductController extends Controller
 
     public function edit_product($product_id)
     {
+        $this->CheckAuth();
+        $category = DB::table('tbl_category_product')->orderby('category_id','desc')->get();
+        $brand = DB::table('tbl_brand')->orderby('brand_id','desc')->get();
+
         $edit_product = DB::table('tbl_product')-> where('product_id',$product_id)->get();
-        $manager_product = view('admin.edit_product')->with('edit_product',$edit_product);
+        $manager_product = view('admin.edit_product')->with('edit_product',$edit_product)->with('category',$category)->with('brand',$brand);
         return view ('admin_layout')->with('admin.edit_product',$manager_product);
     }
 
     public function update_product(Request $request, $product_id)
     {
+        $this->CheckAuth();
         $data = array();
         $data['product_name'] = $request->product_name;
+        $data['category_id'] = $request->cate;
+        $data['brand_id'] = $request->br;
+        $data['product_price'] = $request->product_price;
         $data['product_desc'] = $request->product_desc;
+        $data['product_content'] = $request->product_content;
+        $get_img = $request->file('product_img');
+        if($get_img){
+            $get_name_img = $get_img->getClientOriginalName();
+            $name_img = current(explode('.',$get_name_img));
+            $new_img = $name_img.rand(0,99).'.'.$get_img->getClientOriginalExtension();
+            $get_img-> move('public/uploads/product',$new_img);
+            $data['product_img'] = $new_img;
+            DB::table('tbl_product')->where('product_id',$product_id)-> update($data);
+            Session::put('message','Success');
+            return Redirect::to('/laravel/php/all-product');
+        }
         DB::table('tbl_product')->where('product_id',$product_id)-> update($data);
+        Session::put('message','Success');
         return Redirect::to('/laravel/php/all-product');
     }
 
     public function delete_product($product_id)
     {
+        $this->CheckAuth();
         DB::table('tbl_product')->where('product_id',$product_id)-> delete();
         return Redirect::to('/laravel/php/all-product');
     }}

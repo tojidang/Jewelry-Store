@@ -12,11 +12,20 @@ session_start();
 
 class AdminController extends Controller
 {
+    public function CheckAuth(){
+        $admin_id = Session::get('admin_id');
+        if($admin_id){
+            return Redirect::to('/laravel/php/dashboard');
+        }else{
+            return Redirect::to('/laravel/php/admin')->send();
+        }
+    }
     public function index(){
         return view('admin_login');
     }
 
     public function show_dashboard(){
+        $this->CheckAuth();
         return view('admin.dashboard');
     }
 
@@ -39,9 +48,10 @@ class AdminController extends Controller
 
     public function logout()
     {
+        $this->CheckAuth();
         Session::put('admin_name',null);
         Session::put('admin_id',null);
-        return Redirect::to('/laravel/php/admin');
+        return Redirect::to('/laravel/php/dashboard');
     }
 
 }

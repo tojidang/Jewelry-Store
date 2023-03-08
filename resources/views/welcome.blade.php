@@ -27,7 +27,7 @@
             <!-- Classy Menu -->
             <nav class="classy-navbar" id="essenceNav">
                 <!-- Logo -->
-                  <a class="nav-brand" href="trangchu"><img style="height: 40x; width: 90px;" src="{{ asset('laravel/php/public/FE/img/core-img/logo4.png') }}" alt=""></a>
+                  <a class="nav-brand" href="{{ URL::to('laravel/php/trangchu') }}"><img style="height: 40x; width: 90px;" src="{{ asset('laravel/php/public/FE/img/core-img/logo4.png') }}" alt=""></a>
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -42,67 +42,28 @@
                     <div class="classynav">
                         <ul>
                             <li><a href="#">Shop</a>
-                                <div class="megamenu">
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Iphone</li>
-                                        <li><a href="shop.html">14 Series</a></li>
-                                        <li><a href="shop.html">13 Series</a></li>
-                                        <li><a href="shop.html">12 Series</a></li>
-                                        <li><a href="shop.html">11 Series</a></li>
-                                        <li><a href="shop.html">Iphone SE</a></li>
-                                    </ul>
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Mac</li>
-                                        <li><a href="shop.html">Macbook Pro</a></li>
-                                        <li><a href="shop.html">Macbook Air</a></li>
-                                        <li><a href="shop.html">iMac</a></li>
-                                        <li><a href="shop.html">Mac Mini</a></li>
+                                <div class="megamenu">   
+                                    @foreach($category as $key => $cate)
+                                    <ul class="single-mega cn-col-4">                                        
+                                        <a style="font-size:16px" href="{{ URL::to('laravel/php/show-category',$cate->category_id) }}" class="title">{{ $cate -> category_name }}</a>    
+                                        @foreach($brand as $key => $br)
+                                            @if($br->category_id == $cate->category_id )
 
-                                    </ul>
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Ipad</li>
-                                        <li><a href="shop.html">Ipad Pro M1</a></li>
-                                        <li><a href="shop.html">Ipad Pro M2</a></li>
-                                        <li><a href="shop.html">Ipad Air</a></li>
-                                        <li><a href="shop.html">Ipad Mini</a></li>
-                                    </ul>
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Watch</li>
-                                        <li><a href="shop.html">Apple Watch Ultra</a></li>
-                                        <li><a href="shop.html">Apple Watch Series 8</a></li>
-                                        <li><a href="shop.html">Apple Watch Series 7</a></li>
-                                        <li><a href="shop.html">Apple Watch Series 6</a></li>
-                                        <li><a href="shop.html">Apple Watch Series SE</a></li>
-                                    </ul>
-                                    
-                                    {{-- <div class="single-mega cn-col-4">
-                                        <img src="laravel/php/public/FE/img/bg-img/bg-6.jpg" alt="">
-                                    </div> --}}
+                                            @endif
+                                        @endforeach                  
+                                    </ul> 
+                                     @endforeach                                                                      
                                 </div>
                             </li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="single-product-details.html">Product Details</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="single-blog.html">Single Blog</a></li>
-                                    <li><a href="regular-page.html">Regular Page</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </div>
-                    <!-- Nav End -->
                 </div>
+                    <!-- Nav End -->
             </nav>
-
             <!-- Header Meta Data -->
             <div class="header-meta d-flex clearfix justify-content-end">
                 <!-- Search Area -->
+
                 <div class="search-area">
                     <form action="#" method="post">
                         <input type="search" name="search" id="headerSearch" placeholder="Type for search">
@@ -115,7 +76,7 @@
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
-                    <a href="{{ URL::to('/admin') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
+
                 </div>
                 <!-- Cart Area -->
                 <div class="cart-area">
@@ -209,7 +170,8 @@
     <!-- ##### Right Side Cart End ##### -->
 
     <!-- ##### Welcome Area Start ##### -->
-    <section class="welcome_area bg-img background-overlay" style="background-image: url(public/FE/img/banner-img/banner1.jpg);">
+    <section class="welcome_area bg-img background-overlay" style="background-image: ">
+        <a href="#"><img src="{{ asset('laravel/php/public/FE/img/banner-img/banner1.jpg') }}" alt=""></a>
         {{-- <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
