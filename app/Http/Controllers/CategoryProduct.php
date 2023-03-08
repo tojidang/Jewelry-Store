@@ -86,5 +86,19 @@ class CategoryProduct extends Controller
         DB::table('tbl_category_product')->where('category_id',$category_id)-> delete();
         return Redirect::to('/laravel/php/all-category-product');
     }
+
+
+    //FE
+    public function show_category($category_id)
+    {
+        $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
+        $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
+
+        $category_by_id = DB::table('tbl_product')->join('tbl_category_product','tbl_product.category_id','=','tbl_category_product.category_id')->where('tbl_category_product.category_id','=',$category_id)->get();
+
+        $category_by_name = DB::table('tbl_category_product')->where('tbl_category_product.category_id',$category_id)->get();
+        
+        return view('pages.category.show_category')->with('category',$category)->with('brand',$brand)->with('category_by_id',$category_by_id)->with('category_by_name',$category_by_name);
+    }
     
 }

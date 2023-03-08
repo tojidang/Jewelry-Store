@@ -90,4 +90,19 @@ class BrandProduct extends Controller
         DB::table('tbl_brand')->where('brand_id',$brand_id)-> delete();
         return Redirect::to('/laravel/php/all-brand-product');
     }
+
+    public function show_brand($brand_id)
+    {
+        $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
+        $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
+
+        // $manager_cate = view('pages.category.show_category')->with('category',$category)->with('brand',$brand);
+        // return view ('welcome')->with('pages.category.show_category',$manager_cate);
+        $brand_by_id = DB::table('tbl_product')->join('tbl_brand','tbl_product.brand_id','=','tbl_brand.brand_id')->where('tbl_product.brand_id','=',$brand_id)->get();
+
+        $brand_by_name = DB::table('tbl_brand')->where('tbl_brand.brand_id',$brand_id)->get();
+
+        return view('pages.brand.show_brand')->with('category',$category)->with('brand',$brand)->with('brand_by_id',$brand_by_id)->with('brand_by_name',$brand_by_name);
+    }
+    
 }

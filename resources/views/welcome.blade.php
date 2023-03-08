@@ -27,7 +27,7 @@
             <!-- Classy Menu -->
             <nav class="classy-navbar" id="essenceNav">
                 <!-- Logo -->
-                  <a class="nav-brand" href="trangchu"><img style="height: 40x; width: 90px;" src="{{ asset('laravel/php/public/FE/img/core-img/logo4.png') }}" alt=""></a>
+                  <a class="nav-brand" href="{{ URL::to('laravel/php/trangchu') }}"><img style="height: 40x; width: 90px;" src="{{ asset('laravel/php/public/FE/img/core-img/logo4.png') }}" alt=""></a>
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -45,25 +45,25 @@
                                 <div class="megamenu">   
                                     @foreach($category as $key => $cate)
                                     <ul class="single-mega cn-col-4">                                        
-                                        <a style="font-size:16px" href="{{ URL::to('/laravel/php/category',$cate->category_id) }}" class="title">{{ $cate -> category_name }}</a>    
+                                        <a style="font-size:16px" href="{{ URL::to('laravel/php/show-category',$cate->category_id) }}" class="title">{{ $cate -> category_name }}</a>    
                                         @foreach($brand as $key => $br)
                                             @if($br->category_id == $cate->category_id )
-                                                <a style="font-size:13px" href="{{ URL::to('/laravel/php/brand',$br->brand_id) }}">{{ $br -> brand_name }}</a>
+                                                <a style="font-size:13px" href="{{ URL::to('laravel/php/show-brand',$br->brand_id) }}">{{ $br -> brand_name }}</a>
                                             @endif
-                                        @endforeach                                  
+                                        @endforeach                  
                                     </ul> 
                                      @endforeach                                                                      
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <!-- Nav End -->
                 </div>
+                    <!-- Nav End -->
             </nav>
-
             <!-- Header Meta Data -->
             <div class="header-meta d-flex clearfix justify-content-end">
                 <!-- Search Area -->
+
                 <div class="search-area">
                     <form action="#" method="post">
                         <input type="search" name="search" id="headerSearch" placeholder="Type for search">
@@ -76,7 +76,7 @@
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
-                    <a href="{{ URL::to('laravel/php/login') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
+                    <a href="{{ URL::to('admin') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
                 </div>
                 <!-- Cart Area -->
                 <div class="cart-area">
@@ -170,7 +170,8 @@
     <!-- ##### Right Side Cart End ##### -->
 
     <!-- ##### Welcome Area Start ##### -->
-    <section class="welcome_area bg-img background-overlay" style="background-image: url(public/FE/img/banner-img/banner1.jpg);">
+    <section class="welcome_area bg-img background-overlay" style="background-image: ">
+        <a href="#"><img src="{{ asset('laravel/php/public/FE/img/banner-img/banner1.jpg') }}" alt=""></a>
         {{-- <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
