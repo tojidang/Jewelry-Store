@@ -142,14 +142,4 @@ class ProductController extends Controller
         return view('pages.product.show_detail')->with('category',$category)->with('brand',$brand)->with('product',$product);
     }
 
-    //all home
-    public function product_home()
-    {
-        $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
-        $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
-
-        $all_product = DB::table('tbl_product')->where('product_status',1)->orderby('product_id','desc')->get();
-
-        return view('pages.home')->with('category',$category)->with('brand',$brand)->with('all_product',$all_product);
-    }
 }
