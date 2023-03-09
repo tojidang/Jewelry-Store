@@ -139,7 +139,30 @@ class ProductController extends Controller
         ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
         ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')->where('tbl_product.product_id',$product_id)->get();
 
-        return view('pages.product.show_detail')->with('category',$category)->with('brand',$brand)->with('product',$product);
+        foreach($product as $key => $value){
+            $category_id = $value -> category_id;
+        }
+
+        $realated_product = DB::table('tbl_product')
+        ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
+        ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
+        ->where('tbl_category_product.category_id',$category_id)->whereNotIn('tbl_product.product_id',[$product_id])->get();
+
+        return view('pages.product.show_detail')->with('category',$category)->with('brand',$brand)->with('product',$product)->with('realated_product',$realated_product);
     }
 
+    //all home
+    public function product_home()
+    {
+        $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
+        $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
+
+        
+         $show = DB::table('tbl_product')
+        ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
+        ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')->where('product_status',1)
+        ->orderby('tbl_product.product_id','desc')->get();
+
+        return view('pages.product.product_home')->with('category',$category)->with('brand',$brand)->with('show',$show);
+    }
 }

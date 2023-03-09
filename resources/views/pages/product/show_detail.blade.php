@@ -24,7 +24,7 @@
             <p class="product-desc">{{ $value ->product_desc }}</p>
 
             <!-- Form -->
-            <form class="cart-form clearfix" method="post">
+            <form action="{{ URL::to('laravel/php/save-cart') }}" method="POST">
                 <!-- Select Box -->
                 <div class="select-box d-flex mt-50 mb-30">
                     <select name="select" id="productSize" class="mr-5">
@@ -43,7 +43,9 @@
                 <!-- Cart & Favourite Box -->
                 <div class="cart-fav-box d-flex align-items-center">
                     <!-- Cart -->
-                    <button type="submit" name="addtocart" value="5" class="btn essence-btn">Add to cart</button>
+                        {{ csrf_field() }}
+                        <input name="product_id" type="hidden" value="{{ $value->product_id }}">
+                    <button type="submit" name="addtocart" class="btn essence-btn">Add to cart</button>
                     <!-- Favourite -->
                     <div class="product-favourite ml-4">
                         <a href="#" class="favme fa fa-heart"></a>
@@ -52,6 +54,52 @@
             </form>
         </div>
         @endforeach
-    </section>
+</section>
+<hr>
+<section class="new_arrivals_area section-padding-80 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">      
+                    <div class="section-heading text-center">
+                        <h2>Sản phẩm liên quan</h2>    
+                    </div>                   
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">   
+                <div class="col-12">
+                    <div class="popular-products-slides owl-carousel">
+                        @foreach($realated_product as $key => $value)
+                        
+                        <div class="single-product-wrapper">
+                           
+                            <div class="product-img">
+                                <img src="{{ URL::to('laravel/php/public/uploads/product/'.$value->product_img) }}" alt="">
+                                <div class="product-favourite">
+                                    <a href="#" class="favme fa fa-heart"></a>
+                                </div>
+                            </div>
+                         
+                            <div class="product-description">
+                                <span></span>
+                                <a href="{{ URL::to('laravel/php/product-detail/'.$value->product_id) }}">
+                                    <h6>{{($value->product_name)}}</h6>
+                                </a>
+                                <p class="product-price">{{number_format($value->product_price).' VNĐ'}}</p>
+                                <div class="hover-content">
+                                      <div class="add-to-cart-btn">
+                                        <button type="submit" href="{{ URL::to('laravel/php/product-detail/'.$value->product_id) }}" class="btn essence-btn">Add to Cart</button>
+                                        </div> 
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>  
+            </div>
+        </div>
+</section>
+
 
 @endsection

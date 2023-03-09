@@ -12,6 +12,7 @@ Route::get('laravel/php/show-category/{category_id}', 'App\Http\Controllers\Cate
 Route::get('laravel/php/show-brand/{brand_id}', 'App\Http\Controllers\BrandProduct@show_brand');
 
 Route::get('laravel/php/product-detail/{product_id}', 'App\Http\Controllers\ProductController@product_detail');
+Route::get('laravel/php/product-home', 'App\Http\Controllers\ProductController@product_home');
 
 
 //BE

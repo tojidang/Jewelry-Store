@@ -6,8 +6,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center">
-                         @foreach($brand_by_name as $key => $name)
-                        <h2>Sản phẩm {{ ($name->brand_name) }}</h2>    
+                        @foreach($brand_by_name as $key => $name)
+                        <h2>Sản phẩm {{ ($name->brand_name) }}</h2> 
                         @endforeach
                     </div>
                 </div>

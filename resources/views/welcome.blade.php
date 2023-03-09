@@ -41,11 +41,12 @@
                     <!-- Nav Start -->
                     <div class="classynav">
                         <ul>
-                            <li><a href="{{ URL::to('laravel/php/product/',$product_id) }}">Shop</a>
+                            <li>
+                                    <a href="{{ URL::to('laravel/php/product-home') }}">Shop</a>
                                 <div class="megamenu">   
                                     @foreach($category as $key => $cate)
                                     <ul class="single-mega cn-col-4">                                        
-                                        <a style="font-size:16px" href="{{ URL::to('laravel/php/show-category',$cate->category_id) }}" class="title">{{ $cate -> category_name }}</a>    
+                                        <a style="font-size:16px; font-weight:bold" href="{{ URL::to('laravel/php/show-category',$cate->category_id) }}" class="title">{{ $cate -> category_name }}</a>    
                                         @foreach($brand as $key => $br)
                                             @if($br->category_id == $cate->category_id )
                                                 <a style="font-size:13px" href="{{ URL::to('laravel/php/show-brand',$br->brand_id) }}">{{ $br -> brand_name }}</a>
