@@ -41,7 +41,7 @@
                     <!-- Nav Start -->
                     <div class="classynav">
                         <ul>
-                            <li><a href="#">Shop</a>
+                            <li><a href="{{ URL::to('laravel/php/product/',$product_id) }}">Shop</a>
                                 <div class="megamenu">   
                                     @foreach($category as $key => $cate)
                                     <ul class="single-mega cn-col-4">                                        

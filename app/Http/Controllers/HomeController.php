@@ -25,4 +25,6 @@ class HomeController extends Controller
 
         return view('pages.home')->with('category',$category)->with('brand',$brand)->with('all_product',$all_product);
     }
+
+    
 }
