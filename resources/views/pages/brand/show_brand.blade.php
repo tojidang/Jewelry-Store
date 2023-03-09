@@ -22,18 +22,14 @@
                         <div class="single-product-wrapper">
                            
                             <div class="product-img">
-                                <img src="{{ URL::to('laravel/php/public/uploads/product/'.$product->product_img) }}" alt="">
-
-                                
-                                
+                                <img src="{{ URL::to('laravel/php/public/uploads/product/'.$product->product_img) }}" alt="">                 
                                 <div class="product-favourite">
                                     <a href="#" class="favme fa fa-heart"></a>
                                 </div>
-                            </div>
-                         
+                            </div>                        
                             <div class="product-description">
-                                <span>topshop</span>
-                                <a href="single-product-details.html">
+                                <span></span>
+                                <a href="{{ URL::to('laravel/php/product-detail/'.$product->product_id) }}">
                                     <h6>{{($product->product_name)}}</h6>
                                 </a>
                                 <p class="product-price">{{number_format($product->product_price).' VNĐ'}}</p>
@@ -42,7 +38,7 @@
                                 <div class="hover-content">
                                    
                                     <div class="add-to-cart-btn">
-                                        <a href="#" class="btn essence-btn">Add to Cart</a>
+                                        <a href="{{ URL::to('laravel/php/product-detail/'.$product->product_id) }}" class="btn essence-btn">Add to Cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -53,33 +49,5 @@
             </div>
         </div>
 </section>
- <!-- ##### Brands Area Start ##### -->
-    <div class="brands-area d-flex align-items-center justify-content-between">
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{{ asset('laravel/php/public/FE/img/core-img/brand1.png') }}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{{ asset('laravel/php/public/FE/img/core-img/brand2.png') }}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{{ asset('laravel/php/public/FE/img/core-img/brand3.png') }}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{{ asset('laravel/php/public/FE/img/core-img/brand4.png') }}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{{ asset('laravel/php/public/FE/img/core-img/brand5.png') }}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{{ asset('laravel/php/public/FE/img/core-img/brand6.png') }}" alt="">
-        </div>
-    </div>
-    <!-- ##### Brands Area End ##### -->
-    <!-- ##### New Arrivals Area End ##### -->
+
 @endsection
