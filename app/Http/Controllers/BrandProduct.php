@@ -100,7 +100,7 @@ class BrandProduct extends Controller
         // return view ('welcome')->with('pages.category.show_category',$manager_cate);
         $brand_by_id = DB::table('tbl_product')->join('tbl_brand','tbl_product.brand_id','=','tbl_brand.brand_id')->where('tbl_product.brand_id','=',$brand_id)->get();
 
-        $brand_by_name = DB::table('tbl_brand')->where('tbl_brand.brand_id',$brand_id)->get();
+        $brand_by_name = DB::table('tbl_brand')->where('tbl_brand.brand_id',$brand_id)->limit(1)->get();
 
         return view('pages.brand.show_brand')->with('category',$category)->with('brand',$brand)->with('brand_by_id',$brand_by_id)->with('brand_by_name',$brand_by_name);
     }

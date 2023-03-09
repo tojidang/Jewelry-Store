@@ -48,7 +48,7 @@
                                         <a style="font-size:16px" href="{{ URL::to('laravel/php/show-category',$cate->category_id) }}" class="title">{{ $cate -> category_name }}</a>    
                                         @foreach($brand as $key => $br)
                                             @if($br->category_id == $cate->category_id )
-
+                                                <a style="font-size:13px" href="{{ URL::to('laravel/php/show-brand',$br->brand_id) }}">{{ $br -> brand_name }}</a>
                                             @endif
                                         @endforeach                  
                                     </ul> 
@@ -76,7 +76,7 @@
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
-
+                    <a href="{{ URL::to('admin') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
                 </div>
                 <!-- Cart Area -->
                 <div class="cart-area">
@@ -170,20 +170,107 @@
     <!-- ##### Right Side Cart End ##### -->
 
     <!-- ##### Welcome Area Start ##### -->
-    <section class="welcome_area bg-img background-overlay" style="background-image: ">
-        <a href="#"><img src="{{ asset('laravel/php/public/FE/img/banner-img/banner1.jpg') }}" alt=""></a>
-        {{-- <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="hero-content">
-                        <h6>asoss</h6>
-                        <h2>New Collection</h2>
-
-                        <a style="" href="#" class="btn essence-btn">view collection</a>
-                    </div>
-                </div>
+    <section class="slide-home">
+        <div class="slider">
+          <div class="slider-wrapper">
+            <div class="slider-slide">
+              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner3.jpg') }}" alt="Slide 1">
             </div>
-        </div> --}}
+            <div class="slider-slide">
+              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner4.jpg') }}" alt="Slide 2">
+            </div>
+            <div class="slider-slide">
+              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner2.jpg') }}" alt="Slide 3">
+            </div>
+            <div class="slider-slide">
+              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner1.jpg') }}" alt="Slide 4">
+            </div>
+            <div class="slider-slide">
+              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner6.jpg') }}" alt="Slide 5">
+            </div>
+            <div class="slider-slide">
+              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner7.jpg') }}" alt="Slide 6">
+            </div>
+            <div class="slider-slide">
+              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner5.jpg') }}" alt="Slide 7">
+            </div>
+          </div>
+          
+          <div class="slider-prev">&#10094;</div>
+          <div class="slider-next">&#10095;</div>
+        </div>
+        <style>
+            .slider {
+              position: relative;
+              overflow: hidden;  
+              width: 2000px; 
+              height: 550px;          
+            }
+
+            .slider-wrapper {
+              display: flex;
+              transition: transform 0.5s ease;
+            }
+
+            .slider-slide {
+                box-sizing: border-box;
+              width: 100%;
+              padding: 0 auto;
+              flex: 0 0 100%;
+            }
+
+            .slider-slide img {
+              display: block; margin: 0 auto;
+              width: 100%;
+              height: auto;
+            }
+
+            .slider-prev,
+            .slider-next {
+              position: relative;
+              top: 50%;
+              
+              z-index: 1;
+              cursor: pointer;
+            }
+
+            .slider-prev {
+              left: 0;
+            }
+
+            .slider-next {
+              right: 0;
+            }
+
+        </style>   
+        <script>
+           var sliderWrapper = document.querySelector('.slider-wrapper');
+            var sliderPrev = document.querySelector('.slider-prev');
+            var sliderNext = document.querySelector('.slider-next');
+            var slideWidth = document.querySelector('.slider-slide').clientWidth;
+            var currentSlide = 0;
+
+            function slideNext() {
+              currentSlide++;
+              if (currentSlide > sliderWrapper.children.length - 1) {
+                currentSlide = 0;
+              }
+              sliderWrapper.style.transform = 'translateX(-' + slideWidth * currentSlide + 'px)';
+            }
+
+            var slideInterval = setInterval(slideNext, 5000);
+
+            sliderPrev.addEventListener('click', function() {
+              currentSlide--;
+              if (currentSlide < 0) {
+                currentSlide = sliderWrapper.children.length - 1;
+              }
+              sliderWrapper.style.transform = 'translateX(-' + slideWidth * currentSlide + 'px)';
+            });
+
+            sliderNext.addEventListener('click', slideNext);
+
+        </script> 
     </section>
     <!-- ##### Welcome Area End ##### -->
     
