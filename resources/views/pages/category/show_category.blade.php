@@ -33,11 +33,8 @@
                                 <a href="{{ URL::to('laravel/php/product-detail/'.$product->product_id) }}">
                                     <h6>{{($product->product_name)}}</h6>
                                 </a>
-                                <p class="product-price">{{number_format($product->product_price).' VNĐ'}}</p>
-
-                                
+                                <p class="product-price">{{number_format($product->product_price).' VNĐ'}}</p>                         
                                 <div class="hover-content">
-                                   
                                     <div class="add-to-cart-btn">
                                         <a href="{{ URL::to('laravel/php/product-detail/'.$product->product_id) }}" class="btn essence-btn">Add to Cart</a>
                                     </div>
@@ -52,3 +49,4 @@
 </section>
  
 @endsection
+

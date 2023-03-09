@@ -44,7 +44,7 @@
                 <div class="cart-fav-box d-flex align-items-center">
                     <!-- Cart -->
                         {{ csrf_field() }}
-                        <input name="product_id" type="hidden" value="{{ $value->product_id }}">
+                        <input name="product_id_hidden" type="hidden" value="{{ $value->product_id }}">
                     <button type="submit" name="addtocart" class="btn essence-btn">Add to cart</button>
                     <!-- Favourite -->
                     <div class="product-favourite ml-4">
@@ -88,9 +88,13 @@
                                 </a>
                                 <p class="product-price">{{number_format($value->product_price).' VNĐ'}}</p>
                                 <div class="hover-content">
+                                    <form action="{{ URL::to('laravel/php/save-cart') }}" method="POST">
                                       <div class="add-to-cart-btn">
-                                        <button type="submit" href="{{ URL::to('laravel/php/product-detail/'.$value->product_id) }}" class="btn essence-btn">Add to Cart</button>
-                                        </div> 
+                                        {{ csrf_field() }}
+                                        <input name="product_id_hidden" type="hidden" value="{{ $value->product_id }}">
+                                        <button type="submit" class="btn essence-btn">Add to Cart</button>
+                                        </div>
+                                    </form> 
                                 </div>
                             </div>
                         </div>

@@ -63,3 +63,11 @@ Route::get('laravel/php/delete-product/{product_id}','App\Http\Controllers\Produ
 
 Route::get('laravel/php/active-product/{product_id}','App\Http\Controllers\ProductController@active_product');
 Route::get('laravel/php/inactive-product/{product_id}','App\Http\Controllers\ProductController@inactive_product');
+
+//Cart
+Route::post('laravel/php/save-cart','App\Http\Controllers\CartController@save_cart');
+Route::get('laravel/php/show-cart','App\Http\Controllers\CartController@show_cart');
+Route::get('laravel/php/delete-to-cart/{rowId}','App\Http\Controllers\CartController@delete_to_cart');
+
+//Checkout
+Route::get('laravel/php/login-checkout','App\Http\Controllers\CheckoutController@login_checkout');

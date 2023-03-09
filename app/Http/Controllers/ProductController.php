@@ -49,6 +49,8 @@ class ProductController extends Controller
         $data['category_id'] = $request->cate;
         $data['brand_id'] = $request->br;
         $data['product_price'] = $request->product_price;
+         $data['product_storage'] = $request->product_storage;
+          $data['product_color'] = $request->product_color;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
         $data['product_status'] = $request->product_status;
@@ -103,6 +105,8 @@ class ProductController extends Controller
         $data['category_id'] = $request->cate;
         $data['brand_id'] = $request->br;
         $data['product_price'] = $request->product_price;
+        $data['product_storage'] = $request->product_storage;
+        $data['product_color'] = $request->product_color;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
         $get_img = $request->file('product_img');

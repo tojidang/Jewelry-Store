@@ -93,7 +93,13 @@
                                 <div class="hover-content">
                                     <!-- Add to Cart -->
                                     <div class="add-to-cart-btn">
-                                        <a href="{{ URL::to('laravel/php/product-detail/'.$product->product_id) }}" class="btn essence-btn">Add to Cart</a>
+                                        <form action="{{ URL::to('laravel/php/save-cart') }}" method="POST">
+                                        <div class="add-to-cart-btn">
+                                        {{ csrf_field() }}
+                                        <input name="product_id_hidden" type="hidden" value="{{ $product->product_id }}">
+                                        <button type="submit" class="btn essence-btn">Add to Cart</button>
+                                        </div>
+                                    </form> 
                                     </div>
                                 </div>
                             </div>

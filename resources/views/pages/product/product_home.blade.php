@@ -7,7 +7,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="page-title text-center">
-                        <h2>dresses</h2>
+                        <h2>All Product</h2>
                     </div>
                 </div>
             </div>
@@ -31,14 +31,12 @@
                             <div class="catagories-menu">
                                 <ul id="menu-content2" class="menu-content collapse show">
                                     <!-- Single Item -->
-                                    <li data-toggle="collapse" data-target="#apple">
-
-                                            @foreach($category as $key => $cate)
-                                            <li>
-                                            <a href="{{ URL::to('laravel/php/show-category',$cate->category_id) }}">{{ $cate -> category_name }}</a>
-                                            </li>
-                                            @endforeach
-
+                                    <li>
+                                        @foreach($category as $key => $cate)
+                                        <li>
+                                        <a href="{{ URL::to('laravel/php/show-category',$cate->category_id) }}">{{ $cate -> category_name }}</a>
+                                        </li>
+                                        @endforeach
                                     </li>
                                 </ul>
                             </div>
@@ -158,9 +156,13 @@
                                         <!-- Hover Content -->
                                         <div class="hover-content">
                                             <!-- Add to Cart -->
-                                            <div class="add-to-cart-btn">
-                                                <a href="{{ URL::to('laravel/php/product-detail/'.$product->product_id) }}" class="btn essence-btn">Add to Cart</a>
-                                            </div>
+                                            <form action="{{ URL::to('laravel/php/save-cart') }}" method="POST">
+                                              <div class="add-to-cart-btn">
+                                                {{ csrf_field() }}
+                                                <input name="product_id_hidden" type="hidden" value="{{ $product->product_id }}">
+                                                <button type="submit" class="btn essence-btn">Add to Cart</button>
+                                                </div>
+                                            </form> 
                                         </div>
                                     </div>
                                     

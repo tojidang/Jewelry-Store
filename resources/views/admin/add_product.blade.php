@@ -29,6 +29,14 @@
     <input type="text" name="product_price" class="form-control" id="product-price" placeholder="Enter price">
   </div>
   <div class="form-group ">
+    <label style="font-size:16px" class="font-weight-bolder mb-0">Product Storage</label>
+    <input type="text" name="product_storage" class="form-control" id="product-storage" placeholder="Enter storage">
+  </div>
+  <div class="form-group ">
+    <label style="font-size:16px" class="font-weight-bolder mb-0">Product Color</label>
+    <input type="text" name="product_color" class="form-control" id="product-color" placeholder="Enter color">
+  </div>
+  <div class="form-group ">
     <label style="font-size:16px" class="font-weight-bolder mb-0">Product Image</label>
     <input type="file" name="product_img" class="form-control" id="product-img" >
   </div>

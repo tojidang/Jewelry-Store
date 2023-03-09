@@ -11,7 +11,9 @@
       <th>Category</th>
       <th>Brand</th>
       <th>Price</th>
-       <th>Product Image</th>
+      <th>Storage</th>
+      <th>Color</th>
+      <th>Product Image</th>
       <th>Content</th>
       <th>Description</th>
       <th>Status</th>
@@ -44,6 +46,12 @@
       </td>
       <td style="text-align: center;">
         {{ $pro->product_price }}
+      </td >
+      <td style="text-align: center;">
+        {{ $pro->product_storage }}
+      </td >
+      <td style="text-align: center;">
+        {{ $pro->product_color }}
       </td >
       <td style="text-align: center;">
         <img src="public/uploads/product/{{ $pro->product_img }}" alt="" height="100px"  width="100px">      
