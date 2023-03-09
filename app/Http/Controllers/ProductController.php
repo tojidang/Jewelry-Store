@@ -126,4 +126,19 @@ class ProductController extends Controller
         $this->CheckAuth();
         DB::table('tbl_product')->where('product_id',$product_id)-> delete();
         return Redirect::to('/laravel/php/all-product');
-    }}
+    }
+
+
+    //FE
+
+    public function product_detail($product_id){
+        $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
+        $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
+
+        $product = DB::table('tbl_product')
+        ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
+        ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')->where('tbl_product.product_id',$product_id)->get();
+
+        return view('pages.product.show_detail')->with('category',$category)->with('brand',$brand)->with('product',$product);
+    }
+}
