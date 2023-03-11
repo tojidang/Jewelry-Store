@@ -31,17 +31,17 @@ class CartController extends Controller
         $data['options']['color'] = $product_info-> product_color;
 
         Cart::add($data);
-        // Cart::destroy();
-        return Redirect::to('/laravel/php/show-cart');
+         // Cart::destroy();
+        return redirect()->back();
     }
 
-    public function show_cart(){
-        $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
-        $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
-        $all_product = DB::table('tbl_product')->where('product_status',1)->orderby('product_id','desc')-> limit(4)->get();
+    // public function show_cart(){
+    //     $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
+    //     $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
+    //     $all_product = DB::table('tbl_product')->where('product_status',1)->orderby('product_id','desc')-> limit(4)->get();
 
-        return view('pages.home')->with('category',$category)->with('brand',$brand)->with('all_product',$all_product);
-    }
+    //     return redirect()->back()->with('category',$category)->with('brand',$brand)->with('all_product',$all_product);
+    // }
 
     public function delete_to_cart($rowId){
         $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
@@ -50,6 +50,6 @@ class CartController extends Controller
 
         Cart::update($rowId, 0);
 
-        return view('pages.home')->with('category',$category)->with('brand',$brand)->with('all_product',$all_product);
+        return redirect()->back()->with('category',$category)->with('brand',$brand)->with('all_product',$all_product);
     }
 }

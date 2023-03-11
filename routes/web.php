@@ -66,8 +66,16 @@ Route::get('laravel/php/inactive-product/{product_id}','App\Http\Controllers\Pro
 
 //Cart
 Route::post('laravel/php/save-cart','App\Http\Controllers\CartController@save_cart');
-Route::get('laravel/php/show-cart','App\Http\Controllers\CartController@show_cart');
+// Route::get('laravel/php/show-cart','App\Http\Controllers\CartController@show_cart');
 Route::get('laravel/php/delete-to-cart/{rowId}','App\Http\Controllers\CartController@delete_to_cart');
 
 //Checkout
 Route::get('laravel/php/login-checkout','App\Http\Controllers\CheckoutController@login_checkout');
+Route::get('laravel/php/logout','App\Http\Controllers\CheckoutController@logout');
+Route::get('laravel/php/registor-checkout','App\Http\Controllers\CheckoutController@registor_checkout');
+Route::post('laravel/php/add-customer','App\Http\Controllers\CheckoutController@add_customer');
+
+Route::post('laravel/php/save-checkout','App\Http\Controllers\CheckoutController@save_checkout');
+
+
+Route::get('laravel/php/checkout','App\Http\Controllers\CheckoutController@checkout');
