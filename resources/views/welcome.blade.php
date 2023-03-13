@@ -76,23 +76,22 @@
                     <a href="#"><img src="{{ asset('laravel/php/public/FE/img/core-img/heart.svg') }}" alt=""></a>
                 </div>          
                 <?php 
-                 $customer_id = Session::get('customer_id');
-                 if($customer_id != NULL){
+                 if(Auth::check()) {
                 ?>
                 <div class="user-login-info">
-                    <a href="{{ URL::to('laravel/php/user_info') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
+                    <a href="{{ URL::to('laravel/php/customer', Auth::id()) }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
                 </div>
                 <div class="user-login-info">
                     <a href="{{ URL::to('laravel/php/logout') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/sign_out.svg') }}" alt=""></a>
                 </div>
                 <?php 
-                    }else{
+                 }else{
                 ?>
                 <div class="user-login-info">
-                    <a href="{{ URL::to('laravel/php/login-checkout') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
+                    <a href="{{ URL::to('laravel/php/flogin') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
                 </div>
                 <?php 
-                    }   
+                    }  
                 ?>
                 <!-- Cart Area -->
                 <div class="cart-area">
@@ -150,7 +149,7 @@
                     <li><span>total:</span> <span>{{Cart::priceTotal().' VNĐ'}}</span></li>
                 </ul>
                 <?php
-                if (Session::has('customer_id')) { ?>
+                if (Auth::check()) { ?>
 
                     <div class="checkout-btn mt-100">
                     <a href="{{ URL::to('laravel/php/checkout') }}" class="btn essence-btn">check out</a>
@@ -158,7 +157,7 @@
                 <?php
                 } else { ?>
                     <div class="checkout-btn mt-100">
-                    <a href="{{ URL::to('laravel/php/login-checkout') }}" class="btn essence-btn">check out</a>
+                    <a href="{{ URL::to('laravel/php/flogin') }}" class="btn essence-btn">check out</a>
                 </div>
                 <?php
                 }

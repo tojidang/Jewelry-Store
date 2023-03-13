@@ -69,13 +69,19 @@ Route::post('laravel/php/save-cart','App\Http\Controllers\CartController@save_ca
 // Route::get('laravel/php/show-cart','App\Http\Controllers\CartController@show_cart');
 Route::get('laravel/php/delete-to-cart/{rowId}','App\Http\Controllers\CartController@delete_to_cart');
 
+//Login
+Route::get('laravel/php/flogin','App\Http\Controllers\LoginController@flogin');
+Route::get('laravel/php/fregistor','App\Http\Controllers\LoginController@fregistor');
+Route::get('laravel/php/logout','App\Http\Controllers\LoginController@logout');
+
+Route::post('laravel/php/registor','App\Http\Controllers\LoginController@registor');
+Route::post('laravel/php/login','App\Http\Controllers\LoginController@login');
+
+//User
+Route::get('laravel/php/customer/{id}','App\Http\Controllers\HomeController@information');
+Route::post('laravel/php/update-user/{id}','App\Http\Controllers\HomeController@update_user');
+
+
 //Checkout
-Route::get('laravel/php/login-checkout','App\Http\Controllers\CheckoutController@login_checkout');
-Route::get('laravel/php/logout','App\Http\Controllers\CheckoutController@logout');
-Route::get('laravel/php/registor-checkout','App\Http\Controllers\CheckoutController@registor_checkout');
-Route::post('laravel/php/add-customer','App\Http\Controllers\CheckoutController@add_customer');
-
 Route::post('laravel/php/save-checkout','App\Http\Controllers\CheckoutController@save_checkout');
-
-
 Route::get('laravel/php/checkout','App\Http\Controllers\CheckoutController@checkout');

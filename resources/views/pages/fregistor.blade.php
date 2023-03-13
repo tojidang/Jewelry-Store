@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('laravel/php/public/BE/img/apple-icon.png') }}'">
   <link rel="icon" type="image/png" href="{{ asset('laravel/php/public/BE/img/favicon.png') }}'">
   <title>
-    Login
+    Registor
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -55,7 +55,7 @@
 
                 </div>
                 <div class="card-body">
-                  <form action="{{ URL::to('/laravel/php/add-customer') }}" method="post">
+                  <form action="{{ URL::to('/laravel/php/registor') }}" method="post">
                     {{ csrf_field() }}
                     <label>Full Name</label>
                     <div class="mb-3">
@@ -90,9 +90,10 @@
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
                     Have an account?
-                    <a href="{{ URL::to('/laravel/php/login-checkout') }}" class="text-info text-gradient font-weight-bold">Sign in</a>
+                    <a href="{{ URL::to('/laravel/php/flogin') }}" class="text-info text-gradient font-weight-bold">Sign in</a>
                   </p>
                 </div>
+                <a href="{{ URL::to('/laravel/php/trangchu') }}" class="btn bg-gradient-info w-100 mt-4 mb-0">Back Home</a>
               </div>
             </div>
             <div class="col-md-6">
