@@ -17,6 +17,11 @@
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{{ asset('laravel/php/public/FE/css/core-style.css') }}">
     <link rel="stylesheet" href="{{ asset('laravel/php/public/FE/style.css') }}">
+    <script src="{{ asset('laravel/php/public/BE/ckeditor/ckeditor.js') }}"></script>
+      <script>
+        CKEDITOR.replace('editor');
+        CKEDITOR.replace('editor1');
+      </script>
 
 </head>
 

@@ -67,29 +67,32 @@
     </tr>
   </thead>
   <tbody >
-    <tr>
-      <td>
-        <div class="d-flex align-items-center">
-          <div class="ms-3">
-            <p class="fw-bold mb-1">{{ $order_by_id->product_name }}</p>
+    @foreach($order_by_id_product as $key => $value)
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ $value->product_name }}</p>
+            </div>
           </div>
-        </div>
-      </td>
+        </td>
 
-      <td style="text-align: center;">
-        {{ $order_by_id->product_storage }}
-      </td>
+        <td style="text-align: center;">
+          {{ $value->product_storage }}
+        </td>
 
-      <td style="text-align: center;">
-        {{ $order_by_id->product_color }}
-      </td>
+        <td style="text-align: center;">
+          {{ $value->product_color }}
+        </td>
 
-      <td style="text-align: center;">
-        {{ $order_by_id->product_price }}
-      </td>
-    </tr>
+        <td style="text-align: center;">
+          {{number_format($value->product_price).' VNĐ'}}
+        </td>
+      </tr>
+  @endforeach
   </tbody>
 </table>
+
 <h4 style="color:red; text-align:center">Total: {{ $order_by_id->order_total }}</h2>
 
 @endsection

@@ -47,7 +47,7 @@
         {{ $pro->brand_name }}
       </td>
       <td style="text-align: center;">
-        {{ $pro->product_price }}
+        {{number_format($pro->product_price).' VNĐ'}}
       </td >
       <td style="text-align: center;">
         {{ $pro->product_storage }}

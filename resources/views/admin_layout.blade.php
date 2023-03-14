@@ -19,6 +19,13 @@
   <link href="{{ asset('laravel/php/public/BE/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('laravel/php/public/BE/css/soft-ui-dashboard.css') }}" rel="stylesheet" />
+  <script src="{{ asset('laravel/php/public/BE/ckeditor/ckeditor.js') }}"></script>
+  <script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+  <script>
+    CKEDITOR.replace('editor');
+    CKEDITOR.replace('editor1');
+  </script>
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">

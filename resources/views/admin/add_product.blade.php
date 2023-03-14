@@ -42,11 +42,11 @@
   </div>
   <div class="form-group">
     <label style="font-size:16px" class="font-weight-bolder mb-0">Product Content</label>
-    <textarea style="resize: none;" rows="5" class="form-control" name="product_content" id="product-description" rows="3"></textarea>
+    <textarea style="resize: none;" rows="5" class="form-control" name="product_content" id="editor" ></textarea>
   </div>
   <div class="form-group">
     <label style="font-size:16px" class="font-weight-bolder mb-0">Product Description</label>
-    <textarea style="resize: none;" rows="5" class="form-control" name="product_desc" id="product-description" rows="3"></textarea>
+    <textarea style="resize: none;" rows="5" class="form-control" name="product_desc" id="editor1" ></textarea>
   </div>
   <label style="font-size:16px" for="product-parent">Status</label>
   <select name="product_status" class="form-control" id="product-parent">
