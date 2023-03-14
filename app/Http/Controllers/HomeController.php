@@ -39,7 +39,7 @@ class HomeController extends Controller
     {
         $this->validate($request, [
         'name' => 'required',
-        'email' => 'required|email|unique:users,email,'.$id,
+        'email' => 'email|unique:users,email,'.$id,
         'phone' => 'required|numeric',
         'address' => 'required'
         ]);
@@ -52,6 +52,18 @@ class HomeController extends Controller
         $user->save();
         
         return redirect()->back();
+    }
+
+    public function search(Request $request)
+    {
+        $key = $request->keyword;
+        $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
+        $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
+
+
+        $search_product = DB::table('tbl_product')->where('product_name','like','%'.$key.'%')->get();
+
+        return view('pages.product.search')->with('category',$category)->with('brand',$brand)->with('search_product',$search_product);
     }
 
 }

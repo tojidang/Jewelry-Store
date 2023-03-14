@@ -14,6 +14,8 @@ Route::get('laravel/php/show-brand/{brand_id}', 'App\Http\Controllers\BrandProdu
 Route::get('laravel/php/product-detail/{product_id}', 'App\Http\Controllers\ProductController@product_detail');
 Route::get('laravel/php/product-home', 'App\Http\Controllers\ProductController@product_home');
 
+Route::post('laravel/php/search','App\Http\Controllers\HomeController@search');
+
 
 //BE
 Route::get('laravel/php/admin','App\Http\Controllers\AdminController@index');
@@ -83,5 +85,9 @@ Route::post('laravel/php/update-user/{id}','App\Http\Controllers\HomeController@
 
 
 //Checkout
-Route::post('laravel/php/save-checkout','App\Http\Controllers\CheckoutController@save_checkout');
 Route::get('laravel/php/checkout','App\Http\Controllers\CheckoutController@checkout');
+Route::post('laravel/php/order-place','App\Http\Controllers\CheckoutController@order_place');
+
+//Manage Order
+Route::get('laravel/php/manage-order','App\Http\Controllers\CheckoutController@manage_order');
+Route::get('laravel/php/view-order/{orderId}','App\Http\Controllers\CheckoutController@view_order');

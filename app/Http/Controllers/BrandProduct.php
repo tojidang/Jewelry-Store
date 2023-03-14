@@ -30,7 +30,7 @@ class BrandProduct extends Controller
     public function all_brand_product()
     {
         $this->CheckAuth();
-        $all_brand_product = DB::table('tbl_brand')->join('tbl_category_product','tbl_category_product.category_id','=','tbl_brand.category_id')-> get();
+        $all_brand_product = DB::table('tbl_brand')->join('tbl_category_product','tbl_category_product.category_id','=','tbl_brand.category_id')->paginate(9);
         $manager_brand_product = view('admin.all_brand_product')->with('all_brand_product',$all_brand_product);
         return view ('admin_layout')->with('admin.all_brand_product',$manager_brand_product);
     }

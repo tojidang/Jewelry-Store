@@ -34,7 +34,9 @@
               class="rounded-circle"
               /> --}}
           <div class="ms-3">
-            <p class="fw-bold mb-1">{{ $pro->product_name }}</p>
+            <div style="max-width: 180px; overflow: hidden; text-overflow: ellipsis;">
+              <p class="fw-bold mb-1">{{ $pro->product_name }}</p>
+            </div>
           </div>
         </div>
       </td>
@@ -57,10 +59,14 @@
         <img src="public/uploads/product/{{ $pro->product_img }}" alt="" height="100px"  width="100px">      
       </td>
       <td>
-        {{ $pro->product_content }}
+        <div style="max-width: 100px; overflow: hidden; text-overflow: ellipsis;">
+          {{ $pro->product_content }}
+        </div>
       </td>
       <td>
-      	{{ $pro->product_desc }}
+      	<div style="max-width: 100px; overflow: hidden; text-overflow: ellipsis;">
+          {{ $pro->product_desc }}
+        </div>
       </td>
       <td style="text-align: center;">
         <?php
@@ -81,7 +87,9 @@
 
       </td>
       <td style="text-align: center;">
-      	{{ $pro->created_at }}
+      	<div style="max-width: 100px; overflow: hidden; text-overflow: ellipsis;">
+          {{ $pro->created_at }}
+        </div>
       </td>
       <td style="text-align: center;">
       	<a href="{{URL::to('laravel/php/edit-product/'.$pro->product_id)}}" type="button" class="btn btn-info">Edit</a>
@@ -93,4 +101,24 @@
 
   </tbody>
 </table>
+<nav aria-label="navigation">
+      <ul class="pagination mt-50 mb-70">
+        {{-- Hiển thị nút Previous --}}
+        @if ($all_product->currentPage() > 1)
+          <li class="page-item"><a class="page-link" href="{{ $all_product->previousPageUrl() }}"><i class="fa fa-angle-left"></i></a></li>
+        @endif
+
+        {{-- Hiển thị các nút số trang --}}
+        @for ($i = 1; $i <= $all_product->lastPage(); $i++)
+          @if ($i >= $all_product->currentPage() - 2 && $i <= $all_product->currentPage() + 2)
+            <li class="page-item {{ ($i == $all_product->currentPage()) ? 'active' : '' }}"><a class="page-link" href="{{ $all_product->url($i) }}">{{ $i }}</a></li>
+          @endif
+        @endfor
+
+        {{-- Hiển thị nút Next --}}
+        @if ($all_product->currentPage() < $all_product->lastPage())
+          <li class="page-item"><a class="page-link" href="{{ $all_product->nextPageUrl() }}"><i class="fa fa-angle-right"></i></a></li>
+        @endif
+      </ul>
+    </nav>
 @endsection

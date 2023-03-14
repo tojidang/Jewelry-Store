@@ -22,7 +22,7 @@
         </div>
         <div class="mb-3">
             <label for="email_address">Email Address <span>*</span></label>
-            <input disabled name="email" type="email" class="form-control" id="email_address" value="{{ $value->email }}">
+            <input readonly name="email" type="email" class="form-control" id="email_address" value="{{ $value->email }}">
         </div>
         <div class="mb-3">
             <label for="phone_number">Phone Number <span>*</span></label>
@@ -33,7 +33,7 @@
             <input name="address" type="text" class="form-control mb-3" id="address" value="{{ $value->address }}">
         </div>
         <div class="text-center">
-          <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Save</button>
+          <button type="submit" class="btn btn-success w-100 mt-4 mb-0">Save</button>
         </div>
          
       </form>

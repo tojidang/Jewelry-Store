@@ -66,8 +66,9 @@
                 <!-- Search Area -->
 
                 <div class="search-area">
-                    <form action="#" method="post">
-                        <input type="search" name="search" id="headerSearch" placeholder="Type for search">
+                    <form action="{{ URL::to('laravel/php/search') }}" method="post">
+                        {{ csrf_field() }}
+                        <input type="search" name="keyword" id="headerSearch" placeholder="Type for search">
                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
@@ -76,7 +77,8 @@
                     <a href="#"><img src="{{ asset('laravel/php/public/FE/img/core-img/heart.svg') }}" alt=""></a>
                 </div>          
                 <?php 
-                 if(Auth::check()) {
+
+                if(Auth::check() ) {
                 ?>
                 <div class="user-login-info">
                     <a href="{{ URL::to('laravel/php/customer', Auth::id()) }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>

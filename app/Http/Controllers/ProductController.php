@@ -34,11 +34,12 @@ class ProductController extends Controller
     {
         $this->CheckAuth();
         $all_product = DB::table('tbl_product')
-        ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
-        ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
-        ->orderby('tbl_product.product_id','desc')->get();
-        $manager_product = view('admin.all_product')->with('all_product',$all_product);
-        return view ('admin_layout')->with('admin.all_product',$manager_product);
+        ->join('tbl_category_product', 'tbl_category_product.category_id', '=', 'tbl_product.category_id')
+        ->join('tbl_brand', 'tbl_brand.brand_id', '=', 'tbl_product.brand_id')
+        ->orderBy('tbl_product.product_id', 'desc')
+        ->paginate(6);
+        $manager_product = view('admin.all_product')->with('all_product', $all_product);
+        return view('admin_layout')->with('admin.all_product', $manager_product);
     }
 
     public function save_product(Request $request)
@@ -162,10 +163,12 @@ class ProductController extends Controller
         $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
 
         
-         $show = DB::table('tbl_product')
+        $show = DB::table('tbl_product')
         ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
-        ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')->where('product_status',1)
-        ->orderby('tbl_product.product_id','desc')->get();
+        ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
+        ->where('product_status',1)
+        ->orderby('tbl_product.product_id','desc')
+        ->paginate(9);
 
         return view('pages.product.product_home')->with('category',$category)->with('brand',$brand)->with('show',$show);
     }
