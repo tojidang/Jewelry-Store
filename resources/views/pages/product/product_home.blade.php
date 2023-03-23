@@ -34,12 +34,12 @@
                                     <li>
                                         @foreach($category as $key => $cate)
                                         <li>
-                                        <a href="{{ URL::to('laravel/php/show-category',$cate->category_id) }}">{{ $cate -> category_name }}</a>
+                                            <a href="{{ URL::to('laravel/php/show-category',$cate->category_id) }}" style="color: black; text-decoration: none">{{ $cate->category_name }}</a>
                                         </li>
                                         @endforeach
                                     </li>
                                 </ul>
-                            </div>
+                            </div> 
                             <!-- ##### Single Widget ##### -->
                         </div>
                         <div class="widget brands mb-50">
@@ -173,17 +173,28 @@
                         
                     </div>
                     <!-- Pagination -->
+
                     <nav aria-label="navigation">
-                        <ul class="pagination mt-50 mb-70">
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#">21</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
+                      <ul class="pagination mt-50 mb-70">
+                        {{-- Hiển thị nút Previous --}}
+                        @if ($show->currentPage() > 1)
+                          <li class="page-item"><a class="page-link" href="{{ $show->previousPageUrl() }}"><i class="fa fa-angle-left"></i></a></li>
+                        @endif
+
+                        {{-- Hiển thị các nút số trang --}}
+                        @for ($i = 1; $i <= $show->lastPage(); $i++)
+                          @if ($i >= $show->currentPage() - 2 && $i <= $show->currentPage() + 2)
+                            <li class="page-item {{ ($i == $show->currentPage()) ? 'active' : '' }}"><a class="page-link" href="{{ $show->url($i) }}">{{ $i }}</a></li>
+                          @endif
+                        @endfor
+
+                        {{-- Hiển thị nút Next --}}
+                        @if ($show->currentPage() < $show->lastPage())
+                          <li class="page-item"><a class="page-link" href="{{ $show->nextPageUrl() }}"><i class="fa fa-angle-right"></i></a></li>
+                        @endif
+                      </ul>
                     </nav>
+
                 </div>
             </div>
         </div>

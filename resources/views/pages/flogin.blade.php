@@ -55,7 +55,7 @@
 
                 </div>
                 <div class="card-body">
-                  <form action="{{ URL::to('/laravel/php/admin-dashboard') }}" method="post">
+                  <form action="{{ URL::to('/laravel/php/login') }}" method="post">
                     {{ csrf_field() }}
                     <label>Email</label>
                     <div class="mb-3">
@@ -79,16 +79,17 @@
                   ?>
 
                     <div class="text-center">
-                      <button type="submit" name="login" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
+                      <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
                     </div>
                   </form>
                 </div>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
                     Don't have an account?
-                    <a href="{{ URL::to('/laravel/php/registor-checkout') }}" class="text-info text-gradient font-weight-bold">Sign up</a>
+                    <a href="{{ URL::to('/laravel/php/fregistor') }}" class="text-info text-gradient font-weight-bold">Sign up</a>
                   </p>
                 </div>
+                <a href="{{ URL::to('/laravel/php/trangchu') }}" class="btn bg-gradient-info w-100 mt-4 mb-0">Back Home</a>
               </div>
             </div>
             <div class="col-md-6">

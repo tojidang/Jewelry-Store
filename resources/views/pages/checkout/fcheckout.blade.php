@@ -17,76 +17,78 @@
     <!-- ##### Breadcumb Area End ##### -->
 
     <!-- ##### Checkout Area Start ##### -->
-    <form action="{{ URL::to('laravel/php/save-checkout') }}" method="post">
+   
     <div class="checkout_area section-padding-80">
+        <form action="{{ URL::to('laravel/php/order-place') }}" method="post">
+                {{ csrf_field() }}
         <div class="container">
             <div class="row">
-
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 ">
+                    
                     <div class="checkout_details_area mt-50 clearfix">
-
                         <div class="cart-page-heading mb-30">
                             <h5>Billing Address</h5>
                         </div>
-
-                        
-                            {{ csrf_field() }}
+                            <?php
+                            if (Session::has('id')) {
+                                 $user = DB::table('users')->where('id', Session::get('id'))->first();?>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="first_name">Name <span>*</span></label>
-                                    <input name="shipping_name" type="text" class="form-control" id="name" value="" required>
+                                    <input name="shipping_name" type="text" class="form-control" id="name" value="{{ $user->name }}" required>
                                 </div>
                                 <div class="col-12 mb-4">
                                     <label for="email_address">Email Address <span>*</span></label>
-                                    <input name="shipping_email" type="email" class="form-control" id="email_address" value="">
+                                    <input  name="shipping_email" type="email" class="form-control" id="email_address" value="{{ $user->email }}">
                                 </div>
                                 <div class="col-12 mb-3">
                                     <label for="phone_number">Phone Number <span>*</span></label>
-                                    <input name="shipping_phone" type="number" class="form-control" id="phone_number" min="0" value="">
+                                    <input name="shipping_phone" type="number" class="form-control" id="phone_number" min="0" value="{{ $user->phone }}">
                                 </div>
                                 <div class="col-12 mb-3">
                                     <label for="street_address">Address <span>*</span></label>
-                                    <input name="shipping_address" type="text" class="form-control mb-3" id="address" value="">
+                                    <input name="shipping_address" type="text" class="form-control mb-3" id="address" value="{{ $user->address }}">
                                 </div>
                                 <div class="col-12 mb-4">
                                     <label for="note">Note</label>
-                                    <textarea name="shipping_note" type="text" class="form-control" id="note" value="" rows="5"> </textarea>
+                                    <textarea style="resize: none;" name="shipping_note" type="text" class="form-control" id="note" value="" rows="4"> </textarea>
                                 </div>
                             </div>
+                        <?php } ?>
                         
                     </div>
                 </div>
-
                 <div class="col-12 col-md-6 col-lg-5 ml-lg-auto" >
-                    <div class="order-details-confirmation">
-
+                  
+                    
+                    <div class="order-details-confirmation" style="width: 600px">
+                        <?php
+                        $content = Cart::content();
+                        ?>
                         <div class="cart-page-heading">
                             <h5>Your Order</h5>
-                            <p>The Details</p>
                         </div>
-
                         <ul class="order-details-form mb-4">
                             <li><span>Product</span> <span>Total</span></li>
-                            <li><span>Cocktail Yellow dress</span> <span>$59.90</span></li>
-                            <li><span>Subtotal</span> <span>$59.90</span></li>
+                            @foreach($content as $v_content)
+                            <li><span>{{ $v_content -> name }}</span> <span>{{number_format($v_content-> price).' VNĐ'}}</span></li>
+                            @endforeach
                             <li><span>Shipping</span> <span>Free</span></li>
-                            <li><span>Total</span> <span>$59.90</span></li>
+                            <li><span>Total</span> <span>{{Cart::priceTotal().' VNĐ'}}</span></li>
                         </ul>
-
+                        
                         <div id="accordion" role="tablist" class="mb-4">
                             <div class="card">
                                 <div class="card-header" role="tab" id="headingOne">
                                 <h6 class="mb-0">
-                                  <input type="radio" name="payment_method" value="momo">
+                                  <input type="radio" name="payment_option" value="1">
                                   <i class="fa fa-square-o mr-3"></i>MOMO
                                 </h6>
                               </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingTwo">
+                              <div class="card-header" role="tab" id="headingTwo">
                                 <h6 class="mb-0">
-                                  <input type="radio" name="payment_method" value="paypal">
-                                  <i class="fa fa-square-o mr-3"></i>Paypal
+                                  <input type="radio" name="payment_option" value="2">
+                                  <i class="fa fa-square-o mr-3"></i>Cash on delivery
                                 </h6>
                               </div>
                             </div>
@@ -116,15 +118,16 @@
                             }
                         });
 
-                        </script>                 
-
+                        </script>
                         <button type="submit" name="send" class="btn essence-btn">Place Order</button>
                     </div>
                 </div>
+
             </div>
         </div>
-    </div>
     </form>
+</div>
+    
     <!-- ##### Checkout Area End ##### -->
 
 

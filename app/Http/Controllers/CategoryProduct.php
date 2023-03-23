@@ -29,7 +29,7 @@ class CategoryProduct extends Controller
     public function all_category_product()
     {
         $this->CheckAuth();
-        $all_category_product = DB::table('tbl_category_product')->orderby('category_id','asc')-> get();
+        $all_category_product = DB::table('tbl_category_product')->orderby('category_id','asc')->paginate(9);
         $manager_category_product = view('admin.all_category_product')->with('all_category_product',$all_category_product);
         return view ('admin_layout')->with('admin.all_category_product',$manager_category_product);
     }

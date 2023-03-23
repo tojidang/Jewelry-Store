@@ -19,6 +19,13 @@
   <link href="{{ asset('laravel/php/public/BE/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('laravel/php/public/BE/css/soft-ui-dashboard.css') }}" rel="stylesheet" />
+  <script src="{{ asset('laravel/php/public/BE/ckeditor/ckeditor.js') }}"></script>
+  <script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+  <script>
+    CKEDITOR.replace('editor');
+    CKEDITOR.replace('editor1');
+  </script>
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -189,7 +196,7 @@
 
 
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/rtl.html">
+          <a class="nav-link  " href="{{ URL::to('laravel/php/manage-order') }}">
             <div
               class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -214,7 +221,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">RTL</span>
+            <span class="nav-link-text ms-1">Manage Order</span>
           </a>
         </li>
         <li class="nav-item mt-3">

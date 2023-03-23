@@ -17,6 +17,11 @@
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{{ asset('laravel/php/public/FE/css/core-style.css') }}">
     <link rel="stylesheet" href="{{ asset('laravel/php/public/FE/style.css') }}">
+    <script src="{{ asset('laravel/php/public/BE/ckeditor/ckeditor.js') }}"></script>
+      <script>
+        CKEDITOR.replace('editor');
+        CKEDITOR.replace('editor1');
+      </script>
 
 </head>
 
@@ -66,8 +71,9 @@
                 <!-- Search Area -->
 
                 <div class="search-area">
-                    <form action="#" method="post">
-                        <input type="search" name="search" id="headerSearch" placeholder="Type for search">
+                    <form action="{{ URL::to('laravel/php/search') }}" method="post">
+                        {{ csrf_field() }}
+                        <input type="search" name="keyword" id="headerSearch" placeholder="Type for search">
                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
@@ -76,23 +82,23 @@
                     <a href="#"><img src="{{ asset('laravel/php/public/FE/img/core-img/heart.svg') }}" alt=""></a>
                 </div>          
                 <?php 
-                 $customer_id = Session::get('customer_id');
-                 if($customer_id != NULL){
+
+                if(Auth::check() ) {
                 ?>
                 <div class="user-login-info">
-                    <a href="{{ URL::to('laravel/php/user_info') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
+                    <a href="{{ URL::to('laravel/php/customer', Auth::id()) }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
                 </div>
                 <div class="user-login-info">
                     <a href="{{ URL::to('laravel/php/logout') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/sign_out.svg') }}" alt=""></a>
                 </div>
                 <?php 
-                    }else{
+                 }else{
                 ?>
                 <div class="user-login-info">
-                    <a href="{{ URL::to('laravel/php/login-checkout') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
+                    <a href="{{ URL::to('laravel/php/flogin') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
                 </div>
                 <?php 
-                    }   
+                    }  
                 ?>
                 <!-- Cart Area -->
                 <div class="cart-area">
@@ -150,7 +156,7 @@
                     <li><span>total:</span> <span>{{Cart::priceTotal().' VNĐ'}}</span></li>
                 </ul>
                 <?php
-                if (Session::has('customer_id')) { ?>
+                if (Auth::check()) { ?>
 
                     <div class="checkout-btn mt-100">
                     <a href="{{ URL::to('laravel/php/checkout') }}" class="btn essence-btn">check out</a>
@@ -158,7 +164,7 @@
                 <?php
                 } else { ?>
                     <div class="checkout-btn mt-100">
-                    <a href="{{ URL::to('laravel/php/login-checkout') }}" class="btn essence-btn">check out</a>
+                    <a href="{{ URL::to('laravel/php/flogin') }}" class="btn essence-btn">check out</a>
                 </div>
                 <?php
                 }

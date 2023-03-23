@@ -39,6 +39,8 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+            'hash' => false,
+            'remember_token_name' => 'remember_token',
         ],
     ],
 

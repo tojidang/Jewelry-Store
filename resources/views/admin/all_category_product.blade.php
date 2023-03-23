@@ -65,4 +65,24 @@
 
   </tbody>
 </table>
+<nav aria-label="navigation">
+      <ul class="pagination mt-50 mb-70">
+        {{-- Hiển thị nút Previous --}}
+        @if ($all_category_product->currentPage() > 1)
+          <li class="page-item"><a class="page-link" href="{{ $all_category_product->previousPageUrl() }}"><i class="fa fa-angle-left"></i></a></li>
+        @endif
+
+        {{-- Hiển thị các nút số trang --}}
+        @for ($i = 1; $i <= $all_category_product->lastPage(); $i++)
+          @if ($i >= $all_category_product->currentPage() - 2 && $i <= $all_category_product->currentPage() + 2)
+            <li class="page-item {{ ($i == $all_category_product->currentPage()) ? 'active' : '' }}"><a class="page-link" href="{{ $all_category_product->url($i) }}">{{ $i }}</a></li>
+          @endif
+        @endfor
+
+        {{-- Hiển thị nút Next --}}
+        @if ($all_category_product->currentPage() < $all_category_product->lastPage())
+          <li class="page-item"><a class="page-link" href="{{ $all_category_product->nextPageUrl() }}"><i class="fa fa-angle-right"></i></a></li>
+        @endif
+      </ul>
+    </nav>
 @endsection

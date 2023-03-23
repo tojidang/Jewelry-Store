@@ -69,4 +69,24 @@
 
   </tbody>
 </table>
+<nav aria-label="navigation">
+      <ul class="pagination mt-50 mb-70">
+        {{-- Hiển thị nút Previous --}}
+        @if ($all_brand_product->currentPage() > 1)
+          <li class="page-item"><a class="page-link" href="{{ $all_brand_product->previousPageUrl() }}"><i class="fa fa-angle-left"></i></a></li>
+        @endif
+
+        {{-- Hiển thị các nút số trang --}}
+        @for ($i = 1; $i <= $all_brand_product->lastPage(); $i++)
+          @if ($i >= $all_brand_product->currentPage() - 2 && $i <= $all_brand_product->currentPage() + 2)
+            <li class="page-item {{ ($i == $all_brand_product->currentPage()) ? 'active' : '' }}"><a class="page-link" href="{{ $all_brand_product->url($i) }}">{{ $i }}</a></li>
+          @endif
+        @endfor
+
+        {{-- Hiển thị nút Next --}}
+        @if ($all_brand_product->currentPage() < $all_brand_product->lastPage())
+          <li class="page-item"><a class="page-link" href="{{ $all_brand_product->nextPageUrl() }}"><i class="fa fa-angle-right"></i></a></li>
+        @endif
+      </ul>
+    </nav>
 @endsection
