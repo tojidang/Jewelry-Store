@@ -152,7 +152,9 @@
                 <ul class="summary-table">
                     <li><span>subtotal:</span> <span>{{Cart::subtotal().' VNĐ'}}</span></li>
                     <li><span>delivery:</span> <span>Free</span></li>
-                    <li><span>discount:</span> <span>{{ Cart::discount().' VNĐ' }}</span></li>
+
+                    <li><span>discount:</span><span>{{ Cart::discount().' VNĐ' }}</span></li>
+
                     <li><span>total:</span> <span>{{Cart::priceTotal().' VNĐ'}}</span></li>
                 </ul>
                 <?php
