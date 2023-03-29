@@ -8,6 +8,7 @@ use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
+use Mail;
 session_start();
 
 class HomeController extends Controller
@@ -64,6 +65,19 @@ class HomeController extends Controller
         $search_product = DB::table('tbl_product')->where('product_name','like','%'.$key.'%')->get();
 
         return view('pages.product.search')->with('category',$category)->with('brand',$brand)->with('search_product',$search_product);
+    }
+
+    public function sendmail(){
+        $to_name = "Apple Store";
+        $to_email = "ngogiaanhtuan1@gmail.com";//send to this email
+
+        $data = array("name"=>"Mail xác nhận đăng ký tài khoản","body"=>"Bạn đã đăng ký tài khoản tại Apple Store"); //body of mail.blade.php
+    
+        Mail::send('pages.sendmail',$data,function($message) use ($to_name,$to_email){
+            $message->to($to_email)->subject('test mail nhé');//send this mail with subject
+            $message->from($to_email,$to_name);//send from this mail
+        });
+        return redirect('laravel/php/flogin')->with('message','');
     }
 
 }
