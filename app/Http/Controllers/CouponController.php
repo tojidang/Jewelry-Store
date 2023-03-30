@@ -42,6 +42,6 @@ class CouponController extends Controller
     {
         $coupon = Coupon::find($coupon_id);
         $coupon->delete();
-        return view('admin.list_coupon');
+        return redirect()->back();
     }
 }

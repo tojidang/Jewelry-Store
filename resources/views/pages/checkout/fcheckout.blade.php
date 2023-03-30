@@ -64,6 +64,9 @@
                     <div class="order-details-confirmation" style="width: 600px">
                         <?php
                         $content = Cart::content();
+                        $int = Cart::priceTotal();
+                        $totalPriceWithoutDot = str_replace(',', '', $int);
+                        $totalPrice = (int) $totalPriceWithoutDot;
                         ?>
                         <div class="cart-page-heading">
                             <h5>Your Order</h5>
@@ -74,10 +77,48 @@
                             <li><span>{{ $v_content -> name }}</span> <span>{{number_format($v_content-> price).' VNĐ'}}</span></li>
                             @endforeach
                             <li><span>Shipping</span> <span>Free</span></li>
-                            <li>
-                                <span>Discount</span> <span> </span>
+                            <li><span>Coupon</span>
+                                <span> <?php 
+                                $message = Session::get('message');
+                                if($message){
+                                echo '<span class="--bs-voucher">',$message.'</span>';
+                                Session::put('message',null);
+                                }
+                                ?> </span>
+                                <span>
+                                @if(Session::get('coupon'))
+                                    @foreach(Session::get('coupon') as $key => $cou)
+                                        @if($cou['coupon_type'] == 1)
+                                            Discount {{ $cou['coupon_value'] }} %
+                                            @php
+                                                $dis = ($totalPrice*$cou['coupon_value'])/100;
+                                            @endphp
+                                        @elseif($cou['coupon_type'] == 2)
+                                            Discount {{number_format($cou['coupon_value'],0,',',',').'VNĐ'}}
+                                            <?php
+                                                $dis = ($cou['coupon_value']);
+                                            ?>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    0 VNĐ
+                                @endif
+                                </span>
                             </li>
-                            <li><span>Total</span> <span>{{Cart::priceTotal().' VNĐ'}}</span></li>
+                            <li><span>Total</span> <span>
+                             @if(Session::get('coupon'))
+                                <?php
+                                    $total_bill = $totalPrice - $dis
+                                ?>
+                                {{ number_format($total_bill,0,',',',').' VNĐ' }}
+
+                            @else
+                                <?php
+                                    $total_bill = $totalPrice
+                                ?>
+                                {{ number_format($total_bill,0,',',',').' VNĐ' }}
+                            @endif
+                            </span></li>
                         </ul>
                         
                         <div id="accordion" role="tablist" class="mb-4">
@@ -129,11 +170,11 @@
             </div>
         </div>
     </form>
-
-    <form style="float: right; margin-right:480px" method="POST" action="{{ URL::to('laravel/php/check-coupon') }}">
+    <form style="float: right; margin-right:480px" method="post" action="{{ url('laravel/php/check-coupon') }}">
+        {{ csrf_field() }}
         <strong style="font-size:16px">Voucher</strong>
-        <input type="text">
-        <button style="margin-left:30px; height: 35px;" class="btn btn-outline-primary" type="submit">Apply</button> 
+        <input type="text" name="coupon">
+        <input style="margin-left:30px; height: 35px;" class="btn btn-outline-primary" type="submit" name="check_coupon" value="Apply">  
     </form>
 </div>
     

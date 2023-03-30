@@ -22,6 +22,50 @@ class CheckoutController extends Controller
         }
     }
 
+    public function check_coupon(Request $request)
+        {
+        $data = $request->all();
+        $coupon = Coupon::where('coupon_code',$data['coupon'])->first();
+        if($coupon){
+            $count_coupon = $coupon->count();
+            if($count_coupon>0){
+                $coupon_session = Session::get('coupon');
+                if($coupon_session == true){
+                    $is_avaiable = 0;
+                    if($is_avaiable == 0){
+                        $cou[] = array(
+                            'coupon_code' => $coupon -> coupon_code,
+                            'coupon_type' => $coupon -> coupon_type,
+                            'coupon_value' => $coupon -> coupon_value,
+                        );
+                        Session::put('coupon',$cou);
+                    }
+                }else{
+                    $cou[] = array(
+                    'coupon_code' => $coupon -> coupon_code,
+                    'coupon_type' => $coupon -> coupon_type,
+                    'coupon_value' => $coupon -> coupon_value,
+                    );
+                    Session::put('coupon',$cou);
+                }
+                Session::save();
+                return redirect()->back()->with('message',$coupon -> coupon_code);
+            }
+        }else{
+            Session::put('coupon',null);
+            return redirect()->back()->with('message','Apply voucher failed');
+        }
+    }
+
+    public function unset_coupon()
+    {
+        $coupon = Session::get('coupon');
+        if($coupon = true){
+            Session::forget('coupon');
+             return redirect()->back();
+        }
+    }
+
     public function checkout(){
         $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
         $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
@@ -81,14 +125,14 @@ class CheckoutController extends Controller
 
         $order_info = [
         'shipping_name' => $request->shipping_name,
-        '' => $request->shipping_address,
-        '' => $request->shipping_phone,
-        '' => $request->shipping_note, 
-        'order_total' => Cart::priceTotal(),
+        'shipping_address' => $request->shipping_address,
+        'shipping_phone' => $request->shipping_phone,
+        'shipping_note' => $request->shipping_note, 
+        'order_total' => $request->order_total,
         // Thêm các thông tin khác tùy ý
         ];
         Session::put('order_info', $order_info);
-
+        Session::put('coupon', null);
         if($data['payment_method']==1){
             echo 'Momo';
         }else{
@@ -141,38 +185,5 @@ class CheckoutController extends Controller
         return view('admin_layout')->with('admin.view_order',$manager_order_by_id);
      }
 
-     public function check_coupon(Request $request)
-    {
-        $data -> $request->all();
-        $coupon = Coupon::where('coupon_code',$data['coupon'])->first();
-        if($coupon){
-            $count_coupon = $coupon->count();
-            if($count_coupon>0){
-                $coupon_session = Session::get('coupon');
-                if($coupon_session == true){
-                    $is_avaiable = 0;
-                    if($is_avaiable == 0){
-                        $cou[] = array(
-                            'coupon_code' => $coupon -> coupon_code,
-                            'coupon_type' => $coupon -> coupon_type,
-                            'coupon_value' => $coupon -> coupon_value,
-                        );
-                        Session::put('coupon',$cou);
-                    }
-                }
-                else{
-                    $cou[] = array(
-                    'coupon_code' => $coupon -> coupon_code,
-                    'coupon_type' => $coupon -> coupon_type,
-                    'coupon_value' => $coupon -> coupon_value,
-                    );
-                    Session::put('coupon',$cou);
-                }
-                Session::save();
-                return redirect()->back();
-            }
-        }else{
-            return redirect()->back();
-        }
-    }
+     
 }

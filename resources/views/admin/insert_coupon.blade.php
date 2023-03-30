@@ -33,13 +33,6 @@
   <hr>
   <button type="submit" name="add_coupon" class="btn btn-primary">Add</button>
   <hr>
-  <?php 
-        $message = Session::get('message');
-        if($message){
-        echo '<span class="--bs-danger">',$message.'</span>';
-        Session::put('message',null);
-    }
-    ?>
 </form>
 
 

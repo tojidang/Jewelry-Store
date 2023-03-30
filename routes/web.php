@@ -71,7 +71,7 @@ Route::post('laravel/php/save-cart','App\Http\Controllers\CartController@save_ca
 // Route::get('laravel/php/show-cart','App\Http\Controllers\CartController@show_cart');
 Route::get('laravel/php/delete-to-cart/{rowId}','App\Http\Controllers\CartController@delete_to_cart');
 
-Route::post('laravel/php/check-coupon','App\Http\Controllers\CheckoutController@check_coupon');
+
 
 //Login
 Route::get('laravel/php/flogin','App\Http\Controllers\LoginController@flogin');
@@ -103,3 +103,6 @@ Route::get('laravel/php/list-coupon','App\Http\Controllers\CouponController@list
 Route::get('laravel/php/insert-coupon','App\Http\Controllers\CouponController@insert_coupon');
 Route::post('laravel/php/insert-coupon-code','App\Http\Controllers\CouponController@insert_coupon_code');
 Route::get('laravel/php/delete-coupon/{coupon_id}','App\Http\Controllers\CouponController@delete_coupon');
+
+Route::post('laravel/php/check-coupon','App\Http\Controllers\CheckoutController@check_coupon');
+Route::get('laravel/php/unset-coupon','App\Http\Controllers\CheckoutController@unset_coupon');

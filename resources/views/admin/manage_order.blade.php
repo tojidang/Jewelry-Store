@@ -42,7 +42,6 @@
       </td>
       <td style="text-align: center;">
       	<a href="{{URL::to('laravel/php/view-order/'.$value->order_id)}}" type="button" class="btn btn-info">View</a>
-      	<a onclick="return confirm('Are you sure you want delete?')" href="{{URL::to('laravel/php/delete-order/'.$value->order_id)}}" type="button" class="btn btn-danger">Delete</a>
 
       </td>
     </tr>
