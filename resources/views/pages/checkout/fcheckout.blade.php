@@ -74,6 +74,9 @@
                             <li><span>{{ $v_content -> name }}</span> <span>{{number_format($v_content-> price).' VNĐ'}}</span></li>
                             @endforeach
                             <li><span>Shipping</span> <span>Free</span></li>
+                            <li>
+                                <span>Discount</span> <span> </span>
+                            </li>
                             <li><span>Total</span> <span>{{Cart::priceTotal().' VNĐ'}}</span></li>
                         </ul>
                         
@@ -125,6 +128,12 @@
 
             </div>
         </div>
+    </form>
+
+    <form style="float: right; margin-right:480px" method="POST" action="{{ URL::to('laravel/php/check-coupon') }}">
+        <strong style="font-size:16px">Voucher</strong>
+        <input type="text">
+        <button style="margin-left:30px; height: 35px;" class="btn btn-outline-primary" type="submit">Apply</button> 
     </form>
 </div>
     

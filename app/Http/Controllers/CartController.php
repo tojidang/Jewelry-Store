@@ -52,4 +52,6 @@ class CartController extends Controller
 
         return redirect()->back()->with('category',$category)->with('brand',$brand)->with('all_product',$all_product);
     }
+
+
 }
