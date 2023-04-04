@@ -92,7 +92,7 @@
   @endforeach
   </tbody>
 </table>
-
-<h4 style="color:red; text-align:center">Total: {{ $order_by_id->order_total }}</h2>
+<br>
+<h4 style="color:red; text-align:center">Total: {{ $order_by_id->order_total }} VNĐ</h2>
 
 @endsection

@@ -7,6 +7,7 @@
 <table class="table align-middle mb-0 bg-white" >
   <thead class="bg-light">
     <tr style="text-align:  center;">
+      <th>ID</th>
       <th>Name</th>
       <th>Total</th>
       <th>Status</th>
@@ -15,9 +16,11 @@
     </tr>
   </thead>
   <tbody >
-
   	@foreach($all_order as $key => $value)
     <tr>
+      <td style="text-align: center;">
+        {{ $value-> order_id }}
+      </td>
       <td>
         <div class="d-flex align-items-center">
          {{--  <img
@@ -31,8 +34,8 @@
           </div>
         </div>
       </td>
-      <td>
-      	{{ $value-> order_total }}
+      <td style="text-align: center;">
+      	{{ $value-> order_total }} VNĐ
       </td>
       <td style="text-align: center;">
        	{{ $value-> order_status }}
@@ -49,4 +52,24 @@
 
   </tbody>
 </table>
+<nav aria-label="navigation">
+      <ul class="pagination mt-50 mb-70">
+        {{-- Hiển thị nút Previous --}}
+        @if ($all_order->currentPage() > 1)
+          <li class="page-item"><a class="page-link" href="{{ $all_order->previousPageUrl() }}"><i class="fa fa-angle-left"></i></a></li>
+        @endif
+
+        {{-- Hiển thị các nút số trang --}}
+        @for ($i = 1; $i <= $all_order->lastPage(); $i++)
+          @if ($i >= $all_order->currentPage() - 2 && $i <= $all_order->currentPage() + 2)
+            <li class="page-item {{ ($i == $all_order->currentPage()) ? 'active' : '' }}"><a class="page-link" href="{{ $all_order->url($i) }}">{{ $i }}</a></li>
+          @endif
+        @endfor
+
+        {{-- Hiển thị nút Next --}}
+        @if ($all_order->currentPage() < $all_order->lastPage())
+          <li class="page-item"><a class="page-link" href="{{ $all_order->nextPageUrl() }}"><i class="fa fa-angle-right"></i></a></li>
+        @endif
+      </ul>
+    </nav>
 @endsection

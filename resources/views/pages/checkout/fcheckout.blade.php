@@ -110,14 +110,17 @@
                                 <?php
                                     $total_bill = $totalPrice - $dis
                                 ?>
+                                <input type="hidden" name="total" value="<?php echo $total_bill; ?>">
                                 {{ number_format($total_bill,0,',',',').' VNĐ' }}
 
                             @else
                                 <?php
                                     $total_bill = $totalPrice
                                 ?>
+                                <input type="hidden" name="total" value="<?php echo $total_bill; ?>">
                                 {{ number_format($total_bill,0,',',',').' VNĐ' }}
                             @endif
+
                             </span></li>
                         </ul>
                         

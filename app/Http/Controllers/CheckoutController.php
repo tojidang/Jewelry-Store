@@ -7,6 +7,7 @@ use Cart;
 use App\Models\Coupon;
 use DB;
 use Session;
+use Mail;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 session_start();
@@ -105,7 +106,7 @@ class CheckoutController extends Controller
         $order_data['customer_id'] = Session::get('id');
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
-        $order_data['order_total'] = Cart::priceTotal();
+        $order_data['order_total'] = number_format($request->total, 0, '.', ',');
         $order_data['order_status'] = 'Pending';
         $order_id = DB::table('tbl_order')->insertGetId($order_data);
 
@@ -128,10 +129,11 @@ class CheckoutController extends Controller
         'shipping_address' => $request->shipping_address,
         'shipping_phone' => $request->shipping_phone,
         'shipping_note' => $request->shipping_note, 
-        'order_total' => $request->order_total,
+        'order_total' => number_format($request->total, 0, '.', ','),
         // Thêm các thông tin khác tùy ý
         ];
         Session::put('order_info', $order_info);
+        $request->session()->flash('content', $content);
         Session::put('coupon', null);
         if($data['payment_method']==1){
             echo 'Momo';
@@ -147,7 +149,7 @@ class CheckoutController extends Controller
         $all_order = DB::table('tbl_order')
         ->join('users','tbl_order.customer_id','=','users.id')
         ->select('tbl_order.*','users.name')
-        ->orderby('tbl_order.order_id','desc')->get();
+        ->orderby('tbl_order.order_id','desc')->paginate(10);
         $manager_order = view('admin.manage_order')->with('all_order',$all_order);
 
         return view('admin_layout')->with('admin.manager_order',$manager_order);
@@ -185,5 +187,17 @@ class CheckoutController extends Controller
         return view('admin_layout')->with('admin.view_order',$manager_order_by_id);
      }
 
+     public function sendmail(){
+        $to_name = "Apple Store";
+        $to_email = "ngogiaanhtuan1@gmail.com";//send to this email
+
+        $data = array("name"=>"Mail xác nhận đặt hàng thành công","body"=>"Bạn đã đặt hàng tại tại Apple Store"); //body of mail.blade.php
+    
+        Mail::send('pages.sendmail',$data,function($message) use ($to_name,$to_email){
+            $message->to($to_email)->subject('test mail nhé');//send this mail with subject
+            $message->from($to_email,$to_name);//send from this mail
+        });
+        return redirect('laravel/php/trangchu')->with('message','');
+    }
      
 }

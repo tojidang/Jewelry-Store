@@ -1,7 +1,7 @@
 @extends('welcome')
 @section('content')
 
-<div class="container">
+{{-- <div class="container">
     <div class="row">
         <div style="font-size:19px" class="col-md-12 text-center">
             <h1>Order Successfully Placed</h1>
@@ -18,27 +18,62 @@
             <a href="{{ URL::to('/laravel/php/trangchu') }}" class="btn btn-primary">Continue Shopping</a>
         </div>
     </div>
+</div> --}}
+<section>
+	<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Your order information</h3>
+          <p class="card-text">Name: {{ Session::get('order_info.shipping_name') }}</p>
+          <p class="card-text">Phone: {{ Session::get('order_info.shipping_phone') }}</p>
+          <p class="card-text">Address: {{ Session::get('order_info.shipping_address') }}</p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Storage</th>
+                <th>Color</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+        	@php
+        	$content = session('content');
+        	@endphp
+            @foreach($content as $v_content)
+              <tr>
+                <td>{{ $v_content -> name }}</td>
+                <td>{{ $v_content -> options->storage }}</td>
+                <td>{{$v_content -> options->color }}</td>
+                <td>{{ number_format($v_content -> price, 0, '.', ',') }}</td>
+              </tr>
+            </tbody>
+            @endforeach
+      </table>
+      <h4 class="card-title">Order Total: {{ Session::get('order_info.order_total') }} VNĐ</h4>
+    </div>
+  </div>
 </div>
 
-<style>
-	.order-details {
-	margin-top: 50px;
-	}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Order Success!</h2>
+          <p class="card-text">Thank you for ordering from us.</p>
+          <a href="/laravel/php/trangchu" class="btn btn-primary">Continue Shopping</a>
+          <!-- Nút xem lịch sử đơn hàng -->
+          <a href="/lich-su-don-hang" class="btn btn-secondary">Order History</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<hr>
+</div>
 
-	table {
-	width: 100%;
-	border-collapse: collapse;
-	border: 1px solid #ccc;
-	}
-
-	th, td {
-	padding: 10px;
-	text-align: left;
-	border: 1px solid #ccc;
-	}
-
-	th {
-	background-color: #f2f2f2;
-	}
-</style>
 @endsection
