@@ -23,9 +23,12 @@ class HomeController extends Controller
         // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
         // ->orderby('tbl_product.product_id','desc')->get();
 
-        $all_product = DB::table('tbl_product')->where('product_status',1)->orderby('product_id','desc')-> limit(4)->get();
+        $iphone = DB::table('tbl_product')->where('category_id',1)->orderby('product_id', 'asc')->get();
+        $ipad = DB::table('tbl_product')->where('category_id',6)->orderby('product_id','asc')->get();
+        $mac = DB::table('tbl_product')->where('category_id',2)->orderby('product_id','asc')->get();
+        $watch = DB::table('tbl_product')->where('category_id',5)->orderby('product_id','asc')->get();
 
-        return view('pages.home')->with('category',$category)->with('brand',$brand)->with('all_product',$all_product);
+        return view('pages.home')->with('category',$category)->with('brand',$brand)->with('iphone',$iphone)->with('ipad',$ipad)->with('mac',$mac)->with('watch',$watch);
     }
 
     public function information(){

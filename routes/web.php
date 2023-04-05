@@ -91,8 +91,8 @@ Route::get('laravel/php/checkout','App\Http\Controllers\CheckoutController@check
 Route::post('laravel/php/order-place','App\Http\Controllers\CheckoutController@order_place');
 
 //Manage Order
-Route::get('laravel/php/manage-order','App\Http\Controllers\CheckoutController@manage_order');
-Route::get('laravel/php/view-order/{orderId}','App\Http\Controllers\CheckoutController@view_order');
+Route::get('laravel/php/manage-order','App\Http\Controllers\OrderController@manage_order');
+Route::get('laravel/php/view-order/{orderId}','App\Http\Controllers\OrderController@view_order');
 
 
 //send email

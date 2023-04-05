@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('content')
- <!-- ##### Top Catagory Area Start ##### -->
+{{--  <!-- ##### Top Catagory Area Start ##### -->
     <div class="top_catagory_area section-padding-80 clearfix">
         <div class="container">
             <div class="row justify-content-center">
@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-    <!-- ##### CTA Area End ##### -->
+    <!-- ##### CTA Area End ##### --> --}}
 
     <!-- ##### New Arrivals Area Start ##### -->
     <section class="new_arrivals_area section-padding-80 clearfix">
@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center">
-                        <h2>Popular Products</h2>
+                        <h2>Iphone Products</h2>
                     </div>
                 </div>
             </div>
@@ -66,12 +66,12 @@
             <div class="row">   
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
-                        @foreach($all_product as $key => $product)
+                        @foreach($iphone as $key => $value)
                         <!-- Single Product -->
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="{{ URL::to('laravel/php/public/uploads/product/'.$product->product_img) }}" alt="">
+                                <img src="{{ URL::to('laravel/php/public/uploads/product/'.$value->product_img) }}" alt="">
 
                                 <!-- Hover Thumb -->
                                 {{-- <img class="hover-img" src="public/FE/img/product-img/product-2.jpg" alt=""> --}}
@@ -84,10 +84,10 @@
                             <!-- Product Description -->
                             <div class="product-description">
                                 <span>topshop</span>
-                                <a href="{{ URL::to('laravel/php/product-detail/'.$product->product_id) }}">
-                                    <h6>{{($product->product_name)}}</h6>
+                                <a href="{{ URL::to('laravel/php/product-detail/'.$value->product_id) }}">
+                                    <h6>{{($value->product_name)}}</h6>
                                 </a>
-                                <p class="product-price">{{number_format($product->product_price).' VNĐ'}}</p>
+                                <p class="product-price">{{number_format($value->product_price).' VNĐ'}}</p>
 
                                 <!-- Hover Content -->
                                 <div class="hover-content">
@@ -96,7 +96,7 @@
                                         <form action="{{ URL::to('laravel/php/save-cart') }}" method="POST">
                                         <div class="add-to-cart-btn">
                                         {{ csrf_field() }}
-                                        <input name="product_id_hidden" type="hidden" value="{{ $product->product_id }}">
+                                        <input name="product_id_hidden" type="hidden" value="{{ $value->product_id }}">
                                         <button type="submit" class="btn essence-btn">Add to Cart</button>
                                         </div>
                                     </form> 
@@ -111,6 +111,184 @@
             </div>
         </div>
     </section>
+    <section class="new_arrivals_area section-padding-80 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>Ipad Products</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">   
+                <div class="col-12">
+                    <div class="popular-products-slides owl-carousel">
+                        @foreach($ipad as $key => $value)
+                        <!-- Single Product -->
+                        <div class="single-product-wrapper">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img src="{{ URL::to('laravel/php/public/uploads/product/'.$value->product_img) }}" alt="">
+
+                                <!-- Hover Thumb -->
+                                {{-- <img class="hover-img" src="public/FE/img/product-img/product-2.jpg" alt=""> --}}
+
+                                <!-- Favourite -->
+                                <div class="product-favourite">
+                                    <a href="#" class="favme fa fa-heart"></a>
+                                </div>
+                            </div>
+                            <!-- Product Description -->
+                            <div class="product-description">
+                                <span>topshop</span>
+                                <a href="{{ URL::to('laravel/php/product-detail/'.$value->product_id) }}">
+                                    <h6>{{($value->product_name)}}</h6>
+                                </a>
+                                <p class="product-price">{{number_format($value->product_price).' VNĐ'}}</p>
+
+                                <!-- Hover Content -->
+                                <div class="hover-content">
+                                    <!-- Add to Cart -->
+                                    <div class="add-to-cart-btn">
+                                        <form action="{{ URL::to('laravel/php/save-cart') }}" method="POST">
+                                        <div class="add-to-cart-btn">
+                                        {{ csrf_field() }}
+                                        <input name="product_id_hidden" type="hidden" value="{{ $value->product_id }}">
+                                        <button type="submit" class="btn essence-btn">Add to Cart</button>
+                                        </div>
+                                    </form> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <section class="new_arrivals_area section-padding-80 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>Macbook Products</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">   
+                <div class="col-12">
+                    <div class="popular-products-slides owl-carousel">
+                        @foreach($mac as $key => $value)
+                        <!-- Single Product -->
+                        <div class="single-product-wrapper">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img src="{{ URL::to('laravel/php/public/uploads/product/'.$value->product_img) }}" alt="">
+
+                                <!-- Hover Thumb -->
+                                {{-- <img class="hover-img" src="public/FE/img/product-img/product-2.jpg" alt=""> --}}
+
+                                <!-- Favourite -->
+                                <div class="product-favourite">
+                                    <a href="#" class="favme fa fa-heart"></a>
+                                </div>
+                            </div>
+                            <!-- Product Description -->
+                            <div class="product-description">
+                                <span>topshop</span>
+                                <a href="{{ URL::to('laravel/php/product-detail/'.$value->product_id) }}">
+                                    <h6>{{($value->product_name)}}</h6>
+                                </a>
+                                <p class="product-price">{{number_format($value->product_price).' VNĐ'}}</p>
+
+                                <!-- Hover Content -->
+                                <div class="hover-content">
+                                    <!-- Add to Cart -->
+                                    <div class="add-to-cart-btn">
+                                        <form action="{{ URL::to('laravel/php/save-cart') }}" method="POST">
+                                        <div class="add-to-cart-btn">
+                                        {{ csrf_field() }}
+                                        <input name="product_id_hidden" type="hidden" value="{{ $value->product_id }}">
+                                        <button type="submit" class="btn essence-btn">Add to Cart</button>
+                                        </div>
+                                    </form> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <section class="new_arrivals_area section-padding-80 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>Apple Watch Products</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">   
+                <div class="col-12">
+                    <div class="popular-products-slides owl-carousel">
+                        @foreach($watch as $key => $value)
+                        <!-- Single Product -->
+                        <div class="single-product-wrapper">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img src="{{ URL::to('laravel/php/public/uploads/product/'.$value->product_img) }}" alt="">
+
+                                <!-- Hover Thumb -->
+                                {{-- <img class="hover-img" src="public/FE/img/product-img/product-2.jpg" alt=""> --}}
+
+                                <!-- Favourite -->
+                                <div class="product-favourite">
+                                    <a href="#" class="favme fa fa-heart"></a>
+                                </div>
+                            </div>
+                            <!-- Product Description -->
+                            <div class="product-description">
+                                <span>topshop</span>
+                                <a href="{{ URL::to('laravel/php/product-detail/'.$value->product_id) }}">
+                                    <h6>{{($value->product_name)}}</h6>
+                                </a>
+                                <p class="product-price">{{number_format($value->product_price).' VNĐ'}}</p>
+
+                                <!-- Hover Content -->
+                                <div class="hover-content">
+                                    <!-- Add to Cart -->
+                                    <div class="add-to-cart-btn">
+                                        <form action="{{ URL::to('laravel/php/save-cart') }}" method="POST">
+                                        <div class="add-to-cart-btn">
+                                        {{ csrf_field() }}
+                                        <input name="product_id_hidden" type="hidden" value="{{ $value->product_id }}">
+                                        <button type="submit" class="btn essence-btn">Add to Cart</button>
+                                        </div>
+                                    </form> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
     <!-- ##### New Arrivals Area End ##### -->
 
     <!-- ##### Brands Area Start ##### -->

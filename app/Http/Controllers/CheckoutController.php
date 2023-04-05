@@ -133,6 +133,8 @@ class CheckoutController extends Controller
         // Thêm các thông tin khác tùy ý
         ];
         Session::put('order_info', $order_info);
+        $request->session()->put('content', $content);
+        $this->sendmail($request->shipping_email);
         $request->session()->flash('content', $content);
         Session::put('coupon', null);
         if($data['payment_method']==1){
@@ -144,60 +146,25 @@ class CheckoutController extends Controller
 
      }
 
-     public function manage_order(){
-        $this->CheckAuth();
-        $all_order = DB::table('tbl_order')
-        ->join('users','tbl_order.customer_id','=','users.id')
-        ->select('tbl_order.*','users.name')
-        ->orderby('tbl_order.order_id','desc')->paginate(10);
-        $manager_order = view('admin.manage_order')->with('all_order',$all_order);
-
-        return view('admin_layout')->with('admin.manager_order',$manager_order);
-     }
-
-     public function view_order($orderId){
-        $this->CheckAuth();
-        $all_order = DB::table('tbl_order')
-        ->join('users','tbl_order.customer_id','=','users.id')
-        ->select('tbl_order.*','users.name')
-        ->orderby('tbl_order.order_id','desc')->get();
-        $manager_order = view('admin.manage_order')->with('all_order',$all_order);
-
-        $order_by_id = DB::table('tbl_order')
-        ->join('users','tbl_order.customer_id','=','users.id')
-        ->join('tbl_shipping','tbl_order.shipping_id','=','tbl_shipping.shipping_id')
-        ->join('tbl_order_details','tbl_order.order_id','=','tbl_order_details.order_id')
-        ->join('tbl_product','tbl_order_details.product_id','=','tbl_product.product_id')
-        ->select('tbl_order.*','users.*','tbl_shipping.*','tbl_order_details.*','tbl_product.*')
-        ->where('tbl_order.order_id','=',$orderId)
-        ->first();
-
-        $order_by_id_product = DB::table('tbl_order')
-        ->join('users','tbl_order.customer_id','=','users.id')
-        ->join('tbl_shipping','tbl_order.shipping_id','=','tbl_shipping.shipping_id')
-        ->join('tbl_order_details','tbl_order.order_id','=','tbl_order_details.order_id')
-        ->join('tbl_product','tbl_order_details.product_id','=','tbl_product.product_id')
-        ->select('tbl_order.*','users.*','tbl_shipping.*','tbl_order_details.*','tbl_product.*')
-        ->where('tbl_order.order_id','=',$orderId)
-        ->get();
-
-
-        $manager_order_by_id = view('admin.view_order')->with('order_by_id',$order_by_id)->with('all_order',$all_order)->with('order_by_id_product',$order_by_id_product);
-
-        return view('admin_layout')->with('admin.view_order',$manager_order_by_id);
-     }
-
-     public function sendmail(){
-        $to_name = "Apple Store";
-        $to_email = "ngogiaanhtuan1@gmail.com";//send to this email
-
-        $data = array("name"=>"Mail xác nhận đặt hàng thành công","body"=>"Bạn đã đặt hàng tại tại Apple Store"); //body of mail.blade.php
     
-        Mail::send('pages.sendmail',$data,function($message) use ($to_name,$to_email){
-            $message->to($to_email)->subject('test mail nhé');//send this mail with subject
-            $message->from($to_email,$to_name);//send from this mail
-        });
-        return redirect('laravel/php/trangchu')->with('message','');
-    }
+
+     public function sendmail($to_email){
+    $to_name = "Apple Store";
+    $order_info = Session::get('order_info');
+    $data = array(
+        "customer_name" => $order_info['shipping_name'],
+        "shipping_address" => $order_info['shipping_address'],
+        "shipping_phone" => $order_info['shipping_phone'],
+        "shipping_note" => $order_info['shipping_note'],
+        "cart_items" => Session::get('content'),
+        "total" => $order_info['order_total']
+    );
+    
+    Mail::send('pages.sendmail',$data, function ($message) use ($to_name, $to_email) {
+        $message->to($to_email)->subject('Xác nhận đơn hàng');
+        $message->from($to_email,$to_name);//send from this mail
+    });
+    return redirect('laravel/php/trangchu')->with('message','');
+}
      
 }

@@ -52,6 +52,7 @@
 
   </tbody>
 </table>
+<br>
 <nav aria-label="navigation">
       <ul class="pagination mt-50 mb-70">
         {{-- Hiển thị nút Previous --}}
