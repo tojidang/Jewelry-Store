@@ -19,12 +19,12 @@
     <!-- ##### Checkout Area Start ##### -->
    
     <div class="checkout_area section-padding-80">
-        <form action="{{ URL::to('laravel/php/order-place') }}" method="post">
-                {{ csrf_field() }}
+        
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 ">
-                    
+                    <form action="{{ URL::to('laravel/php/order-place') }}" method="post">
+                    {{ csrf_field() }}
                     <div class="checkout_details_area mt-50 clearfix">
                         <div class="cart-page-heading mb-30">
                             <h5>Billing Address</h5>
@@ -124,12 +124,13 @@
                             </span></li>
                         </ul>
                         
-                        <div id="accordion" role="tablist" class="mb-4">
+                        {{-- <div id="accordion" role="tablist" class="mb-4">
                             <div class="card">
                                 <div class="card-header" role="tab" id="headingOne">
                                 <h6 class="mb-0">
-                                  <input type="radio" name="payment_option" value="1">
-                                  <i class="fa fa-square-o mr-3"></i>MOMO
+                                    <input type="hidden" name="momo" value="{{$total_bill }}">
+                                    <input type="radio" name="payment_option" value="1">
+                                    <i class="fa fa-square-o mr-3"></i>MOMO
                                 </h6>
                               </div>
                               <div class="card-header" role="tab" id="headingTwo">
@@ -139,7 +140,7 @@
                                 </h6>
                               </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <style>
                             .card-header:hover {
@@ -153,32 +154,59 @@
                            text-color: green;
                         }
 
-                        </style>  
-                        <script>
-                          $('input[type=radio][name=payment_method]').change(function() {
-                            $('.payment-method a').removeClass('checked');
-                            if (this.value === 'momo') {
-                                $('#collapseOne a').addClass('checked');
-                            }
-                            else if (this.value === 'paypal') {
-                                $('#collapseTwo a').addClass('checked');
-                            }
-                        });
+                        </style>
+                        @if(Session::get('success_paypal') == 1)
+                            {{-- paypal --}}
+                            <input type="hidden" name="payment_option" value="2">
+                            <h5 style="color:green" href="">Success paypal</h5>
+                        @else
+                            {{-- cash --}}
+                            <input type="hidden" name="payment_option" value="1">
+                        @endif
 
-                        </script>
                         <button type="submit" name="send" class="btn essence-btn">Place Order</button>
                     </div>
                 </div>
-
+                </form>
             </div>
+            <hr style="width: 1270px;">
+            @if(!Session::get('success_paypal') ==1)
+            <form  style="float: right;" method="post" action="{{ url('laravel/php/check-coupon') }}">
+                {{ csrf_field() }}
+                <label for="coupon">Voucher</label>
+                <input style="width: 300px;" class="form-control" type="text" name="coupon">
+                <br>
+                <button class="btn essence-btn" type="submit" name="check_coupon">Apply</button>
+            </form>
+            @endif
+            <label for="name">Payment Online</label>
+            <br>
+            <?php 
+                $vnd_to_usd = $total_bill/23452;
+                $total_paypal = round($vnd_to_usd,2);
+                \Session::put('total_paypal',$total_paypal);
+            ?>
+            <input type="hidden" name="paypal" value="{{round($vnd_to_usd,2) }}">
+            <a class="btn essence-btn" href="{{ route('processTransaction') }}">Paypal</a>
+            <form action="{{ url('laravel/php/momo_payment') }}" method="POST">
+                {{ csrf_field() }}
+                <input type="hidden" name="momo" value="{{$total_bill }}">
+                <br>
+                <button type="submit" class="btn essence-btn" name="redirect">MOMO</button>
+            </form>
+            
+
+            <form action="{{ url('laravel/php/vnpay_payment') }}" method="POST">
+                {{ csrf_field() }}
+                <input type="hidden" name="vnpay" value="{{$total_bill }}">
+                <br>
+                <button type="submit" class="btn essence-btn" name="redirect">VNPay</button>
+            </form>
+
         </div>
-    </form>
-    <form style="float: right; margin-right:480px" method="post" action="{{ url('laravel/php/check-coupon') }}">
-        {{ csrf_field() }}
-        <strong style="font-size:16px">Voucher</strong>
-        <input type="text" name="coupon">
-        <input style="margin-left:30px; height: 35px;" class="btn btn-outline-primary" type="submit" name="check_coupon" value="Apply">  
-    </form>
+    
+    <br>
+    <br>
 </div>
     
     <!-- ##### Checkout Area End ##### -->

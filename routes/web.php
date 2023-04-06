@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PayPalController;
 
 //FE
 Route::get('/', 'App\Http\Controllers\HomeController@index');
@@ -87,13 +88,14 @@ Route::post('laravel/php/update-user/{id}','App\Http\Controllers\HomeController@
 
 
 //Checkout
-Route::get('laravel/php/checkout','App\Http\Controllers\CheckoutController@checkout');
+Route::get('laravel/php/checkout','App\Http\Controllers\CheckoutController@checkout')->name('checkout');
 Route::post('laravel/php/order-place','App\Http\Controllers\CheckoutController@order_place');
+Route::get('laravel/php/order-history','App\Http\Controllers\HomeController@order_history');
 
 //Manage Order
 Route::get('laravel/php/manage-order','App\Http\Controllers\OrderController@manage_order');
 Route::get('laravel/php/view-order/{orderId}','App\Http\Controllers\OrderController@view_order');
-
+Route::get('laravel/php/print-order/{order_id}','App\Http\Controllers\OrderController@print_order');
 
 //send email
 Route::get('laravel/php/sendmail','App\Http\Controllers\HomeController@sendmail');
@@ -106,3 +108,13 @@ Route::get('laravel/php/delete-coupon/{coupon_id}','App\Http\Controllers\CouponC
 
 Route::post('laravel/php/check-coupon','App\Http\Controllers\CheckoutController@check_coupon');
 Route::get('laravel/php/unset-coupon','App\Http\Controllers\CheckoutController@unset_coupon');
+
+
+//payment
+Route::post('laravel/php/vnpay-payment','App\Http\Controllers\CheckoutController@vnpay_payment');
+Route::post('laravel/php/momo-payment','App\Http\Controllers\CheckoutController@momo_payment');
+
+Route::get('laravel/php/create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
+Route::get('laravel/php/process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+Route::get('laravel/php/success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+Route::get('laravel/php/cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');

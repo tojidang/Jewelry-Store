@@ -38,21 +38,6 @@
     </div>
   </div>
 </div>
-
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title">Order Success!</h2>
-          <p class="card-text">Thank you for ordering from us.</p>
-          <a href="laravel/php/trangchu" class="btn btn-primary">Continue Shopping</a>
-          <!-- Nút xem lịch sử đơn hàng -->
-          <a href="{{ URL::to('laravel/php/order-history')}}" class="btn btn-secondary">Order History</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 <br>
 <hr>

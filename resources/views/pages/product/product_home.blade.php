@@ -104,7 +104,7 @@
                                 <div class="product-topbar d-flex align-items-center justify-content-between">
                                     <!-- Total Products -->
                                     <div class="total-products">
-                                        <p><span>186</span> products found</p>
+                                        <p><span>All</span> products found</p>
                                     </div>
                                     <!-- Sorting -->
                                     <div class="product-sorting d-flex">
@@ -137,7 +137,7 @@
 
                                         <!-- Product Badge -->
                                         <div class="product-badge offer-badge">
-                                            <span>#</span>
+                                            <span>New</span>
                                         </div>
                                         <!-- Favourite -->
                                         <div class="product-favourite">
@@ -151,7 +151,8 @@
                                         <a href="{{ URL::to('laravel/php/product-detail/'.$product->product_id) }}">
                                             <h6>{{ $product -> product_name }}</h6>
                                         </a>
-                                        <p class="product-price"><span class="old-price">$75.00</span>{{number_format($product->product_price).' VNĐ'}}</p>
+                                        {{-- <span class="old-price">$75.00</span> --}}
+                                        <p class="product-price">{{number_format($product->product_price).' VNĐ'}}</p>
 
                                         <!-- Hover Content -->
                                         <div class="hover-content">

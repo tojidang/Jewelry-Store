@@ -70,4 +70,19 @@ class HomeController extends Controller
         return view('pages.product.search')->with('category',$category)->with('brand',$brand)->with('search_product',$search_product);
     }
 
+    // public function order_history($customer_id)
+    // {
+    //     $order_by_id = DB::table('tbl_order')
+    //     ->join('users','tbl_order.customer_id','=','users.id')
+    //     ->join('tbl_shipping','tbl_order.shipping_id','=','tbl_shipping.shipping_id')
+    //     ->join('tbl_payment','tbl_order.payment_id','=','tbl_payment.payment_id')
+    //     ->join('tbl_order_details','tbl_order.order_id','=','tbl_order_details.order_id')
+    //     ->join('tbl_product','tbl_order_details.product_id','=','tbl_product.product_id')
+    //     ->select('tbl_order.*','users.*','tbl_shipping.*','tbl_order_details.*','tbl_product.*','tbl_payment.*')
+    //     ->where('tbl_order.order_id','=',$orderId)
+    //     ->first();
+
+    //     return view('admin_layout')->with('pages.order.order_history',$order_by_id);
+    // }
+
 }

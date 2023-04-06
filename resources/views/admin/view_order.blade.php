@@ -25,7 +25,6 @@
       <td style="text-align: center;">
         {{ $order_by_id->email }}
       </td>
-
     </tr>
   </tbody>
 </table>
@@ -93,6 +92,13 @@
   </tbody>
 </table>
 <br>
+  @if(($order_by_id->payment_method) == 2)
+    <h5 style="color:green">Payment method: Paypal</h5>
+  @else
+    <h5 style="color:green">Payment method: Cash</h5>
+  @endif
+<hr>
 <h4 style="color:red; text-align:center">Total: {{ $order_by_id->order_total }} VNĐ</h2>
 
+<a target="_blank" href="{{ url('laravel/php/print-order/'.$order_by_id->order_id ) }}" class="btn btn-info" type="submit">Print Bill</a>
 @endsection

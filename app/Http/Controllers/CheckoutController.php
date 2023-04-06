@@ -137,9 +137,11 @@ class CheckoutController extends Controller
         $this->sendmail($request->shipping_email);
         $request->session()->flash('content', $content);
         Session::put('coupon', null);
+        Session::put('success_paypal', null);
         if($data['payment_method']==1){
-            echo 'Momo';
-        }else{
+            Cart::destroy();
+            return view('pages.checkout.cash')->with('order_info',$order_info)->with('category',$category)->with('brand',$brand);
+        }elseif($data['payment_method']==2){
             Cart::destroy();
             return view('pages.checkout.cash')->with('order_info',$order_info)->with('category',$category)->with('brand',$brand);
         }

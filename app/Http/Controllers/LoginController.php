@@ -67,7 +67,7 @@ class LoginController extends Controller
 
     public function logout() {
         session()->put('id', NULL);
-        return view('pages.flogin');
+        return redirect()->back();
     }
 
     

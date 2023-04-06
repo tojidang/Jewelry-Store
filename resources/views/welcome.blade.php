@@ -61,6 +61,11 @@
                                      @endforeach                                                                      
                                 </div>
                             </li>
+                            @if(Auth::check() != NULL )
+                            <li>
+                                <a href="{{ URL::to('laravel/php/order-history') }}">Order History</a>
+                            </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -81,28 +86,22 @@
                 <div class="favourite-area">
                     <a href="#"><img src="{{ asset('laravel/php/public/FE/img/core-img/heart.svg') }}" alt=""></a>
                 </div>          
-                <?php 
 
-                if(Auth::check() ) {
-                ?>
+                @if(Auth::check() != NULL )
                 <div class="user-login-info">
                     <a href="{{ URL::to('laravel/php/customer', Auth::id()) }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
                 </div>
                 <div class="user-login-info">
                     <a href="{{ URL::to('laravel/php/logout') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/sign_out.svg') }}" alt=""></a>
                 </div>
-                <?php 
-                 }else{
-                ?>
+                @else
                 <div class="user-login-info">
                     <a href="{{ URL::to('laravel/php/flogin') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
                 </div>
-                <?php 
-                    }  
-                ?>
+                @endif
                 <!-- Cart Area -->
                 <div class="cart-area">
-                    <a href="#" id="essenceCartBtn"><img src="{{ asset('laravel/php/public/FE/img/core-img/bag.svg') }}" alt=""> <span>3</span></a>
+                    <a href="#" id="essenceCartBtn"><img src="{{ asset('laravel/php/public/FE/img/core-img/bag.svg') }}" alt=""> <span></span></a>
                 </div>
             </div>
 
@@ -117,7 +116,7 @@
 
         <!-- Cart Button -->
         <div class="cart-button">
-            <a href="#" id="rightSideCart"><img src="{{ asset('laravel/php/public/FE/img/core-img/bag.svg') }}" alt=""> <span>3</span></a>
+            <a href="#" id="rightSideCart"><img src="{{ asset('laravel/php/public/FE/img/core-img/bag.svg') }}" alt=""> <span></span></a>
         </div>
 
         <div class="cart-content d-flex">
