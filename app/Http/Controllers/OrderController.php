@@ -98,4 +98,37 @@ class OrderController extends Controller
 
         return view('admin_layout')->with('admin.view_order',$manager_order_by_id);
      }
+
+     public function updateStatus(Request $request, $id)
+    {
+        $this->CheckAuth();
+        $status = $request->input('status');
+        DB::table('tbl_order')->where('order_id',$id)->update(['order_status'=>$status]);
+
+        // Redirect back to order view page
+        return redirect()->back();
+    }
+
+    public function order_history()
+    {    
+        $user = DB::table('users')->where('id', Session::get('id'))->get();
+        $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
+        $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
+
+        // $all_product = DB::table('tbl_product')
+        // ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
+        // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
+        // ->orderby('tbl_product.product_id','desc')->get();
+
+        $iphone = DB::table('tbl_product')->where('category_id',1)->orderby('product_id', 'asc')->get();
+        $ipad = DB::table('tbl_product')->where('category_id',6)->orderby('product_id','asc')->get();
+        $mac = DB::table('tbl_product')->where('category_id',2)->orderby('product_id','asc')->get();
+        $watch = DB::table('tbl_product')->where('category_id',5)->orderby('product_id','asc')->get();
+
+        $all_order = DB::table('tbl_order')
+        ->where('customer_id',Session::get('id'))
+        ->orderby('order_id','desc')->paginate(10);
+        return view('pages.order.order_history', compact('category', 'brand', 'iphone', 'ipad', 'mac', 'watch', 'user', 'all_order'));
+    }
+
 }

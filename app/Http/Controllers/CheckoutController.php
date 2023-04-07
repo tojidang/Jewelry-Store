@@ -107,7 +107,7 @@ class CheckoutController extends Controller
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
         $order_data['order_total'] = number_format($request->total, 0, '.', ',');
-        $order_data['order_status'] = 'Pending';
+        $order_data['order_status'] = '1';
         $order_id = DB::table('tbl_order')->insertGetId($order_data);
 
         //insert order_details
@@ -129,6 +129,7 @@ class CheckoutController extends Controller
         'shipping_address' => $request->shipping_address,
         'shipping_phone' => $request->shipping_phone,
         'shipping_note' => $request->shipping_note, 
+        'payment_method' => $request->payment_option, 
         'order_total' => number_format($request->total, 0, '.', ','),
         // Thêm các thông tin khác tùy ý
         ];
@@ -158,6 +159,7 @@ class CheckoutController extends Controller
         "shipping_address" => $order_info['shipping_address'],
         "shipping_phone" => $order_info['shipping_phone'],
         "shipping_note" => $order_info['shipping_note'],
+        "payment_method" => $order_info['payment_method'],
         "cart_items" => Session::get('content'),
         "total" => $order_info['order_total']
     );

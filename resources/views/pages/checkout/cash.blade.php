@@ -46,7 +46,7 @@
         <div class="card-body">
           <h2 class="card-title">Order Success!</h2>
           <p class="card-text">Thank you for ordering from us.</p>
-          <a href="laravel/php/trangchu" class="btn btn-primary">Continue Shopping</a>
+          <a href="{{ URL::to('laravel/php/trangchu')}}" class="btn btn-primary">Continue Shopping</a>
           <!-- Nút xem lịch sử đơn hàng -->
           <a href="{{ URL::to('laravel/php/order-history')}}" class="btn btn-secondary">Order History</a>
         </div>

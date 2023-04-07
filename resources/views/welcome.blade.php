@@ -61,7 +61,7 @@
                                      @endforeach                                                                      
                                 </div>
                             </li>
-                            @if(Auth::check() != NULL )
+                            @if(session('id') != NULL )
                             <li>
                                 <a href="{{ URL::to('laravel/php/order-history') }}">Order History</a>
                             </li>
@@ -87,7 +87,7 @@
                     <a href="#"><img src="{{ asset('laravel/php/public/FE/img/core-img/heart.svg') }}" alt=""></a>
                 </div>          
 
-                @if(Auth::check() != NULL )
+                @if(session('id') != NULL )
                 <div class="user-login-info">
                     <a href="{{ URL::to('laravel/php/customer', Auth::id()) }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/user.svg') }}" alt=""></a>
                 </div>
@@ -156,20 +156,16 @@
 
                     <li><span>total:</span> <span>{{Cart::priceTotal().' VNĐ'}}</span></li>
                 </ul>
-                <?php
-                if (Auth::check()) { ?>
+                @if(session('id') != NULL )
 
                     <div class="checkout-btn mt-100">
                     <a href="{{ URL::to('laravel/php/checkout') }}" class="btn essence-btn">check out</a>
                 </div>
-                <?php
-                } else { ?>
+                @else
                     <div class="checkout-btn mt-100">
                     <a href="{{ URL::to('laravel/php/flogin') }}" class="btn essence-btn">check out</a>
                 </div>
-                <?php
-                }
-                ?>
+                @endif
                 
             </div>
         </div>

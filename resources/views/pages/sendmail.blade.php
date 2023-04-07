@@ -17,6 +17,11 @@
             <li>Address: {{ $shipping_address }}</li>
             <li>Phone: {{ $shipping_phone }}</li>
             <li>Note: {{ $shipping_note }}</li>
+            @if($payment_method == 2)
+            <li>Payment: Paypal</li>
+            @elseif($payment_method == 1)
+            <li>Payment: Cash</li>
+            @endif
         </ul>
         
         <table class="table">

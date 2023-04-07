@@ -38,7 +38,15 @@
       	{{ $value-> order_total }} VNĐ
       </td>
       <td style="text-align: center;">
-       	{{ $value-> order_status }}
+        @if($value-> order_status == 1)
+       	Pending
+        @elseif($value-> order_status == 2)
+        Confirm
+        @elseif($value-> order_status == 3)
+        Done
+        @else
+        Cancelled
+        @endif
       </td>
       <td style="text-align: center;">
       	{{ $value-> created_at }}

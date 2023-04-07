@@ -3,7 +3,20 @@
 
 
 <hr>
+<form method="POST" action="{{ url('laravel/php/update-status/'.$order_by_id->order_id) }}">
+  @csrf
+  <select name="status">
+    <option style="background-color: #ffc107;" value="1" @if ($order_by_id->order_status == 1) selected @endif>Pending</option>
+    <option style="background-color: #007bff;" value="2" @if ($order_by_id->order_status == 2) selected @endif>Comfirm</option>
+    <option style="background-color: #28a745;" value="3" @if ($order_by_id->order_status == 3) selected @endif>Done</option>
+    <option style="background-color: #dc3545;" value="4" @if ($order_by_id->order_status == 4) selected @endif>Cancelled</option>
+  </select>
+  <br>
+  <br>
+  <button class="btn btn-success" type="submit">Save</button>
+</form>
 <h6 class="font-weight-bolder mb-0">Information</h6>
+
 <table class="table align-middle mb-0 bg-white" >
   <thead class="bg-light">
     <tr style="text-align:  center;">
@@ -99,6 +112,14 @@
   @endif
 <hr>
 <h4 style="color:red; text-align:center">Total: {{ $order_by_id->order_total }} VNĐ</h2>
-
+{{-- <button class="order-status-btn">
+  <span class="status waiting">Pending</span>
+  <span class="status processing">Comfirm</span>
+  <span class="status completed">Done</span>
+  <span class="status cancelled">Cancelled</span>
+</button> --}}
 <a target="_blank" href="{{ url('laravel/php/print-order/'.$order_by_id->order_id ) }}" class="btn btn-info" type="submit">Print Bill</a>
+
+<br>
+
 @endsection

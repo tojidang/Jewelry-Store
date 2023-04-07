@@ -90,12 +90,13 @@ Route::post('laravel/php/update-user/{id}','App\Http\Controllers\HomeController@
 //Checkout
 Route::get('laravel/php/checkout','App\Http\Controllers\CheckoutController@checkout')->name('checkout');
 Route::post('laravel/php/order-place','App\Http\Controllers\CheckoutController@order_place');
-Route::get('laravel/php/order-history','App\Http\Controllers\HomeController@order_history');
+Route::get('laravel/php/order-history','App\Http\Controllers\OrderController@order_history');
 
 //Manage Order
 Route::get('laravel/php/manage-order','App\Http\Controllers\OrderController@manage_order');
 Route::get('laravel/php/view-order/{orderId}','App\Http\Controllers\OrderController@view_order');
 Route::get('laravel/php/print-order/{order_id}','App\Http\Controllers\OrderController@print_order');
+Route::post('laravel/php/update-status/{id}', 'App\Http\Controllers\OrderController@updateStatus');
 
 //send email
 Route::get('laravel/php/sendmail','App\Http\Controllers\HomeController@sendmail');
