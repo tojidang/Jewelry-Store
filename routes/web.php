@@ -95,8 +95,10 @@ Route::get('laravel/php/order-history','App\Http\Controllers\OrderController@ord
 //Manage Order
 Route::get('laravel/php/manage-order','App\Http\Controllers\OrderController@manage_order');
 Route::get('laravel/php/view-order/{orderId}','App\Http\Controllers\OrderController@view_order');
+Route::get('laravel/php/view-my-order/{orderId}','App\Http\Controllers\OrderController@view_my_order');
 Route::get('laravel/php/print-order/{order_id}','App\Http\Controllers\OrderController@print_order');
 Route::post('laravel/php/update-status/{id}', 'App\Http\Controllers\OrderController@updateStatus');
+Route::get('laravel/php/cancel-order/{order_id}','App\Http\Controllers\OrderController@cancel_order');
 
 //send email
 Route::get('laravel/php/sendmail','App\Http\Controllers\HomeController@sendmail');

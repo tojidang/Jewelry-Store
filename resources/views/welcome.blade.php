@@ -61,11 +61,7 @@
                                      @endforeach                                                                      
                                 </div>
                             </li>
-                            @if(session('id') != NULL )
-                            <li>
-                                <a href="{{ URL::to('laravel/php/order-history') }}">Order History</a>
-                            </li>
-                            @endif
+                            
                         </ul>
                     </div>
                 </div>
@@ -83,9 +79,11 @@
                     </form>
                 </div>
                 <!-- Favourite Area -->
-                <div class="favourite-area">
-                    <a href="#"><img src="{{ asset('laravel/php/public/FE/img/core-img/heart.svg') }}" alt=""></a>
-                </div>          
+                @if(session('id') != NULL )
+                    <div class="favourite-area">
+                        <a href="{{ URL::to('laravel/php/order-history') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/heart.svg') }}" alt=""></a>
+                    </div>  
+                @endif 
 
                 @if(session('id') != NULL )
                 <div class="user-login-info">

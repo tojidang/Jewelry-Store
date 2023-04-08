@@ -62,7 +62,6 @@
       <td style="text-align: center;">
       	<a href="{{URL::to('laravel/php/edit-brand-product/'.$br_pro->brand_id)}}" type="button" class="btn btn-info">Edit</a>
       	<a onclick="return confirm('Are you sure you want delete?')" href="{{URL::to('laravel/php/delete-brand-product/'.$br_pro->brand_id)}}" type="button" class="btn btn-danger">Delete</a>
-
       </td>
     </tr>
     @endforeach

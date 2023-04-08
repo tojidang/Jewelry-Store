@@ -54,8 +54,10 @@
         {{ $value-> created_at }}
       </td>
       <td style="text-align: center;">
-        <a href="{{URL::to('laravel/php/view-order/'.$value->order_id)}}" type="button" class="btn btn-info">View</a>
-
+        <a href="{{URL::to('laravel/php/view-my-order/'.$value->order_id)}}" type="button" class="btn btn-info">View</a>
+        @if($value-> order_status != 3 && $value-> order_status != 4)
+        <a onclick="return confirm('Are you sure you want cancel?')" href="{{URL::to('laravel/php/cancel-order/'.$value-> order_id)}}" type="button" class="btn btn-danger">Cancel</a>
+        @endif
       </td>
     </tr>
     @endforeach
