@@ -59,18 +59,18 @@ class LoginController extends Controller
             $request->session()->put('id', $user->id);
             return redirect()->intended('laravel/php/trangchu');
         } else {
-            Session::put('message','Sai tài khoản hoặc mật khẩu!');
+            Session::put('message','Wrong account or password!');
             return Redirect('laravel/php/flogin');
         }
     }
-    
+
 
     public function logout() {
         session()->put('id', NULL);
-        
+
         return redirect()->back();
     }
 
-    
+
 
 }
