@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Cart;
 use App\Models\Coupon;
-use DB;
-use Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session; //use Session;
 use Mail;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
@@ -110,7 +110,7 @@ class OrderController extends Controller
     }
 
     public function order_history()
-    {    
+    {
         $user = DB::table('users')->where('id', Session::get('id'))->get();
         $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
         $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
@@ -120,15 +120,15 @@ class OrderController extends Controller
         // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
         // ->orderby('tbl_product.product_id','desc')->get();
 
-        $iphone = DB::table('tbl_product')->where('category_id',1)->orderby('product_id', 'asc')->get();
-        $ipad = DB::table('tbl_product')->where('category_id',6)->orderby('product_id','asc')->get();
-        $mac = DB::table('tbl_product')->where('category_id',2)->orderby('product_id','asc')->get();
-        $watch = DB::table('tbl_product')->where('category_id',5)->orderby('product_id','asc')->get();
+        $necklace = DB::table('tbl_product')->where('category_id',1)->orderby('product_id', 'asc')->get();
+        $earring = DB::table('tbl_product')->where('category_id',2)->orderby('product_id','asc')->get();
+        $bracelet = DB::table('tbl_product')->where('category_id',3)->orderby('product_id','asc')->get();
+        $ring = DB::table('tbl_product')->where('category_id',4)->orderby('product_id','asc')->get();
 
         $all_order = DB::table('tbl_order')
         ->where('customer_id',Session::get('id'))
         ->orderby('order_id','desc')->paginate(10);
-        return view('pages.order.order_history', compact('category', 'brand', 'iphone', 'ipad', 'mac', 'watch', 'user', 'all_order'));
+        return view('pages.order.order_history', compact('category', 'brand', 'necklace', 'earring', 'bracelet', 'ring', 'user', 'all_order'));
     }
 
     public function view_my_order($orderId){
@@ -141,10 +141,10 @@ class OrderController extends Controller
         // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
         // ->orderby('tbl_product.product_id','desc')->get();
 
-        $iphone = DB::table('tbl_product')->where('category_id',1)->orderby('product_id', 'asc')->get();
-        $ipad = DB::table('tbl_product')->where('category_id',6)->orderby('product_id','asc')->get();
-        $mac = DB::table('tbl_product')->where('category_id',2)->orderby('product_id','asc')->get();
-        $watch = DB::table('tbl_product')->where('category_id',5)->orderby('product_id','asc')->get();
+        $necklace = DB::table('tbl_product')->where('category_id',1)->orderby('product_id', 'asc')->get();
+        $earring = DB::table('tbl_product')->where('category_id',2)->orderby('product_id','asc')->get();
+        $bracelet = DB::table('tbl_product')->where('category_id',3)->orderby('product_id','asc')->get();
+        $ring = DB::table('tbl_product')->where('category_id',4)->orderby('product_id','asc')->get();
 
         $all_order = DB::table('tbl_order')
         ->join('users','tbl_order.customer_id','=','users.id')
@@ -170,7 +170,7 @@ class OrderController extends Controller
         ->where('tbl_order.order_id','=',$orderId)
         ->get();
 
-        return view('pages.order.view_my_order', compact('category', 'brand', 'iphone', 'ipad', 'mac', 'watch', 'user', 'all_order', 'order_by_id', 'order_by_id_product'));
+        return view('pages.order.view_my_order', compact('category', 'brand', 'necklace', 'earring', 'bracelet', 'ring', 'user', 'all_order', 'order_by_id', 'order_by_id_product'));
      }
 
      public function cancel_order($order_id)

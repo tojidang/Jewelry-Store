@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use DB;
-use Session;
+//use Session;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 session_start();
@@ -59,7 +60,7 @@ class LoginController extends Controller
             $request->session()->put('id', $user->id);
             return redirect()->intended('laravel/php/trangchu');
         } else {
-            Session::put('message','Wrong account or password!');
+            Session::put('message','Sai tài khoản hoặc mật khẩu!');
             return Redirect('laravel/php/flogin');
         }
     }

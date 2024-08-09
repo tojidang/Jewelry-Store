@@ -15,7 +15,7 @@
             <thead>
               <tr>
                 <th>Product</th>
-                <th>Storage</th>
+                <th>Weight</th>
                 <th>Color</th>
                 <th>Price</th>
               </tr>
@@ -27,7 +27,7 @@
             @foreach($content as $v_content)
               <tr>
                 <td>{{ $v_content -> name }}</td>
-                <td>{{ $v_content -> options->storage }}</td>
+                <td>{{ $v_content -> options->weight }}</td>
                 <td>{{$v_content -> options->color }}</td>
                 <td>{{ number_format($v_content -> price, 0, '.', ',') }}</td>
               </tr>

@@ -26,11 +26,12 @@
     <option value="1">Visible</option>
     <option value="0">Invisible</option>
   </select>
-  
+
   <hr>
   <button type="submit" name="add_brand_product" class="btn btn-primary">Add</button>
+  <a href="{{url('laravel/php/all-brand-product')}}" class="btn btn-danger">Back</a>
   <hr>
-  <?php 
+  <?php
         $message = Session::get('message');
         if($message){
         echo '<span class="--bs-danger">',$message.'</span>';

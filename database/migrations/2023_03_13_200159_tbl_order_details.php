@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->float('product_price');
             $table->string('product_color');
-            $table->string('product_storage');
+            $table->string('product_weight');
             $table->timestamps();
         });
     }

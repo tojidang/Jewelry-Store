@@ -20,7 +20,7 @@ class ProductController extends Controller
             return Redirect::to('/laravel/php/admin')->send();
         }
     }
-    
+
      public function add_product()
     {
         $this->CheckAuth();
@@ -50,7 +50,7 @@ class ProductController extends Controller
         $data['category_id'] = $request->cate;
         $data['brand_id'] = $request->br;
         $data['product_price'] = $request->product_price;
-         $data['product_storage'] = $request->product_storage;
+         $data['product_weight'] = $request->product_weight;
           $data['product_color'] = $request->product_color;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
@@ -106,7 +106,7 @@ class ProductController extends Controller
         $data['category_id'] = $request->cate;
         $data['brand_id'] = $request->br;
         $data['product_price'] = $request->product_price;
-        $data['product_storage'] = $request->product_storage;
+        $data['product_weight'] = $request->product_weight;
         $data['product_color'] = $request->product_color;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
@@ -162,7 +162,7 @@ class ProductController extends Controller
         $category = DB::table('tbl_category_product')->where('category_status',1)->orderby('category_id','asc')->get();
         $brand = DB::table('tbl_brand')->where('brand_status',1)->orderby('brand_id','desc')->get();
 
-        
+
         $show = DB::table('tbl_product')
         ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
         ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')

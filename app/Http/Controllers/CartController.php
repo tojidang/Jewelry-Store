@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Cart;
 use DB;
-use Session;
+//use Session;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 session_start();
@@ -27,7 +28,7 @@ class CartController extends Controller
         $data['price'] = $product_info -> product_price;
         $data['weight'] = '1';
         $data['options']['image'] = $product_info -> product_img;
-        $data['options']['storage'] = $product_info-> product_storage;
+        $data['options']['weight'] = $product_info-> product_weight;
         $data['options']['color'] = $product_info-> product_color;
 
         Cart::add($data);

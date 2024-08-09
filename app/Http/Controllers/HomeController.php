@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use Session;
+use Illuminate\Support\Facades\DB;
+//use Session;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
@@ -23,12 +24,12 @@ class HomeController extends Controller
         // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
         // ->orderby('tbl_product.product_id','desc')->get();
 
-        $iphone = DB::table('tbl_product')->where('category_id',1)->orderby('product_id', 'asc')->get();
-        $ipad = DB::table('tbl_product')->where('category_id',6)->orderby('product_id','asc')->get();
-        $mac = DB::table('tbl_product')->where('category_id',2)->orderby('product_id','asc')->get();
-        $watch = DB::table('tbl_product')->where('category_id',5)->orderby('product_id','asc')->get();
+        $necklace = DB::table('tbl_product')->where('category_id',1)->orderby('product_id', 'asc')->get();
+        $earring = DB::table('tbl_product')->where('category_id',2)->orderby('product_id','asc')->get();
+        $bracelet = DB::table('tbl_product')->where('category_id',3)->orderby('product_id','asc')->get();
+        $ring = DB::table('tbl_product')->where('category_id',4)->orderby('product_id','asc')->get();
 
-        return view('pages.home')->with('category',$category)->with('brand',$brand)->with('iphone',$iphone)->with('ipad',$ipad)->with('mac',$mac)->with('watch',$watch);
+        return view('pages.home')->with('category',$category)->with('brand',$brand)->with('necklace',$necklace)->with('earring',$earring)->with('bracelet',$bracelet)->with('ring',$ring);
     }
 
     public function information(){
@@ -47,14 +48,14 @@ class HomeController extends Controller
         'phone' => 'required|numeric',
         'address' => 'required'
         ]);
-        
+
         $user = User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
         $user->address = $request->input('address');
         $user->save();
-        
+
         return redirect()->back();
     }
 

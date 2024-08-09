@@ -11,7 +11,7 @@
       <th>Category</th>
       <th>Brand</th>
       <th>Price</th>
-      <th>Storage</th>
+      <th>Weight</th>
       <th>Color</th>
       <th>Product Image</th>
       <th>Content</th>
@@ -50,13 +50,13 @@
         {{number_format($pro->product_price).' VNĐ'}}
       </td >
       <td style="text-align: center;">
-        {{ $pro->product_storage }}
+        {{ $pro->product_weight }}
       </td >
       <td style="text-align: center;">
         {{ $pro->product_color }}
       </td >
       <td style="text-align: center;">
-        <img src="public/uploads/product/{{ $pro->product_img }}" alt="" height="100px"  width="100px">      
+        <img src="public/uploads/product/{{ $pro->product_img }}" alt="" height="100px"  width="100px">
       </td>
       <td>
         <div style="max-width: 100px; overflow: hidden; text-overflow: ellipsis;">

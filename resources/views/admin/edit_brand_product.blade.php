@@ -27,6 +27,7 @@
   </div>
   <hr>
   <button type="submit" name="update_brand_product" class="btn btn-primary">Save</button>
+  <a href="{{url('laravel/php/all-brand-product')}}" class="btn btn-danger">Cancel</a>
   <hr>
 </form>
 

@@ -57,16 +57,16 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center">
-                        <h2>Iphone Products</h2>
+                        <h2>Necklace Products</h2>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container">
-            <div class="row">   
+            <div class="row">
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
-                        @foreach($iphone as $key => $value)
+                        @foreach($necklace as $key => $value)
                         <!-- Single Product -->
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
@@ -99,7 +99,7 @@
                                         <input name="product_id_hidden" type="hidden" value="{{ $value->product_id }}">
                                         <button type="submit" class="btn essence-btn">Add to Cart</button>
                                         </div>
-                                    </form> 
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                         @endforeach
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
@@ -116,16 +116,16 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center">
-                        <h2>Ipad Products</h2>
+                        <h2>Earring Products</h2>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container">
-            <div class="row">   
+            <div class="row">
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
-                        @foreach($ipad as $key => $value)
+                        @foreach($earring as $key => $value)
                         <!-- Single Product -->
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
@@ -158,7 +158,7 @@
                                         <input name="product_id_hidden" type="hidden" value="{{ $value->product_id }}">
                                         <button type="submit" class="btn essence-btn">Add to Cart</button>
                                         </div>
-                                    </form> 
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
                         @endforeach
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
@@ -175,16 +175,16 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center">
-                        <h2>Macbook Products</h2>
+                        <h2>Bracelet Products</h2>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container">
-            <div class="row">   
+            <div class="row">
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
-                        @foreach($mac as $key => $value)
+                        @foreach($bracelet as $key => $value)
                         <!-- Single Product -->
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
@@ -217,7 +217,7 @@
                                         <input name="product_id_hidden" type="hidden" value="{{ $value->product_id }}">
                                         <button type="submit" class="btn essence-btn">Add to Cart</button>
                                         </div>
-                                    </form> 
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -225,7 +225,7 @@
                         @endforeach
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
@@ -234,16 +234,16 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center">
-                        <h2>Apple Watch Products</h2>
+                        <h2>Ring Products</h2>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container">
-            <div class="row">   
+            <div class="row">
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
-                        @foreach($watch as $key => $value)
+                        @foreach($ring as $key => $value)
                         <!-- Single Product -->
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
@@ -276,7 +276,7 @@
                                         <input name="product_id_hidden" type="hidden" value="{{ $value->product_id }}">
                                         <button type="submit" class="btn essence-btn">Add to Cart</button>
                                         </div>
-                                    </form> 
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -284,11 +284,11 @@
                         @endforeach
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
-    
+
     <!-- ##### New Arrivals Area End ##### -->
 
     <!-- ##### Brands Area Start ##### -->
@@ -312,7 +312,7 @@
         <div class="single-brands-logo">
             <img src="{{ asset('laravel/php/public/FE/img/core-img/watch.png') }}" alt="">
         </div>
-        
+
     </div>
     <!-- ##### Brands Area End ##### -->
 

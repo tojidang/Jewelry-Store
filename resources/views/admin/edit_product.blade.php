@@ -37,8 +37,8 @@
     <input type="text" value="{{ $pro -> product_price }}" name="product_price" class="form-control" id="product-price" placeholder="Enter price">
   </div>
   <div class="form-group ">
-    <label style="font-size:16px" class="font-weight-bolder mb-0">Product Storage</label>
-    <input type="text" value="{{ $pro -> product_storage }}" name="product_storage" class="form-control" id="product-storage" placeholder="Enter storage">
+    <label style="font-size:16px" class="font-weight-bolder mb-0">Product Weight</label>
+    <input type="text" value="{{ $pro -> product_weight }}" name="product_weight" class="form-control" id="product-weight" placeholder="Enter weight">
   </div>
   <div class="form-group ">
     <label style="font-size:16px" class="font-weight-bolder mb-0">Product Color</label>
@@ -57,11 +57,12 @@
     <label style="font-size:16px" class="font-weight-bolder mb-0">Product Description</label>
     <textarea style="resize: none;" rows="5" class="form-control" name="product_desc" id="product-description" rows="3">{{ $pro -> product_desc }}</textarea>
   </div>
-  
+
   <hr>
   <button type="submit" name="update_product" class="btn btn-primary">Save</button>
+  <a href="{{url('laravel/php/all-product')}}" class="btn btn-danger">Cancel</a>
   <hr>
-  <?php 
+  <?php
         $message = Session::get('message');
         if($message){
         echo '<span class="--bs-danger">',$message.'</span>';

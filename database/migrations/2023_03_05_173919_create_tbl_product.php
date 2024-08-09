@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('product_desc');
             $table->text('product_content');
             $table->string('product_price');
-            $table->string('product_storage');
+            $table->string('product_weight');
             $table->string('product_color');
             $table->string('product_img');
             $table->string('product_color');

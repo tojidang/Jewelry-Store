@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Coupon;
-use Session;
+//use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 session_start();

@@ -29,8 +29,8 @@
     <input type="text" name="product_price" class="form-control" id="product-price" placeholder="Enter price">
   </div>
   <div class="form-group ">
-    <label style="font-size:16px" class="font-weight-bolder mb-0">Product Storage</label>
-    <input type="text" name="product_storage" class="form-control" id="product-storage" placeholder="Enter storage">
+    <label style="font-size:16px" class="font-weight-bolder mb-0">Product Weight</label>
+    <input type="text" name="product_weight" class="form-control" id="product-weight" placeholder="Enter weight">
   </div>
   <div class="form-group ">
     <label style="font-size:16px" class="font-weight-bolder mb-0">Product Color</label>
@@ -54,11 +54,12 @@
     <option value="1">Visible</option>
     <option value="0">Invisible</option>
   </select>
-  
+
   <hr>
   <button type="submit" name="add_product" class="btn btn-primary">Add</button>
+  <a href="{{url('laravel/php/all-product')}}" class="btn btn-danger">Back</a>
   <hr>
-  <?php 
+  <?php
         $message = Session::get('message');
         if($message){
         echo '<span class="--bs-danger">',$message.'</span>';

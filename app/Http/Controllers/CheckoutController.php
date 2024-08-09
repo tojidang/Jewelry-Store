@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Cart;
 use App\Models\Coupon;
-use DB;
-use Session;
+use Illuminate\Support\Facades\DB;
+//use Session;
+use Illuminate\Support\Facades\Session;
 use Mail;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
@@ -120,7 +121,7 @@ class CheckoutController extends Controller
             $order_d_data['product_price'] = $value->price;
             $order_d_data['order_details_quantity'] = $value->qty;
             $order_d_data['product_color'] = $value->options->color;
-            $order_d_data['product_storage'] = $value->options->storage;
+            $order_d_data['product_weight'] = $value->options->weight;
             $result = DB::table('tbl_order_details')->insertGetId($order_d_data);
         }
 
@@ -128,8 +129,8 @@ class CheckoutController extends Controller
         'shipping_name' => $request->shipping_name,
         'shipping_address' => $request->shipping_address,
         'shipping_phone' => $request->shipping_phone,
-        'shipping_note' => $request->shipping_note, 
-        'payment_method' => $request->payment_option, 
+        'shipping_note' => $request->shipping_note,
+        'payment_method' => $request->payment_option,
         'order_total' => number_format($request->total, 0, '.', ','),
         // Thêm các thông tin khác tùy ý
         ];
@@ -149,7 +150,7 @@ class CheckoutController extends Controller
 
      }
 
-    
+
 
      public function sendmail($to_email){
     $to_name = "Apple Store";
@@ -163,12 +164,12 @@ class CheckoutController extends Controller
         "cart_items" => Session::get('content'),
         "total" => $order_info['order_total']
     );
-    
+
     Mail::send('pages.sendmail',$data, function ($message) use ($to_name, $to_email) {
         $message->to($to_email)->subject('Xác nhận đơn hàng');
         $message->from($to_email,$to_name);//send from this mail
     });
     return redirect('laravel/php/trangchu')->with('message','');
 }
-     
+
 }

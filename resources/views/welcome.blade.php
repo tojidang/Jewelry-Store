@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Apple Store</title>
+    <title>Jewelry Store</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="{{ asset('laravel/php/public/FE/img/core-img/favicon.ico') }}">
@@ -48,20 +48,20 @@
                         <ul>
                             <li>
                                     <a href="{{ URL::to('laravel/php/product-home') }}">Shop</a>
-                                <div class="megamenu">   
+                                <div class="megamenu">
                                     @foreach($category as $key => $cate)
-                                    <ul class="single-mega cn-col-4">                                        
-                                        <a style="font-size:16px; font-weight:bold" href="{{ URL::to('laravel/php/show-category',$cate->category_id) }}" class="title">{{ $cate -> category_name }}</a>    
+                                    <ul class="single-mega cn-col-4">
+                                        <a style="font-size:16px; font-weight:bold" href="{{ URL::to('laravel/php/show-category',$cate->category_id) }}" class="title">{{ $cate -> category_name }}</a>
                                         @foreach($brand as $key => $br)
                                             @if($br->category_id == $cate->category_id )
                                                 <a style="font-size:13px" href="{{ URL::to('laravel/php/show-brand',$br->brand_id) }}">{{ $br -> brand_name }}</a>
                                             @endif
-                                        @endforeach                  
-                                    </ul> 
-                                     @endforeach                                                                      
+                                        @endforeach
+                                    </ul>
+                                     @endforeach
                                 </div>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </div>
@@ -82,8 +82,8 @@
                 @if(session('id') != NULL )
                     <div class="favourite-area">
                         <a href="{{ URL::to('laravel/php/order-history') }}"><img src="{{ asset('laravel/php/public/FE/img/core-img/heart.svg') }}" alt=""></a>
-                    </div>  
-                @endif 
+                    </div>
+                @endif
 
                 @if(session('id') != NULL )
                 <div class="user-login-info">
@@ -133,7 +133,7 @@
                           <span class="product-remove"><i class="fa fa-close"  aria-hidden="true"></i></span>
                             <span class="badge"></span>
                             <h6>{{ $v_content -> name }}</h6>
-                            <p class="size">{{ $v_content -> options -> storage }}</p>
+                            <p class="size">{{ $v_content -> options -> weight }}</p>
                             <p class="color">{{ $v_content -> options -> color }}</p>
                             <p class="price">{{number_format($v_content-> price).' VNĐ'}}</p>
                         </div>
@@ -164,7 +164,7 @@
                     <a href="{{ URL::to('laravel/php/flogin') }}" class="btn essence-btn">check out</a>
                 </div>
                 @endif
-                
+
             </div>
         </div>
     </div>
@@ -175,37 +175,28 @@
         <div class="slider">
           <div class="slider-wrapper">
             <div class="slider-slide">
-              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner3.jpg') }}" alt="Slide 1">
+              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner8.jpg') }}" alt="Slide 1">
             </div>
             <div class="slider-slide">
-              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner4.jpg') }}" alt="Slide 2">
+              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner9.jpg') }}" alt="Slide 2">
             </div>
             <div class="slider-slide">
-              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner2.jpg') }}" alt="Slide 3">
+              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner10.jpg') }}" alt="Slide 3">
             </div>
             <div class="slider-slide">
-              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner1.jpg') }}" alt="Slide 4">
-            </div>
-            <div class="slider-slide">
-              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner6.jpg') }}" alt="Slide 5">
-            </div>
-            <div class="slider-slide">
-              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner7.jpg') }}" alt="Slide 6">
-            </div>
-            <div class="slider-slide">
-              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner5.jpg') }}" alt="Slide 7">
+              <img src="{{ asset('laravel/php/public/FE/img/banner-img/banner11.jpg') }}" alt="Slide 4">
             </div>
           </div>
-          
+
           <div class="slider-prev">&#10094;</div>
           <div class="slider-next">&#10095;</div>
         </div>
         <style>
             .slider {
               position: relative;
-              overflow: hidden;  
-              width: 2000px; 
-              height: 550px;          
+              overflow: hidden;
+              width: 2000px;
+              height: 550px;
             }
 
             .slider-wrapper {
@@ -230,7 +221,7 @@
             .slider-next {
               position: relative;
               top: 50%;
-              
+
               z-index: 1;
               cursor: pointer;
             }
@@ -243,7 +234,7 @@
               right: 0;
             }
 
-        </style>   
+        </style>
         <script>
            var sliderWrapper = document.querySelector('.slider-wrapper');
             var sliderPrev = document.querySelector('.slider-prev');
@@ -271,12 +262,12 @@
 
             sliderNext.addEventListener('click', slideNext);
 
-        </script> 
+        </script>
     </section>
     <!-- ##### Welcome Area End ##### -->
-    
+
  @yield('content')
-  
+
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer_area clearfix">

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Session;
+//use Session;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 session_start();
@@ -68,7 +69,7 @@ class BrandProduct extends Controller
     {
         $this->CheckAuth();
         $category = DB::table('tbl_category_product')->orderby('category_id','desc')->get();
-        
+
         $edit_brand_product = DB::table('tbl_brand')-> where('brand_id',$brand_id)->get();
         $manager_brand_product = view('admin.edit_brand_product')->with('edit_brand_product',$edit_brand_product)->with('category',$category);
         return view ('admin_layout')->with('admin.edit_brand_product',$manager_brand_product);
@@ -104,5 +105,5 @@ class BrandProduct extends Controller
 
         return view('pages.brand.show_brand')->with('category',$category)->with('brand',$brand)->with('brand_by_id',$brand_by_id)->with('brand_by_name',$brand_by_name);
     }
-    
+
 }

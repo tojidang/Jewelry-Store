@@ -23,13 +23,13 @@
             <li>Payment: Cash</li>
             @endif
         </ul>
-        
+
         <table class="table">
             <thead>
                 <tr>
                     <th>Product</th>
                     <th>Price</th>
-                    <th>Storage</th>
+                    <th>weight</th>
                     <th>Color</th>
                     <th>Total</th>
                 </tr>
@@ -39,7 +39,7 @@
                 <tr>
                     <td>{{ $item->name }}</td>
                     <td>{{ number_format($item->price) }} VNĐ</td>
-                    <td>{{ $item->options->storage }}</td>
+                    <td>{{ $item->options->weight }}</td>
                     <td>{{ $item->options->color }}</td>
                     <td>{{ number_format($item->subtotal) }} VNĐ</td>
                 </tr>

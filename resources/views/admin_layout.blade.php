@@ -48,7 +48,7 @@
               class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
-               
+
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero">
                     <g transform="translate(1716.000000, 291.000000)">
@@ -100,7 +100,7 @@
           </a>
         </li>
 
-                
+
 
         {{-- <li class="nav-item">
           <a class="nav-link  " href="../pages/billing.html">
@@ -351,8 +351,8 @@
       </ul>
     </div>
     <div class="sidenav-footer mx-3 ">
-      
-      
+
+
     </div>
   </aside>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
@@ -361,7 +361,7 @@
       navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
-          
+
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -371,13 +371,13 @@
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
-            
+
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">
-                  
-                  <?php 
+
+                  <?php
                     $name = Session::get('admin_name');
                     if($name){
                       echo $name;
@@ -405,7 +405,7 @@
       </div>
     </nav>
     <!-- End Navbar -->
-   
+
     @yield('admin_content')
 
     </div>

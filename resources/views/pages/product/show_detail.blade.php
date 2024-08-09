@@ -28,16 +28,16 @@
                 <!-- Select Box -->
                 <div class="select-box d-flex mt-50 mb-30">
                     <select name="select" id="productSize" class="mr-5">
-                        <option value="value">128GB</option>
-                        <option value="value">256GB</option>
-                        <option value="value">512GB</option>
-                        <option value="value">1TB</option>
+                        <option value="value">0.5g</option>
+                        <option value="value">1g</option>
+                        <option value="value">1.5g</option>
+                        <option value="value">2g</option>
                     </select>
                     <select name="select" id="productColor">
-                        <option value="value">Color: Black</option>
+                        <option value="value">Color: Gold</option>
+                        <option value="value">Color: Silver</option>
                         <option value="value">Color: White</option>
-                        <option value="value">Color: Red</option>
-                        <option value="value">Color: Purple</option>
+                        <option value="value">Color: Pink</option>
                     </select>
                 </div>
                 <!-- Cart & Favourite Box -->
@@ -59,28 +59,28 @@
 <section class="new_arrivals_area section-padding-80 clearfix">
         <div class="container">
             <div class="row">
-                <div class="col-12">      
+                <div class="col-12">
                     <div class="section-heading text-center">
-                        <h2>Sản phẩm liên quan</h2>    
-                    </div>                   
+                        <h2>Sản phẩm liên quan</h2>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="container">
-            <div class="row">   
+            <div class="row">
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
                         @foreach($realated_product as $key => $value)
-                        
+
                         <div class="single-product-wrapper">
-                           
+
                             <div class="product-img">
                                 <img src="{{ URL::to('laravel/php/public/uploads/product/'.$value->product_img) }}" alt="">
                                 <div class="product-favourite">
                                     <a href="#" class="favme fa fa-heart"></a>
                                 </div>
                             </div>
-                         
+
                             <div class="product-description">
                                 <span></span>
                                 <a href="{{ URL::to('laravel/php/product-detail/'.$value->product_id) }}">
@@ -94,13 +94,13 @@
                                         <input name="product_id_hidden" type="hidden" value="{{ $value->product_id }}">
                                         <button type="submit" class="btn essence-btn">Add to Cart</button>
                                         </div>
-                                    </form> 
+                                    </form>
                                 </div>
                             </div>
                         </div>
                         @endforeach
                     </div>
-                </div>  
+                </div>
             </div>
         </div>
 </section>

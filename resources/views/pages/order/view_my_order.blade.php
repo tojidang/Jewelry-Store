@@ -3,7 +3,7 @@
 
 <hr>
 <h3 style="color:green">Order Status: @if ($order_by_id->order_status == 1)
-            Pending 
+            Pending
             @elseif ($order_by_id->order_status == 2)
             Confirm</h3>
             @elseif ($order_by_id->order_status == 3)
@@ -45,7 +45,7 @@
 <table class="table align-middle mb-0 bg-white" >
   <thead class="bg-light">
     <tr style="text-align:  center;">
-      
+
       <th>Address</th>
       <th>Note</th>
     </tr>
@@ -70,7 +70,7 @@
   <thead class="bg-light">
     <tr style="text-align:  center;">
       <th>Product Name</th>
-      <th>Storage</th>
+      <th>Weight</th>
       <th>Color</th>
       <th>Price</th>
     </tr>
@@ -87,7 +87,7 @@
         </td>
 
         <td style="text-align: center;">
-          {{ $value->product_storage }}
+          {{ $value->product_weight }}
         </td>
 
         <td style="text-align: center;">

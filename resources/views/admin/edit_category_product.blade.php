@@ -17,6 +17,7 @@
   </div>
   <hr>
   <button type="submit" name="update_category_product" class="btn btn-primary">Save</button>
+  <a href="{{url('laravel/php/all-category-product')}}" class="btn btn-danger">Cancel</a>
   <hr>
 </form>
 
