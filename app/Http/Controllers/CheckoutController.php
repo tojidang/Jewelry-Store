@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Mail;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
-session_start();
+
 
 class CheckoutController extends Controller
 {

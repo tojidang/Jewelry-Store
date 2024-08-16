@@ -11,7 +11,6 @@ use Mail;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use PDF;
-session_start();
 
 class OrderController extends Controller
 {

@@ -10,7 +10,6 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
 use Mail;
-session_start();
 
 class HomeController extends Controller
 {
