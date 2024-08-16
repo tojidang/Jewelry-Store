@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
 use Illuminate\Queue\Jobs\RedisJob;
 use Illuminate\Support\Facades\Redirect;
-session_start();
 
 class LoginController extends Controller
 {

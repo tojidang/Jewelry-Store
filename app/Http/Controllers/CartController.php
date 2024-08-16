@@ -9,7 +9,7 @@ use DB;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
-session_start();
+
 
 class CartController extends Controller
 {
