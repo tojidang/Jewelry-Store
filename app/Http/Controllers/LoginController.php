@@ -10,6 +10,7 @@ use DB;
 //use Session;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
+use Illuminate\Queue\Jobs\RedisJob;
 use Illuminate\Support\Facades\Redirect;
 session_start();
 
@@ -53,7 +54,6 @@ class LoginController extends Controller
             'email' => $email,
             'password' => $password,
         ];
-
         if (Auth::attempt($credentials)) {
             // Authentication passed...
             $user = User::where('email', $email)->first();
@@ -64,14 +64,10 @@ class LoginController extends Controller
             return Redirect('laravel/php/flogin');
         }
     }
-
-
     public function logout() {
         session()->put('id', NULL);
 
         return redirect()->back();
     }
-
-
-
 }
+

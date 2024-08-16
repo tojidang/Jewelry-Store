@@ -82,10 +82,6 @@ Route::get('laravel/php/logout','App\Http\Controllers\LoginController@logout');
 Route::post('laravel/php/registor','App\Http\Controllers\LoginController@registor');
 Route::post('laravel/php/login','App\Http\Controllers\LoginController@login');
 
-//User
-Route::get('laravel/php/customer/{id}','App\Http\Controllers\HomeController@information');
-Route::post('laravel/php/update-user/{id}','App\Http\Controllers\HomeController@update_user');
-
 
 //Checkout
 Route::get('laravel/php/checkout','App\Http\Controllers\CheckoutController@checkout')->name('checkout');
@@ -121,3 +117,25 @@ Route::get('laravel/php/create-transaction', [PayPalController::class, 'createTr
 Route::get('laravel/php/process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
 Route::get('laravel/php/success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
 Route::get('laravel/php/cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+
+
+
+// ngay 16/8
+// Admin Management
+Route::get('laravel/php/admins', 'App\Http\Controllers\AdminController@listAdmin')->name('admin.list');
+Route::get('laravel/php/admin/create', 'App\Http\Controllers\AdminController@createAdmin')->name('admin.create');
+Route::post('laravel/php/admin/store', 'App\Http\Controllers\AdminController@storeAdmin')->name('admin.store');
+Route::get('laravel/php/admin/edit/{id}', 'App\Http\Controllers\AdminController@editAdmin')->name('admin.edit');
+Route::post('laravel/php/admin/update/{id}', 'App\Http\Controllers\AdminController@updateAdmin')->name('admin.update');
+Route::get('laravel/php/admin/delete/{id}', 'App\Http\Controllers\AdminController@deleteAdmin')->name('admin.delete');
+
+// user
+Route::get('laravel/php/customer/{id}','App\Http\Controllers\HomeController@information');
+Route::post('laravel/php/update-user/{id}','App\Http\Controllers\HomeController@update_user');
+//
+
+// Customer Management
+Route::get('laravel/php/customers', 'App\Http\Controllers\CustomerController@listCustomer')->name('customer.list');
+Route::get('laravel/php/customer/delete/{id}', 'App\Http\Controllers\CustomerController@deleteCustomer')->name('customer.delete');
+
+////////////////////////////////
