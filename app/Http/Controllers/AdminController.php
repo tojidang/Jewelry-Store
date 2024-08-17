@@ -103,7 +103,7 @@ class AdminController extends BaseController
             'admin_password' => $password,
             'admin_phone' => $request->admin_phone,
         ]);
-Session::put('message', 'Updated admin successfully!');
+        Session::put('message', 'Updated admin successfully!');
         return Redirect::to('laravel/php/admins');
     }
 

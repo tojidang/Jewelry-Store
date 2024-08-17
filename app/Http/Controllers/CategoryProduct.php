@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 //use Session;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
@@ -74,18 +74,44 @@ class CategoryProduct extends Controller
     public function update_category_product(Request $request, $category_id)
     {
         $this->CheckAuth();
-        $data = array();
-        $data['category_name'] = $request->category_name;
-        $data['category_desc'] = $request->category_desc;
-        DB::table('tbl_category_product')->where('category_id',$category_id)-> update($data);
-        return Redirect::to('/laravel/php/all-category-product');
+        try {
+            $data = array();
+            $data['category_name'] = $request->category_name;
+            $data['category_desc'] = $request->category_desc;
+            $updated = DB::table('tbl_category_product')->where('category_id',$category_id)-> update($data);
+
+            if ($updated) {
+                // If the update was successful
+                return Redirect::to('/laravel/php/all-category-product')->with('success', 'Category product updated successfully.');
+            } else {
+                // If the update was not successful (e.g., category ID not found)
+                return Redirect::to('/laravel/php/all-category-product')->with('error', 'Unable to update. Category not found.');
+            }
+        } catch (\Exception $e) {
+            // Handle any errors that occur during the deletion process
+            return Redirect::to('/laravel/php/all-category-product')->with('error', 'Unable to update due to an error.');
+        }
+        //DB::table('tbl_category_product')->where('category_id',$category_id)-> update($data);
+        //return Redirect::to('/laravel/php/all-category-product');
     }
 
     public function delete_category_product($category_id)
     {
         $this->CheckAuth();
-        DB::table('tbl_category_product')->where('category_id',$category_id)-> delete();
-        return Redirect::to('/laravel/php/all-category-product');
+        try {
+            $deleted = DB::table('tbl_category_product')->where('category_id', $category_id)->delete();
+
+            if ($deleted) {
+                // Successfully deleted, you can redirect with a success message if needed
+                return Redirect::to('/laravel/php/all-category-product')->with('success', 'Category product deleted successfully.');
+            } else {
+                // If no row was deleted
+                return Redirect::to('/laravel/php/all-category-product')->with('error', 'Unable to delete. Category not found.');
+            }
+        } catch (\Exception $e) {
+            // Handle any errors that occur during the deletion process
+            return Redirect::to('/laravel/php/all-category-product')->with('error', 'Unable to delete due to an error.');
+        }
     }
 
 

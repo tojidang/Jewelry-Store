@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 session_start();
@@ -45,30 +45,36 @@ class ProductController extends Controller
     public function save_product(Request $request)
     {
         $this->CheckAuth();
-        $data = array();
-        $data['product_name'] = $request->product_name;
-        $data['category_id'] = $request->cate;
-        $data['brand_id'] = $request->br;
-        $data['product_price'] = $request->product_price;
-        $data['product_weight'] = $request->product_weight;
-        $data['product_color'] = $request->product_color;
-        $data['product_desc'] = $request->product_desc;
-        $data['product_content'] = $request->product_content;
-        $data['product_status'] = $request->product_status;
+        try{
+            $data = array();
+            $data['product_name'] = $request->product_name;
+            $data['category_id'] = $request->cate;
+            $data['brand_id'] = $request->br;
+            $data['product_price'] = $request->product_price;
+             $data['product_weight'] = $request->product_weight;
+              $data['product_color'] = $request->product_color;
+            $data['product_desc'] = $request->product_desc;
+            $data['product_content'] = $request->product_content;
+            $data['product_status'] = $request->product_status;
 
-        $get_img = $request-> file('product_img');
-        if($get_img){
-            $get_name_img = $get_img->getClientOriginalName();
-            $name_img = current(explode('.',$get_name_img));
-            $new_img = $name_img.rand(0,99).'.'.$get_img->getClientOriginalExtension();
-            $get_img-> move('public/uploads/product',$new_img);
-            $data['product_img'] = $new_img;
+            $get_img = $request-> file('product_img');
+            if($get_img){
+                $get_name_img = $get_img->getClientOriginalName();
+                $name_img = current(explode('.',$get_name_img));
+                $new_img = $name_img.rand(0,99).'.'.$get_img->getClientOriginalExtension();
+                $get_img-> move('public/uploads/product',$new_img);
+                $data['product_img'] = $new_img;
+                //DB::table('tbl_product')-> insert($data);
+                //return Redirect::to('/laravel/php/add-product');
+            } else{
+                $data['product_img'] = '';
+            }
             DB::table('tbl_product')-> insert($data);
-            return Redirect::to('/laravel/php/add-product');
+            return Redirect::to('/laravel/php/add-product')->with('success', 'Product added successfully.');
+        } catch (\Exception $e) {
+            // Handle any errors that occur during the save process
+            return Redirect::to('/laravel/php/add-product')->with('error', 'Unable to add product due to an error.');
         }
-        $data['product_img'] = '';
-        DB::table('tbl_product')-> insert($data);
-        return Redirect::to('/laravel/php/add-product');
     }
 
     public function active_product($product_id)
@@ -100,7 +106,8 @@ class ProductController extends Controller
 
     public function update_product(Request $request, $product_id)
     {
-        $this->CheckAuth();
+        try{
+            $this->CheckAuth();
         $data = array();
         $data['product_name'] = $request->product_name;
         $data['category_id'] = $request->cate;
@@ -117,20 +124,44 @@ class ProductController extends Controller
             $new_img = $name_img.rand(0,99).'.'.$get_img->getClientOriginalExtension();
             $get_img-> move('public/uploads/product',$new_img);
             $data['product_img'] = $new_img;
-            DB::table('tbl_product')->where('product_id',$product_id)-> update($data);
-            Session::put('message','Success');
-            return Redirect::to('/laravel/php/all-product');
+            //DB::table('tbl_product')->where('product_id',$product_id)-> update($data);
+
+            //return Redirect::to('/laravel/php/all-product');
         }
-        DB::table('tbl_product')->where('product_id',$product_id)-> update($data);
-        Session::put('message','Success');
-        return Redirect::to('/laravel/php/all-product');
+        $updated = DB::table('tbl_product')->where('product_id',$product_id)-> update($data);
+        if ($updated) {
+            // If the update was successful
+            return Redirect::to('/laravel/php/all-product')->with('success', 'Product updated successfully.');
+        } else {
+            // If no rows were updated (e.g., product ID not found)
+            return Redirect::to('/laravel/php/all-product')->with('error', 'Unable to update. Product not found.');
+        }
+    } catch (\Exception $e) {
+        // Handle any errors that occur during the update process
+        return Redirect::to('/laravel/php/all-product')->with('error', 'Unable to update due to an error.');
+        //Session::put('message','Success');
+        //return Redirect::to('/laravel/php/all-product');
+        }
+
     }
 
     public function delete_product($product_id)
     {
         $this->CheckAuth();
-        DB::table('tbl_product')->where('product_id',$product_id)-> delete();
-        return Redirect::to('/laravel/php/all-product');
+        try {
+            $deleted = DB::table('tbl_product')->where('product_id',$product_id)-> delete();
+
+            if ($deleted) {
+                // Successfully deleted, you can redirect with a success message if needed
+                return Redirect::to('/laravel/php/all-product')->with('success', 'Product deleted successfully.');
+            } else {
+                // If no row was deleted
+                return Redirect::to('/laravel/php/all-product')->with('error', 'Unable to delete. Product not found.');
+            }
+        } catch (\Exception $e) {
+            // Handle any errors that occur during the deletion process
+            return Redirect::to('/laravel/php/all-product')->with('error', 'Unable to delete due to an error.');
+        }
     }
 
 

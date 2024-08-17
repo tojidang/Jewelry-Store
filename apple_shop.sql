@@ -3,11 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2024 at 11:09 AM
+-- Generation Time: Aug 16, 2024 at 12:47 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
-create database apple_shop;
-use apple_shop;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -104,8 +103,7 @@ CREATE TABLE `tbl_admin` (
 --
 
 INSERT INTO `tbl_admin` (`admin_id`, `admin_email`, `admin_password`, `admin_name`, `admin_phone`, `created_at`, `updated_at`) VALUES
-(1, 'admin@gmail.com', '123', 'Dinh Vu', '0899996261', '2023-03-15 16:18:41', NULL),
-(2, 'admin2@gmail.com', '123', 'Luat Hoi', '0976683106', '2024-08-07 04:53:39', '2024-08-07 04:53:39');
+(4, 'khacluat123@hotmail.com', '123', 'Luat', '0976683106', '2024-08-16 09:57:52', '2024-08-16 09:57:52');
 
 -- --------------------------------------------------------
 
@@ -115,7 +113,7 @@ INSERT INTO `tbl_admin` (`admin_id`, `admin_email`, `admin_password`, `admin_nam
 
 CREATE TABLE `tbl_brand` (
   `brand_id` int(10) UNSIGNED NOT NULL,
-  `category_id` int(10) DEFAULT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL,
   `brand_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `brand_desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `brand_status` int(11) NOT NULL,
@@ -128,8 +126,8 @@ CREATE TABLE `tbl_brand` (
 --
 
 INSERT INTO `tbl_brand` (`brand_id`, `category_id`, `brand_name`, `brand_desc`, `brand_status`, `created_at`, `updated_at`) VALUES
-(10, 1, 'Dior', 'Dior dep nhat', 1, '2023-03-06 18:08:09', NULL),
-(11, 1, 'Chanel', 'Chanel sieu dep', 1, '2023-03-06 18:09:00', NULL),
+(10, 1, 'Dior', 'Dior', 1, '2024-08-14 04:01:45', NULL),
+(11, 1, 'Chanel', 'Chanel', 1, '2024-08-14 04:02:59', NULL),
 (12, 1, 'Hermes', 'Hermes', 1, '2023-03-06 18:10:52', NULL),
 (13, 1, 'Cartier', 'Cartier', 1, '2023-03-06 18:11:07', NULL),
 (20, 2, 'Graff', 'Graff', 1, '2024-08-07 18:41:29', NULL),
@@ -138,7 +136,10 @@ INSERT INTO `tbl_brand` (`brand_id`, `category_id`, `brand_name`, `brand_desc`, 
 (31, 3, 'Pandora', 'Pandora', 1, '2024-08-07 17:57:47', NULL),
 (40, 4, 'Sokolov', 'Sokolov', 1, '2024-08-07 17:39:56', '0000-00-00 00:00:00'),
 (41, 4, 'Chopard', 'Chopard', 1, '2024-08-07 17:42:07', NULL),
-(42, 4, 'Saga', 'Saga', 1, '2024-08-07 17:42:07', NULL);
+(42, 4, 'Saga', 'Saga', 1, '2024-08-07 17:42:07', NULL),
+(48, 18, 'xxx', 'xxx', 1, '2024-08-16 08:37:44', NULL),
+(49, 19, '999', '999', 1, '2024-08-16 09:17:09', NULL),
+(50, 21, 'luat', 'luat', 1, '2024-08-16 09:31:06', NULL);
 
 -- --------------------------------------------------------
 
@@ -160,10 +161,13 @@ CREATE TABLE `tbl_category_product` (
 --
 
 INSERT INTO `tbl_category_product` (`category_id`, `category_name`, `category_desc`, `category_status`, `created_at`, `updated_at`) VALUES
-(1, 'day chuyen', 'day chuyen', 1, '2023-02-24 19:19:14', NULL),
+(1, 'day chuyen', 'day chuyen', 1, '2024-08-14 04:04:29', '2024-08-14 04:04:29'),
 (2, 'bong tai', 'bong tai', 1, '2023-02-24 19:20:24', NULL),
 (3, 'vong deo tay', 'vong deo tay', 1, '2023-02-24 19:20:32', NULL),
-(4, 'nhan', 'nhan', 1, '2023-02-24 19:20:42', NULL);
+(4, 'nhan', 'nhan', 1, '2023-02-24 19:20:42', NULL),
+(18, 'xxx', 'xxx', 1, '2024-08-16 08:37:32', '2024-08-16 08:37:32'),
+(19, 'dc999', 'dc999', 1, '2024-08-16 09:16:38', '2024-08-16 09:16:38'),
+(21, 'luat', 'luat', 1, '2024-08-16 09:29:25', '2024-08-16 09:29:25');
 
 -- --------------------------------------------------------
 
@@ -188,7 +192,7 @@ CREATE TABLE `tbl_coupon` (
 
 CREATE TABLE `tbl_order` (
   `order_id` int(10) UNSIGNED NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
   `shipping_id` int(11) NOT NULL,
   `payment_id` int(11) NOT NULL,
   `order_total` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -219,7 +223,9 @@ INSERT INTO `tbl_order` (`order_id`, `customer_id`, `shipping_id`, `payment_id`,
 (87, 8, 94, 90, '27,890,000', '1', '2024-08-09 07:35:50', NULL),
 (88, 8, 95, 91, '27,890,000', '1', '2024-08-09 07:36:39', NULL),
 (89, 8, 96, 92, '27,890,000', '1', '2024-08-09 07:42:31', NULL),
-(90, 8, 97, 93, '27,890,000', '1', '2024-08-09 07:46:08', NULL);
+(90, 8, 97, 93, '27,890,000', '1', '2024-08-09 07:46:08', NULL),
+(91, 8, 98, 94, '29,950,000', '1', '2024-08-09 09:33:22', NULL),
+(92, 9, 99, 95, '135,599,000', '1', '2024-08-09 09:47:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -229,8 +235,8 @@ INSERT INTO `tbl_order` (`order_id`, `customer_id`, `shipping_id`, `payment_id`,
 
 CREATE TABLE `tbl_order_details` (
   `order_details_id` int(10) UNSIGNED NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+  `order_id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
   `order_details_quantity` int(11) DEFAULT 1,
   `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -269,7 +275,16 @@ INSERT INTO `tbl_order_details` (`order_details_id`, `order_id`, `product_id`, `
 (88, 85, 6, 1, 'iPhone 14 Pro Max 128GB', '27890000', 'Gold', '128GB', '2023-04-24 05:53:37', NULL),
 (89, 85, 19, 1, 'Apple Watch Ultra LTE 49mm Alpine Loop size S', '20390000', 'Orange', '49mm', '2023-04-24 05:53:37', NULL),
 (90, 85, 15, 1, 'MacBook Pro M1 2020', '28550000', 'Space Gray', '256GB', '2023-04-24 05:53:37', NULL),
-(91, 90, 6, 1, 'day chuyen vang 1', '27890000', 'Gold', '1g', '2024-08-09 07:46:08', NULL);
+(91, 90, 6, 1, 'day chuyen vang 1', '27890000', 'Gold', '1g', '2024-08-09 07:46:08', NULL),
+(92, 91, 11, 1, 'Bong tai 1', '29950000', 'Gold', '1g', '2024-08-09 09:33:22', NULL),
+(93, 92, 8, 1, 'day chuyen bac 3', '19790000', 'Silver', '0.5g', '2024-08-09 09:47:33', NULL),
+(94, 92, 7, 1, 'day chuyen vang 2', '25490000', 'Gold', '0.5g', '2024-08-09 09:47:33', NULL),
+(95, 92, 11, 1, 'Bong tai 1', '29950000', 'Gold', '1g', '2024-08-09 09:47:33', NULL),
+(96, 92, 12, 1, 'Bong tai 2', '14490000', 'Gold', '1g', '2024-08-09 09:47:33', NULL),
+(97, 92, 16, 1, 'vong deo tay 1', '27990000', 'Gold', '1g', '2024-08-09 09:47:33', NULL),
+(98, 92, 17, 1, 'vong deo tay 2', '1699000', 'Pink', '1.5g', '2024-08-09 09:47:33', NULL),
+(99, 92, 21, 1, 'nhan vang 01', '6190000', 'Gold', '1g', '2024-08-09 09:47:33', NULL),
+(100, 92, 22, 1, 'nhan vang 2', '10000000', 'Gold', '1g', '2024-08-09 09:47:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -310,7 +325,9 @@ INSERT INTO `tbl_payment` (`payment_id`, `payment_method`, `payment_status`, `cr
 (90, '1', 'Pending', '2024-08-09 07:35:50', NULL),
 (91, '1', 'Pending', '2024-08-09 07:36:39', NULL),
 (92, '1', 'Pending', '2024-08-09 07:42:31', NULL),
-(93, '1', 'Pending', '2024-08-09 07:46:08', NULL);
+(93, '1', 'Pending', '2024-08-09 07:46:08', NULL),
+(94, '1', 'Pending', '2024-08-09 09:33:22', NULL),
+(95, '1', 'Pending', '2024-08-09 09:47:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -321,8 +338,8 @@ INSERT INTO `tbl_payment` (`payment_id`, `payment_method`, `payment_status`, `cr
 CREATE TABLE `tbl_product` (
   `product_id` int(10) UNSIGNED NOT NULL,
   `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `brand_id` int(11) NOT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL,
+  `brand_id` int(10) UNSIGNED NOT NULL,
   `product_desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -358,7 +375,9 @@ INSERT INTO `tbl_product` (`product_id`, `product_name`, `category_id`, `brand_i
 (22, 'nhan vang 2', 4, 42, 'nhan vang 2', 'nhan vang 2', '10000000', 'nh02.jpg', '1g', 'Gold', 1, '2024-08-07 19:47:20', NULL),
 (23, 'nhan bac 3', 4, 41, 'nhan bac 3', 'nhan bac 3', '30000000', 'nh03.jpg', '0.5g', 'Silver', 1, '2024-08-07 19:47:20', NULL),
 (24, 'nhan bac 4', 4, 42, 'nhan bac 4', 'nhan bac 4', '20000000', 'nh04.jpg', '1.5g', 'Silver', 1, '2024-08-07 19:53:50', NULL),
-(25, 'nhan vang 5', 4, 42, 'nhan vang 5', 'nhan vang 5', '21000000', 'nh05.jpg', '2g', 'Gold', 1, '2024-08-07 19:53:50', NULL);
+(25, 'nhan vang 5', 4, 42, 'nhan vang 5', 'nhan vang 5', '21000000', 'nh05.jpg', '2g', 'Gold', 1, '2024-08-07 19:53:50', NULL),
+(33, 'xx', 4, 42, 'x', 'x', '5700000', 'nh0463.jpg', '1g', 'White', 1, '2024-08-15 19:25:48', NULL),
+(34, 'dc6/8', 21, 50, 'luat', 'luat', '5700000', 'dc0323.jpg', '1g', 'White', 1, '2024-08-16 09:44:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -387,7 +406,9 @@ INSERT INTO `tbl_shipping` (`shipping_id`, `shipping_name`, `shipping_email`, `s
 (94, 'Đỗ Khắc Luật', 'luatdkgcs210262@fpt.edu.vn', '117/173 Nguyễn Hữu Cảnh', '0976683106', 'Luat Chot Mat', '2024-08-09 07:35:50', NULL),
 (95, 'Đỗ Khắc Luật', 'luatdkgcs210262@fpt.edu.vn', '117/173 Nguyễn Hữu Cảnh', '0976683106', 'Luat Chot Mat', '2024-08-09 07:36:38', NULL),
 (96, 'Đỗ Khắc Luật', 'luatdkgcs210262@fpt.edu.vn', '117/173 Nguyễn Hữu Cảnh', '0976683106', NULL, '2024-08-09 07:42:31', NULL),
-(97, 'Đỗ Khắc Luật', 'luatdkgcs210262@fpt.edu.vn', '117/173 Nguyễn Hữu Cảnh', '0976683106', NULL, '2024-08-09 07:46:08', NULL);
+(97, 'Đỗ Khắc Luật', 'luatdkgcs210262@fpt.edu.vn', '117/173 Nguyễn Hữu Cảnh', '0976683106', NULL, '2024-08-09 07:46:08', NULL),
+(98, 'Đỗ Khắc Luật', 'luatdkgcs210262@fpt.edu.vn', '117/173 Nguyễn Hữu Cảnh', '0976683106', NULL, '2024-08-09 09:33:22', NULL),
+(99, 'luat4', 'khacluat123@hotmail.com', '117/173 Nguyễn Hữu Cảnh', '123456', 'luat giau nhat the gioi', '2024-08-09 09:47:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -415,7 +436,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `address`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (6, 'Khac Luat', 'doluat1@gmail.com', '12345', 'nh canh', NULL, '1234', NULL, '2024-08-08 16:42:02', '2024-08-08 16:42:02'),
 (7, 'Nguyễn Đình Vũ', 'nguyendinhvutkt@gmail.com', NULL, NULL, NULL, '123', NULL, '2023-04-23 20:41:58', '2023-04-23 20:41:58'),
-(8, 'Đỗ Khắc Luật', 'luatdkgcs210262@fpt.edu.vn', '0976683106', '117/173 Nguyễn Hữu Cảnh', NULL, '$2y$10$7yuoZhEQC3VcXrG6bglRseNKsNhZlMK5Db7Ea.VEoQpZ7i1ssQCc6', NULL, '2024-08-09 00:33:34', '2024-08-09 00:34:08');
+(8, 'Đỗ Khắc Luật', 'luatdkgcs210262@fpt.edu.vn', '0976683106', '117/173 Nguyễn Hữu Cảnh', NULL, '$2y$10$7yuoZhEQC3VcXrG6bglRseNKsNhZlMK5Db7Ea.VEoQpZ7i1ssQCc6', NULL, '2024-08-09 00:33:34', '2024-08-09 00:34:08'),
+(9, 'luat4', 'khacluat123@hotmail.com', '123456', '117/173 Nguyễn Hữu Cảnh', NULL, '$2y$10$9v77zDlK7ofSQ/Uqqs4jluev2P7IVwKNuT7qlF54lEnziiqv5dUru', NULL, '2024-08-09 02:45:25', '2024-08-09 02:46:05');
 
 --
 -- Indexes for dumped tables
@@ -445,7 +467,8 @@ ALTER TABLE `tbl_admin`
 -- Indexes for table `tbl_brand`
 --
 ALTER TABLE `tbl_brand`
-  ADD PRIMARY KEY (`brand_id`);
+  ADD PRIMARY KEY (`brand_id`),
+  ADD KEY `tbl_brand` (`category_id`);
 
 --
 -- Indexes for table `tbl_category_product`
@@ -469,7 +492,8 @@ ALTER TABLE `tbl_order`
 -- Indexes for table `tbl_order_details`
 --
 ALTER TABLE `tbl_order_details`
-  ADD PRIMARY KEY (`order_details_id`);
+  ADD PRIMARY KEY (`order_details_id`),
+  ADD KEY `tbl_order_details` (`product_id`);
 
 --
 -- Indexes for table `tbl_payment`
@@ -481,7 +505,9 @@ ALTER TABLE `tbl_payment`
 -- Indexes for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  ADD PRIMARY KEY (`product_id`);
+  ADD PRIMARY KEY (`product_id`),
+  ADD KEY `tbl_product` (`brand_id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `tbl_shipping`
@@ -515,19 +541,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `admin_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `admin_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_brand`
 --
 ALTER TABLE `tbl_brand`
-  MODIFY `brand_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `brand_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `tbl_category_product`
 --
 ALTER TABLE `tbl_category_product`
-  MODIFY `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tbl_coupon`
@@ -539,37 +565,60 @@ ALTER TABLE `tbl_coupon`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `tbl_order_details`
 --
 ALTER TABLE `tbl_order_details`
-  MODIFY `order_details_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `order_details_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `payment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `payment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tbl_shipping`
 --
 ALTER TABLE `tbl_shipping`
-  MODIFY `shipping_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `shipping_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbl_brand`
+--
+ALTER TABLE `tbl_brand`
+  ADD CONSTRAINT `tbl_brand` FOREIGN KEY (`category_id`) REFERENCES `tbl_category_product` (`category_id`);
+
+--
+-- Constraints for table `tbl_order_details`
+--
+ALTER TABLE `tbl_order_details`
+  ADD CONSTRAINT `tbl_order_details` FOREIGN KEY (`product_id`) REFERENCES `tbl_product` (`product_id`);
+
+--
+-- Constraints for table `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  ADD CONSTRAINT `tbl_product` FOREIGN KEY (`brand_id`) REFERENCES `tbl_brand` (`brand_id`),
+  ADD CONSTRAINT `tbl_product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `tbl_category_product` (`category_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

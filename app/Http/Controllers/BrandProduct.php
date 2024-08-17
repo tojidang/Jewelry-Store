@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 //use Session;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
@@ -78,18 +78,43 @@ class BrandProduct extends Controller
     public function update_brand_product(Request $request, $brand_id)
     {
         $this->CheckAuth();
-        $data = array();
-        $data['brand_name'] = $request->brand_name;
-        $data['brand_desc'] = $request->brand_desc;
-        DB::table('tbl_brand')->where('brand_id',$brand_id)-> update($data);
-        return Redirect::to('/laravel/php/all-brand-product');
+        try{
+            $data = array();
+            $data['brand_name'] = $request->brand_name;
+            $data['brand_desc'] = $request->brand_desc;
+            $updated = DB::table('tbl_brand')->where('brand_id',$brand_id)-> update($data);
+            if ($updated) {
+                // If the update was successful
+                return Redirect::to('/laravel/php/all-brand-product')->with('success', 'Brand product updated successfully.');
+            } else {
+                // If the update was not successful (e.g., brand ID not found)
+                return Redirect::to('/laravel/php/all-brand-product')->with('error', 'Unable to update. Brand not found.');
+            }
+        } catch (\Exception $e) {
+            // Handle any errors that occur during the update process
+            return Redirect::to('/laravel/php/all-brand-product')->with('error', 'Unable to update due to an error.');
+        //return Redirect::to('/laravel/php/all-brand-product');
+        }
+
     }
 
     public function delete_brand_product($brand_id)
     {
         $this->CheckAuth();
-        DB::table('tbl_brand')->where('brand_id',$brand_id)-> delete();
-        return Redirect::to('/laravel/php/all-brand-product');
+        try {
+            $deleted = DB::table('tbl_brand')->where('brand_id',$brand_id)-> delete();
+
+            if ($deleted) {
+                // Successfully deleted, you can redirect with a success message if needed
+                return Redirect::to('/laravel/php/all-brand-product')->with('success', 'Brand product deleted successfully.');
+            } else {
+                // If no row was deleted
+                return Redirect::to('/laravel/php/all-brand-product')->with('error', 'Unable to delete. Brand not found.');
+            }
+        } catch (\Exception $e) {
+            // Handle any errors that occur during the deletion process
+            return Redirect::to('/laravel/php/all-brand-product')->with('error', 'Unable to delete due to an error.');
+        }
     }
 
     public function show_brand($brand_id)

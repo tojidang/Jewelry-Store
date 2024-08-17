@@ -2,7 +2,7 @@
 @section('admin_content')
 <div class="panel panel-default">
     <div class="panel-heading">
-        List of Customers
+        <h1 style="font-weight: bold; font-size: 2em;">List of Customers</h1>
     </div>
     <div class="panel-body">
         @if(Session::has('message'))
