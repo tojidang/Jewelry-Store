@@ -6,7 +6,8 @@
 -- Generation Time: Aug 16, 2024 at 12:47 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
-
+create database apple_shop;
+use apple_shop;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
