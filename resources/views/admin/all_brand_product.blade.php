@@ -69,12 +69,25 @@
       <td style="text-align: center;">
       	{{ $br_pro->created_at }}
       </td>
-      <td style="text-align: center;">
-      	<a href="{{URL::to('laravel/php/edit-brand-product/'.$br_pro->brand_id)}}" type="button" class="btn btn-info">Edit</a>
+      {{-- ẩn nút delete--}}
+      {{-- code cũ--}}
+    {{--}}  <td style="text-align: center;">
+     <a href="{{URL::to('laravel/php/edit-brand-product/'.$br_pro->brand_id)}}" type="button" class="btn btn-info">Edit</a>
       	<a onclick="return confirm('Are you sure you want delete?')" href="{{URL::to('laravel/php/delete-brand-product/'.$br_pro->brand_id)}}" type="button" class="btn btn-danger">Delete</a>
       </td>
     </tr>
     @endforeach
+{{----}}
+<td style="text-align: center;">
+    <a href="{{URL::to('laravel/php/edit-brand-product/'.$br_pro->brand_id)}}" type="button" class="btn btn-info">Edit</a>
+
+    @if ($br_pro->product_count == 0)
+        <a onclick="return confirm('Are you sure you want delete?')" href="{{URL::to('laravel/php/delete-brand-product/'.$br_pro->brand_id)}}" type="button" class="btn btn-danger">Delete</a>
+    @endif
+</td>
+</tr>
+@endforeach
+{{----}}
 
   </tbody>
 </table>
@@ -96,6 +109,9 @@
         @if ($all_brand_product->currentPage() < $all_brand_product->lastPage())
           <li class="page-item"><a class="page-link" href="{{ $all_brand_product->nextPageUrl() }}"><i class="fa fa-angle-right"></i></a></li>
         @endif
+
+
+
       </ul>
     </nav>
 @endsection

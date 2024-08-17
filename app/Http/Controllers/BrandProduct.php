@@ -27,15 +27,18 @@ class BrandProduct extends Controller
         $category = DB::table('tbl_category_product')->orderby('category_id','desc')->get();
         return view('admin.add_brand_product')->with('category',$category);
     }
+// hiển thị nút delete nếu như sản phẩm đã được thêm brand 17/8 ( chưa sửa)
 
-    public function all_brand_product()
+/*
+public function all_brand_product()
     {
         $this->CheckAuth();
         $all_brand_product = DB::table('tbl_brand')->join('tbl_category_product','tbl_category_product.category_id','=','tbl_brand.category_id')->paginate(9);
         $manager_brand_product = view('admin.all_brand_product')->with('all_brand_product',$all_brand_product);
         return view ('admin_layout')->with('admin.all_brand_product',$manager_brand_product);
     }
-
+    */
+// 17/8 end
     public function save_brand_product(Request $request)
     {
         $this->CheckAuth();
@@ -131,4 +134,24 @@ class BrandProduct extends Controller
         return view('pages.brand.show_brand')->with('category',$category)->with('brand',$brand)->with('brand_by_id',$brand_by_id)->with('brand_by_name',$brand_by_name);
     }
 
+    // hiển thị nút delete nếu như sản phẩm đã được thêm brand 17/8 (đã sửa)
+
+    public function all_brand_product()
+    {
+        $this->CheckAuth();
+        $all_brand_product = DB::table('tbl_brand')
+            ->join('tbl_category_product', 'tbl_category_product.category_id', '=', 'tbl_brand.category_id')
+            ->select('tbl_brand.*', 'tbl_category_product.category_name')
+            ->paginate(9);
+
+        // Thêm số lượng sản phẩm cho từng nhãn hiệu
+        foreach ($all_brand_product as $brand) {
+            $brand->product_count = DB::table('tbl_product')->where('brand_id', $brand->brand_id)->count();
+        }
+
+        $manager_brand_product = view('admin.all_brand_product')->with('all_brand_product', $all_brand_product);
+        return view('admin_layout')->with('admin.all_brand_product', $manager_brand_product);
+    }
+
+// 17/8 end
 }
