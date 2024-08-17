@@ -77,7 +77,8 @@
       </td>
     </tr>
     @endforeach
-{{----}}
+
+{{--code mới--}}
 <td style="text-align: center;">
     <a href="{{URL::to('laravel/php/edit-brand-product/'.$br_pro->brand_id)}}" type="button" class="btn btn-info">Edit</a>
 
@@ -87,7 +88,7 @@
 </td>
 </tr>
 @endforeach
-{{----}}
+{{--mới--}}
 
   </tbody>
 </table>
