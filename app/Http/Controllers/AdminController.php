@@ -110,6 +110,12 @@ class AdminController extends BaseController
     public function deleteAdmin($id)
     {
         $this->CheckAuth();
+        $current_admin_id = Session::get('admin_id');
+
+        if ($current_admin_id == $id) {
+            Session::put('message', 'You cannot delete your own admin account!');
+            return Redirect::to('laravel/php/admins');
+        }
 
         DB::table('tbl_admin')->where('admin_id', $id)->delete();
         Session::put('message', 'Successfully deleted admin!');
